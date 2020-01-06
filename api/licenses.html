@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.licenses API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.licenses</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Licenses(object):
+    def __init__(self, session):
+        super(Licenses, self).__init__()
+        self._session = session
+    
+    def getOrganizationLicenses(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **List the licenses for an organization**
+        https://api.meraki.com/api_docs#list-the-licenses-for-an-organization
+        - organizationId (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - deviceSerial (string): Filter the licenses to those assigned to a particular device
+        - networkId (string): Filter the licenses to those assigned in a particular network
+        - state (string): Filter the licenses to those in a particular state. Can be one of &#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39; or &#39;recentlyQueued&#39;
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;state&#39; in kwargs:
+            options = [&#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39;, &#39;recentlyQueued&#39;]
+            assert kwargs[&#39;state&#39;] in options, f&#39;&#39;&#39;&#34;state&#34; cannot be &#34;{kwargs[&#39;state&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;getOrganizationLicenses&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;deviceSerial&#39;, &#39;networkId&#39;, &#39;state&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def assignOrganizationLicensesSeats(self, organizationId: str, licenseId: str, networkId: str, seatCount: int):
+        &#34;&#34;&#34;
+        **Assign SM seats to a network. This will increase the managed SM device limit of the network**
+        https://api.meraki.com/api_docs#assign-sm-seats-to-a-network
+        - organizationId (string)
+        - licenseId (string): The ID of the SM license to assign seats from
+        - networkId (string): The ID of the SM network to assign the seats to
+        - seatCount (integer): The number of seats to assign to the SM network. Must be less than or equal to the total number of seats of the license
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;assignOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/assignSeats&#39;
+
+        body_params = [&#39;licenseId&#39;, &#39;networkId&#39;, &#39;seatCount&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def moveOrganizationLicenses(self, organizationId: str, destOrganizationId: str, licenseIds: list):
+        &#34;&#34;&#34;
+        **Move licenses to another organization. This will also move any devices that the licenses are assigned to**
+        https://api.meraki.com/api_docs#move-licenses-to-another-organization
+        - organizationId (string)
+        - destOrganizationId (string): The ID of the organization to move the licenses to
+        - licenseIds (array): A list of IDs of licenses to move to the new organization
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;moveOrganizationLicenses&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/move&#39;
+
+        body_params = [&#39;destOrganizationId&#39;, &#39;licenseIds&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def moveOrganizationLicensesSeats(self, organizationId: str, destOrganizationId: str, licenseId: str, seatCount: int):
+        &#34;&#34;&#34;
+        **Move SM seats to another organization**
+        https://api.meraki.com/api_docs#move-sm-seats-to-another-organization
+        - organizationId (string)
+        - destOrganizationId (string): The ID of the organization to move the SM seats to
+        - licenseId (string): The ID of the SM license to move the seats from
+        - seatCount (integer): The number of seats to move to the new organization. Must be less than or equal to the total number of seats of the license
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;moveOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/moveSeats&#39;
+
+        body_params = [&#39;destOrganizationId&#39;, &#39;licenseId&#39;, &#39;seatCount&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def renewOrganizationLicensesSeats(self, organizationId: str, licenseIdToRenew: str, unusedLicenseId: str):
+        &#34;&#34;&#34;
+        **Renew SM seats of a license. This will extend the license expiration date of managed SM devices covered by this license**
+        https://api.meraki.com/api_docs#renew-sm-seats-of-a-license
+        - organizationId (string)
+        - licenseIdToRenew (string): The ID of the SM license to renew. This license must already be assigned to an SM network
+        - unusedLicenseId (string): The SM license to use to renew the seats on &#39;licenseIdToRenew&#39;. This license must have at least as many seats available as there are seats on &#39;licenseIdToRenew&#39;
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;renewOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/renewSeats&#39;
+
+        body_params = [&#39;licenseIdToRenew&#39;, &#39;unusedLicenseId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getOrganizationLicense(self, organizationId: str, licenseId: str):
+        &#34;&#34;&#34;
+        **Display a license**
+        https://api.meraki.com/api_docs#display-a-license
+        - organizationId (string)
+        - licenseId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;getOrganizationLicense&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateOrganizationLicense(self, organizationId: str, licenseId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a license**
+        https://api.meraki.com/api_docs#update-a-license
+        - organizationId (string)
+        - licenseId (string)
+        - deviceSerial (string): The serial number of the device to assign this license to. Set this to null to unassign the license. If a different license is already active on the device, this parameter will control queueing/dequeuing this license.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;updateOrganizationLicense&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+        body_params = [&#39;deviceSerial&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.licenses.Licenses"><code class="flex name class">
+<span>class <span class="ident">Licenses</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Licenses(object):
+    def __init__(self, session):
+        super(Licenses, self).__init__()
+        self._session = session
+    
+    def getOrganizationLicenses(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **List the licenses for an organization**
+        https://api.meraki.com/api_docs#list-the-licenses-for-an-organization
+        - organizationId (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - deviceSerial (string): Filter the licenses to those assigned to a particular device
+        - networkId (string): Filter the licenses to those assigned in a particular network
+        - state (string): Filter the licenses to those in a particular state. Can be one of &#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39; or &#39;recentlyQueued&#39;
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;state&#39; in kwargs:
+            options = [&#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39;, &#39;recentlyQueued&#39;]
+            assert kwargs[&#39;state&#39;] in options, f&#39;&#39;&#39;&#34;state&#34; cannot be &#34;{kwargs[&#39;state&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;getOrganizationLicenses&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;deviceSerial&#39;, &#39;networkId&#39;, &#39;state&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def assignOrganizationLicensesSeats(self, organizationId: str, licenseId: str, networkId: str, seatCount: int):
+        &#34;&#34;&#34;
+        **Assign SM seats to a network. This will increase the managed SM device limit of the network**
+        https://api.meraki.com/api_docs#assign-sm-seats-to-a-network
+        - organizationId (string)
+        - licenseId (string): The ID of the SM license to assign seats from
+        - networkId (string): The ID of the SM network to assign the seats to
+        - seatCount (integer): The number of seats to assign to the SM network. Must be less than or equal to the total number of seats of the license
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;assignOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/assignSeats&#39;
+
+        body_params = [&#39;licenseId&#39;, &#39;networkId&#39;, &#39;seatCount&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def moveOrganizationLicenses(self, organizationId: str, destOrganizationId: str, licenseIds: list):
+        &#34;&#34;&#34;
+        **Move licenses to another organization. This will also move any devices that the licenses are assigned to**
+        https://api.meraki.com/api_docs#move-licenses-to-another-organization
+        - organizationId (string)
+        - destOrganizationId (string): The ID of the organization to move the licenses to
+        - licenseIds (array): A list of IDs of licenses to move to the new organization
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;moveOrganizationLicenses&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/move&#39;
+
+        body_params = [&#39;destOrganizationId&#39;, &#39;licenseIds&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def moveOrganizationLicensesSeats(self, organizationId: str, destOrganizationId: str, licenseId: str, seatCount: int):
+        &#34;&#34;&#34;
+        **Move SM seats to another organization**
+        https://api.meraki.com/api_docs#move-sm-seats-to-another-organization
+        - organizationId (string)
+        - destOrganizationId (string): The ID of the organization to move the SM seats to
+        - licenseId (string): The ID of the SM license to move the seats from
+        - seatCount (integer): The number of seats to move to the new organization. Must be less than or equal to the total number of seats of the license
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;moveOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/moveSeats&#39;
+
+        body_params = [&#39;destOrganizationId&#39;, &#39;licenseId&#39;, &#39;seatCount&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def renewOrganizationLicensesSeats(self, organizationId: str, licenseIdToRenew: str, unusedLicenseId: str):
+        &#34;&#34;&#34;
+        **Renew SM seats of a license. This will extend the license expiration date of managed SM devices covered by this license**
+        https://api.meraki.com/api_docs#renew-sm-seats-of-a-license
+        - organizationId (string)
+        - licenseIdToRenew (string): The ID of the SM license to renew. This license must already be assigned to an SM network
+        - unusedLicenseId (string): The SM license to use to renew the seats on &#39;licenseIdToRenew&#39;. This license must have at least as many seats available as there are seats on &#39;licenseIdToRenew&#39;
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;renewOrganizationLicensesSeats&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/renewSeats&#39;
+
+        body_params = [&#39;licenseIdToRenew&#39;, &#39;unusedLicenseId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getOrganizationLicense(self, organizationId: str, licenseId: str):
+        &#34;&#34;&#34;
+        **Display a license**
+        https://api.meraki.com/api_docs#display-a-license
+        - organizationId (string)
+        - licenseId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;getOrganizationLicense&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateOrganizationLicense(self, organizationId: str, licenseId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a license**
+        https://api.meraki.com/api_docs#update-a-license
+        - organizationId (string)
+        - licenseId (string)
+        - deviceSerial (string): The serial number of the device to assign this license to. Set this to null to unassign the license. If a different license is already active on the device, this parameter will control queueing/dequeuing this license.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Licenses&#39;],
+            &#39;operation&#39;: &#39;updateOrganizationLicense&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+        body_params = [&#39;deviceSerial&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.licenses.Licenses.assignOrganizationLicensesSeats"><code class="name flex">
+<span>def <span class="ident">assignOrganizationLicensesSeats</span></span>(<span>self, organizationId, licenseId, networkId, seatCount)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Assign SM seats to a network. This will increase the managed SM device limit of the network</strong>
+<a href="https://api.meraki.com/api_docs#assign-sm-seats-to-a-network">https://api.meraki.com/api_docs#assign-sm-seats-to-a-network</a>
+- organizationId (string)
+- licenseId (string): The ID of the SM license to assign seats from
+- networkId (string): The ID of the SM network to assign the seats to
+- seatCount (integer): The number of seats to assign to the SM network. Must be less than or equal to the total number of seats of the license</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assignOrganizationLicensesSeats(self, organizationId: str, licenseId: str, networkId: str, seatCount: int):
+    &#34;&#34;&#34;
+    **Assign SM seats to a network. This will increase the managed SM device limit of the network**
+    https://api.meraki.com/api_docs#assign-sm-seats-to-a-network
+    - organizationId (string)
+    - licenseId (string): The ID of the SM license to assign seats from
+    - networkId (string): The ID of the SM network to assign the seats to
+    - seatCount (integer): The number of seats to assign to the SM network. Must be less than or equal to the total number of seats of the license
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;assignOrganizationLicensesSeats&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/assignSeats&#39;
+
+    body_params = [&#39;licenseId&#39;, &#39;networkId&#39;, &#39;seatCount&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.getOrganizationLicense"><code class="name flex">
+<span>def <span class="ident">getOrganizationLicense</span></span>(<span>self, organizationId, licenseId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Display a license</strong>
+<a href="https://api.meraki.com/api_docs#display-a-license">https://api.meraki.com/api_docs#display-a-license</a>
+- organizationId (string)
+- licenseId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOrganizationLicense(self, organizationId: str, licenseId: str):
+    &#34;&#34;&#34;
+    **Display a license**
+    https://api.meraki.com/api_docs#display-a-license
+    - organizationId (string)
+    - licenseId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;getOrganizationLicense&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.getOrganizationLicenses"><code class="name flex">
+<span>def <span class="ident">getOrganizationLicenses</span></span>(<span>self, organizationId, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the licenses for an organization</strong>
+<a href="https://api.meraki.com/api_docs#list-the-licenses-for-an-organization">https://api.meraki.com/api_docs#list-the-licenses-for-an-organization</a>
+- organizationId (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+- deviceSerial (string): Filter the licenses to those assigned to a particular device
+- networkId (string): Filter the licenses to those assigned in a particular network
+- state (string): Filter the licenses to those in a particular state. Can be one of 'active', 'expired', 'expiring', 'unused', 'unusedActive' or 'recentlyQueued'</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOrganizationLicenses(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+    &#34;&#34;&#34;
+    **List the licenses for an organization**
+    https://api.meraki.com/api_docs#list-the-licenses-for-an-organization
+    - organizationId (string)
+    - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+    - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+    - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+    - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+    - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+    - deviceSerial (string): Filter the licenses to those assigned to a particular device
+    - networkId (string): Filter the licenses to those assigned in a particular network
+    - state (string): Filter the licenses to those in a particular state. Can be one of &#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39; or &#39;recentlyQueued&#39;
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;state&#39; in kwargs:
+        options = [&#39;active&#39;, &#39;expired&#39;, &#39;expiring&#39;, &#39;unused&#39;, &#39;unusedActive&#39;, &#39;recentlyQueued&#39;]
+        assert kwargs[&#39;state&#39;] in options, f&#39;&#39;&#39;&#34;state&#34; cannot be &#34;{kwargs[&#39;state&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;getOrganizationLicenses&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses&#39;
+
+    query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;deviceSerial&#39;, &#39;networkId&#39;, &#39;state&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.moveOrganizationLicenses"><code class="name flex">
+<span>def <span class="ident">moveOrganizationLicenses</span></span>(<span>self, organizationId, destOrganizationId, licenseIds)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Move licenses to another organization. This will also move any devices that the licenses are assigned to</strong>
+<a href="https://api.meraki.com/api_docs#move-licenses-to-another-organization">https://api.meraki.com/api_docs#move-licenses-to-another-organization</a>
+- organizationId (string)
+- destOrganizationId (string): The ID of the organization to move the licenses to
+- licenseIds (array): A list of IDs of licenses to move to the new organization</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveOrganizationLicenses(self, organizationId: str, destOrganizationId: str, licenseIds: list):
+    &#34;&#34;&#34;
+    **Move licenses to another organization. This will also move any devices that the licenses are assigned to**
+    https://api.meraki.com/api_docs#move-licenses-to-another-organization
+    - organizationId (string)
+    - destOrganizationId (string): The ID of the organization to move the licenses to
+    - licenseIds (array): A list of IDs of licenses to move to the new organization
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;moveOrganizationLicenses&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/move&#39;
+
+    body_params = [&#39;destOrganizationId&#39;, &#39;licenseIds&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.moveOrganizationLicensesSeats"><code class="name flex">
+<span>def <span class="ident">moveOrganizationLicensesSeats</span></span>(<span>self, organizationId, destOrganizationId, licenseId, seatCount)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Move SM seats to another organization</strong>
+<a href="https://api.meraki.com/api_docs#move-sm-seats-to-another-organization">https://api.meraki.com/api_docs#move-sm-seats-to-another-organization</a>
+- organizationId (string)
+- destOrganizationId (string): The ID of the organization to move the SM seats to
+- licenseId (string): The ID of the SM license to move the seats from
+- seatCount (integer): The number of seats to move to the new organization. Must be less than or equal to the total number of seats of the license</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveOrganizationLicensesSeats(self, organizationId: str, destOrganizationId: str, licenseId: str, seatCount: int):
+    &#34;&#34;&#34;
+    **Move SM seats to another organization**
+    https://api.meraki.com/api_docs#move-sm-seats-to-another-organization
+    - organizationId (string)
+    - destOrganizationId (string): The ID of the organization to move the SM seats to
+    - licenseId (string): The ID of the SM license to move the seats from
+    - seatCount (integer): The number of seats to move to the new organization. Must be less than or equal to the total number of seats of the license
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;moveOrganizationLicensesSeats&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/moveSeats&#39;
+
+    body_params = [&#39;destOrganizationId&#39;, &#39;licenseId&#39;, &#39;seatCount&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.renewOrganizationLicensesSeats"><code class="name flex">
+<span>def <span class="ident">renewOrganizationLicensesSeats</span></span>(<span>self, organizationId, licenseIdToRenew, unusedLicenseId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Renew SM seats of a license. This will extend the license expiration date of managed SM devices covered by this license</strong>
+<a href="https://api.meraki.com/api_docs#renew-sm-seats-of-a-license">https://api.meraki.com/api_docs#renew-sm-seats-of-a-license</a>
+- organizationId (string)
+- licenseIdToRenew (string): The ID of the SM license to renew. This license must already be assigned to an SM network
+- unusedLicenseId (string): The SM license to use to renew the seats on 'licenseIdToRenew'. This license must have at least as many seats available as there are seats on 'licenseIdToRenew'</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def renewOrganizationLicensesSeats(self, organizationId: str, licenseIdToRenew: str, unusedLicenseId: str):
+    &#34;&#34;&#34;
+    **Renew SM seats of a license. This will extend the license expiration date of managed SM devices covered by this license**
+    https://api.meraki.com/api_docs#renew-sm-seats-of-a-license
+    - organizationId (string)
+    - licenseIdToRenew (string): The ID of the SM license to renew. This license must already be assigned to an SM network
+    - unusedLicenseId (string): The SM license to use to renew the seats on &#39;licenseIdToRenew&#39;. This license must have at least as many seats available as there are seats on &#39;licenseIdToRenew&#39;
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;renewOrganizationLicensesSeats&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/renewSeats&#39;
+
+    body_params = [&#39;licenseIdToRenew&#39;, &#39;unusedLicenseId&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.licenses.Licenses.updateOrganizationLicense"><code class="name flex">
+<span>def <span class="ident">updateOrganizationLicense</span></span>(<span>self, organizationId, licenseId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update a license</strong>
+<a href="https://api.meraki.com/api_docs#update-a-license">https://api.meraki.com/api_docs#update-a-license</a>
+- organizationId (string)
+- licenseId (string)
+- deviceSerial (string): The serial number of the device to assign this license to. Set this to null to unassign the license. If a different license is already active on the device, this parameter will control queueing/dequeuing this license.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateOrganizationLicense(self, organizationId: str, licenseId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update a license**
+    https://api.meraki.com/api_docs#update-a-license
+    - organizationId (string)
+    - licenseId (string)
+    - deviceSerial (string): The serial number of the device to assign this license to. Set this to null to unassign the license. If a different license is already active on the device, this parameter will control queueing/dequeuing this license.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Licenses&#39;],
+        &#39;operation&#39;: &#39;updateOrganizationLicense&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/licenses/{licenseId}&#39;
+
+    body_params = [&#39;deviceSerial&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.licenses.Licenses" href="#meraki.api.licenses.Licenses">Licenses</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.licenses.Licenses.assignOrganizationLicensesSeats" href="#meraki.api.licenses.Licenses.assignOrganizationLicensesSeats">assignOrganizationLicensesSeats</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.getOrganizationLicense" href="#meraki.api.licenses.Licenses.getOrganizationLicense">getOrganizationLicense</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.getOrganizationLicenses" href="#meraki.api.licenses.Licenses.getOrganizationLicenses">getOrganizationLicenses</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.moveOrganizationLicenses" href="#meraki.api.licenses.Licenses.moveOrganizationLicenses">moveOrganizationLicenses</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.moveOrganizationLicensesSeats" href="#meraki.api.licenses.Licenses.moveOrganizationLicensesSeats">moveOrganizationLicensesSeats</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.renewOrganizationLicensesSeats" href="#meraki.api.licenses.Licenses.renewOrganizationLicensesSeats">renewOrganizationLicensesSeats</a></code></li>
+<li><code><a title="meraki.api.licenses.Licenses.updateOrganizationLicense" href="#meraki.api.licenses.Licenses.updateOrganizationLicense">updateOrganizationLicense</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

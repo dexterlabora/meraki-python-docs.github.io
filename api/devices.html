@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.devices API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.devices</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Devices(object):
+    def __init__(self, session):
+        super(Devices, self).__init__()
+        self._session = session
+    
+    def getNetworkDevices(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the devices in a network**
+        https://api.meraki.com/api_docs#list-the-devices-in-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices&#39;
+
+        return self._session.get(metadata, resource)
+
+    def claimNetworkDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Claim a device into a network**
+        https://api.meraki.com/api_docs#claim-a-device-into-a-network
+        - networkId (string)
+        - serial (string): The serial of a device
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;claimNetworkDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/claim&#39;
+
+        body_params = [&#39;serial&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return a single device**
+        https://api.meraki.com/api_docs#return-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkDevice(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the attributes of a device**
+        https://api.meraki.com/api_docs#update-the-attributes-of-a-device
+        - networkId (string)
+        - serial (string)
+        - name (string): The name of a device
+        - tags (string): The tags of a device
+        - lat (number): The latitude of a device
+        - lng (number): The longitude of a device
+        - address (string): The address of a device
+        - notes (string): The notes for the device. String. Limited to 255 characters.
+        - moveMapMarker (boolean): Whether or not to set the latitude and longitude of a device based on the new address. Only applies when lat and lng are not specified.
+        - switchProfileId (string): The ID of a switch profile to bind to the device (for available switch profiles, see the &#39;Switch Profiles&#39; endpoint). Use null to unbind the switch device from the current profile. For a device to be bindable to a switch profile, it must (1) be a switch, and (2) belong to a network that is bound to a configuration template.
+        - floorPlanId (string): The floor plan to associate to this device. null disassociates the device from the floorplan.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;updateNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+        body_params = [&#39;name&#39;, &#39;tags&#39;, &#39;lat&#39;, &#39;lng&#39;, &#39;address&#39;, &#39;notes&#39;, &#39;moveMapMarker&#39;, &#39;switchProfileId&#39;, &#39;floorPlanId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def blinkNetworkDeviceLeds(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **Blink the LEDs on a device**
+        https://api.meraki.com/api_docs#blink-the-leds-on-a-device
+        - networkId (string)
+        - serial (string)
+        - duration (integer): The duration in seconds. Must be between 5 and 120. Default is 20 seconds
+        - period (integer): The period in milliseconds. Must be between 100 and 1000. Default is 160 milliseconds
+        - duty (integer): The duty cycle as the percent active. Must be between 10 and 90. Default is 50.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;blinkNetworkDeviceLeds&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/blinkLeds&#39;
+
+        body_params = [&#39;duration&#39;, &#39;period&#39;, &#39;duty&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkDeviceLldp_cdp(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **List LLDP and CDP information for a device**
+        https://api.meraki.com/api_docs#list-lldp-and-cdp-information-for-a-device
+        - networkId (string)
+        - serial (string)
+        - timespan (integer): The timespan for which LLDP and CDP information will be fetched. Must be in seconds and less than or equal to a month (2592000 seconds). LLDP and CDP information is sent to the Meraki dashboard every 10 minutes. In instances where this LLDP and CDP information matches an existing entry in the Meraki dashboard, the data is updated once every two hours. Meraki recommends querying LLDP and CDP information at an interval slightly greater than two hours, to ensure that unchanged CDP / LLDP information can be queried consistently.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceLldp_cdp&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/lldp_cdp&#39;
+
+        query_params = [&#39;timespan&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkDeviceLossAndLatencyHistory(self, networkId: str, serial: str, ip: str, **kwargs):
+        &#34;&#34;&#34;
+        **Get the uplink loss percentage and latency in milliseconds for a wired network device.**
+        https://api.meraki.com/api_docs#get-the-uplink-loss-percentage-and-latency-in-milliseconds-for-a-wired-network-device
+        - networkId (string)
+        - serial (string)
+        - ip (string): The destination IP used to obtain the requested stats. This is required.
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 365 days from today.
+        - t1 (string): The end of the timespan for the data. t1 can be a maximum of 31 days after t0.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 31 days. The default is 1 day.
+        - resolution (integer): The time resolution in seconds for returned data. The valid resolutions are: 60, 600, 3600, 86400. The default is 60.
+        - uplink (string): The WAN uplink used to obtain the requested stats. Valid uplinks are wan1, wan2, cellular. The default is wan1.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;uplink&#39; in kwargs:
+            options = [&#39;wan1&#39;, &#39;wan2&#39;, &#39;cellular&#39;]
+            assert kwargs[&#39;uplink&#39;] in options, f&#39;&#39;&#39;&#34;uplink&#34; cannot be &#34;{kwargs[&#39;uplink&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceLossAndLatencyHistory&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/lossAndLatencyHistory&#39;
+
+        query_params = [&#39;t0&#39;, &#39;t1&#39;, &#39;timespan&#39;, &#39;resolution&#39;, &#39;uplink&#39;, &#39;ip&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkDevicePerformance(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the performance score for a single device. Only primary MX devices supported. If no data is available, a 204 error code is returned.**
+        https://api.meraki.com/api_docs#return-the-performance-score-for-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevicePerformance&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/performance&#39;
+
+        return self._session.get(metadata, resource)
+
+    def rebootNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Reboot a device**
+        https://api.meraki.com/api_docs#reboot-a-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;rebootNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/reboot&#39;
+
+        return self._session.post(metadata, resource)
+
+    def removeNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Remove a single device**
+        https://api.meraki.com/api_docs#remove-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;removeNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/remove&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkDeviceUplink(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the uplink information for a device.**
+        https://api.meraki.com/api_docs#return-the-uplink-information-for-a-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceUplink&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/uplink&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getOrganizationDevices(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **List the devices in an organization**
+        https://api.meraki.com/api_docs#list-the-devices-in-an-organization
+        - organizationId (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - configurationUpdatedAfter (string): Filter results by whether or not the device&#39;s configuration has been updated after the given timestamp
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getOrganizationDevices&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/devices&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;configurationUpdatedAfter&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.devices.Devices"><code class="flex name class">
+<span>class <span class="ident">Devices</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Devices(object):
+    def __init__(self, session):
+        super(Devices, self).__init__()
+        self._session = session
+    
+    def getNetworkDevices(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the devices in a network**
+        https://api.meraki.com/api_docs#list-the-devices-in-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices&#39;
+
+        return self._session.get(metadata, resource)
+
+    def claimNetworkDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Claim a device into a network**
+        https://api.meraki.com/api_docs#claim-a-device-into-a-network
+        - networkId (string)
+        - serial (string): The serial of a device
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;claimNetworkDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/claim&#39;
+
+        body_params = [&#39;serial&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return a single device**
+        https://api.meraki.com/api_docs#return-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkDevice(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the attributes of a device**
+        https://api.meraki.com/api_docs#update-the-attributes-of-a-device
+        - networkId (string)
+        - serial (string)
+        - name (string): The name of a device
+        - tags (string): The tags of a device
+        - lat (number): The latitude of a device
+        - lng (number): The longitude of a device
+        - address (string): The address of a device
+        - notes (string): The notes for the device. String. Limited to 255 characters.
+        - moveMapMarker (boolean): Whether or not to set the latitude and longitude of a device based on the new address. Only applies when lat and lng are not specified.
+        - switchProfileId (string): The ID of a switch profile to bind to the device (for available switch profiles, see the &#39;Switch Profiles&#39; endpoint). Use null to unbind the switch device from the current profile. For a device to be bindable to a switch profile, it must (1) be a switch, and (2) belong to a network that is bound to a configuration template.
+        - floorPlanId (string): The floor plan to associate to this device. null disassociates the device from the floorplan.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;updateNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+        body_params = [&#39;name&#39;, &#39;tags&#39;, &#39;lat&#39;, &#39;lng&#39;, &#39;address&#39;, &#39;notes&#39;, &#39;moveMapMarker&#39;, &#39;switchProfileId&#39;, &#39;floorPlanId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def blinkNetworkDeviceLeds(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **Blink the LEDs on a device**
+        https://api.meraki.com/api_docs#blink-the-leds-on-a-device
+        - networkId (string)
+        - serial (string)
+        - duration (integer): The duration in seconds. Must be between 5 and 120. Default is 20 seconds
+        - period (integer): The period in milliseconds. Must be between 100 and 1000. Default is 160 milliseconds
+        - duty (integer): The duty cycle as the percent active. Must be between 10 and 90. Default is 50.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;blinkNetworkDeviceLeds&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/blinkLeds&#39;
+
+        body_params = [&#39;duration&#39;, &#39;period&#39;, &#39;duty&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkDeviceLldp_cdp(self, networkId: str, serial: str, **kwargs):
+        &#34;&#34;&#34;
+        **List LLDP and CDP information for a device**
+        https://api.meraki.com/api_docs#list-lldp-and-cdp-information-for-a-device
+        - networkId (string)
+        - serial (string)
+        - timespan (integer): The timespan for which LLDP and CDP information will be fetched. Must be in seconds and less than or equal to a month (2592000 seconds). LLDP and CDP information is sent to the Meraki dashboard every 10 minutes. In instances where this LLDP and CDP information matches an existing entry in the Meraki dashboard, the data is updated once every two hours. Meraki recommends querying LLDP and CDP information at an interval slightly greater than two hours, to ensure that unchanged CDP / LLDP information can be queried consistently.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceLldp_cdp&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/lldp_cdp&#39;
+
+        query_params = [&#39;timespan&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkDeviceLossAndLatencyHistory(self, networkId: str, serial: str, ip: str, **kwargs):
+        &#34;&#34;&#34;
+        **Get the uplink loss percentage and latency in milliseconds for a wired network device.**
+        https://api.meraki.com/api_docs#get-the-uplink-loss-percentage-and-latency-in-milliseconds-for-a-wired-network-device
+        - networkId (string)
+        - serial (string)
+        - ip (string): The destination IP used to obtain the requested stats. This is required.
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 365 days from today.
+        - t1 (string): The end of the timespan for the data. t1 can be a maximum of 31 days after t0.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 31 days. The default is 1 day.
+        - resolution (integer): The time resolution in seconds for returned data. The valid resolutions are: 60, 600, 3600, 86400. The default is 60.
+        - uplink (string): The WAN uplink used to obtain the requested stats. Valid uplinks are wan1, wan2, cellular. The default is wan1.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;uplink&#39; in kwargs:
+            options = [&#39;wan1&#39;, &#39;wan2&#39;, &#39;cellular&#39;]
+            assert kwargs[&#39;uplink&#39;] in options, f&#39;&#39;&#39;&#34;uplink&#34; cannot be &#34;{kwargs[&#39;uplink&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceLossAndLatencyHistory&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/lossAndLatencyHistory&#39;
+
+        query_params = [&#39;t0&#39;, &#39;t1&#39;, &#39;timespan&#39;, &#39;resolution&#39;, &#39;uplink&#39;, &#39;ip&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkDevicePerformance(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the performance score for a single device. Only primary MX devices supported. If no data is available, a 204 error code is returned.**
+        https://api.meraki.com/api_docs#return-the-performance-score-for-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDevicePerformance&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/performance&#39;
+
+        return self._session.get(metadata, resource)
+
+    def rebootNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Reboot a device**
+        https://api.meraki.com/api_docs#reboot-a-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;rebootNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/reboot&#39;
+
+        return self._session.post(metadata, resource)
+
+    def removeNetworkDevice(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Remove a single device**
+        https://api.meraki.com/api_docs#remove-a-single-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;removeNetworkDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/remove&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkDeviceUplink(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the uplink information for a device.**
+        https://api.meraki.com/api_docs#return-the-uplink-information-for-a-device
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceUplink&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/uplink&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getOrganizationDevices(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **List the devices in an organization**
+        https://api.meraki.com/api_docs#list-the-devices-in-an-organization
+        - organizationId (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+        - configurationUpdatedAfter (string): Filter results by whether or not the device&#39;s configuration has been updated after the given timestamp
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Devices&#39;],
+            &#39;operation&#39;: &#39;getOrganizationDevices&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/devices&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;configurationUpdatedAfter&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.devices.Devices.blinkNetworkDeviceLeds"><code class="name flex">
+<span>def <span class="ident">blinkNetworkDeviceLeds</span></span>(<span>self, networkId, serial, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Blink the LEDs on a device</strong>
+<a href="https://api.meraki.com/api_docs#blink-the-leds-on-a-device">https://api.meraki.com/api_docs#blink-the-leds-on-a-device</a>
+- networkId (string)
+- serial (string)
+- duration (integer): The duration in seconds. Must be between 5 and 120. Default is 20 seconds
+- period (integer): The period in milliseconds. Must be between 100 and 1000. Default is 160 milliseconds
+- duty (integer): The duty cycle as the percent active. Must be between 10 and 90. Default is 50.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def blinkNetworkDeviceLeds(self, networkId: str, serial: str, **kwargs):
+    &#34;&#34;&#34;
+    **Blink the LEDs on a device**
+    https://api.meraki.com/api_docs#blink-the-leds-on-a-device
+    - networkId (string)
+    - serial (string)
+    - duration (integer): The duration in seconds. Must be between 5 and 120. Default is 20 seconds
+    - period (integer): The period in milliseconds. Must be between 100 and 1000. Default is 160 milliseconds
+    - duty (integer): The duty cycle as the percent active. Must be between 10 and 90. Default is 50.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;blinkNetworkDeviceLeds&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/blinkLeds&#39;
+
+    body_params = [&#39;duration&#39;, &#39;period&#39;, &#39;duty&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.claimNetworkDevices"><code class="name flex">
+<span>def <span class="ident">claimNetworkDevices</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Claim a device into a network</strong>
+<a href="https://api.meraki.com/api_docs#claim-a-device-into-a-network">https://api.meraki.com/api_docs#claim-a-device-into-a-network</a>
+- networkId (string)
+- serial (string): The serial of a device</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def claimNetworkDevices(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Claim a device into a network**
+    https://api.meraki.com/api_docs#claim-a-device-into-a-network
+    - networkId (string)
+    - serial (string): The serial of a device
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;claimNetworkDevices&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/claim&#39;
+
+    body_params = [&#39;serial&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDevice"><code class="name flex">
+<span>def <span class="ident">getNetworkDevice</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return a single device</strong>
+<a href="https://api.meraki.com/api_docs#return-a-single-device">https://api.meraki.com/api_docs#return-a-single-device</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDevice(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Return a single device**
+    https://api.meraki.com/api_docs#return-a-single-device
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDeviceLldp_cdp"><code class="name flex">
+<span>def <span class="ident">getNetworkDeviceLldp_cdp</span></span>(<span>self, networkId, serial, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List LLDP and CDP information for a device</strong>
+<a href="https://api.meraki.com/api_docs#list-lldp-and-cdp-information-for-a-device">https://api.meraki.com/api_docs#list-lldp-and-cdp-information-for-a-device</a>
+- networkId (string)
+- serial (string)
+- timespan (integer): The timespan for which LLDP and CDP information will be fetched. Must be in seconds and less than or equal to a month (2592000 seconds). LLDP and CDP information is sent to the Meraki dashboard every 10 minutes. In instances where this LLDP and CDP information matches an existing entry in the Meraki dashboard, the data is updated once every two hours. Meraki recommends querying LLDP and CDP information at an interval slightly greater than two hours, to ensure that unchanged CDP / LLDP information can be queried consistently.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDeviceLldp_cdp(self, networkId: str, serial: str, **kwargs):
+    &#34;&#34;&#34;
+    **List LLDP and CDP information for a device**
+    https://api.meraki.com/api_docs#list-lldp-and-cdp-information-for-a-device
+    - networkId (string)
+    - serial (string)
+    - timespan (integer): The timespan for which LLDP and CDP information will be fetched. Must be in seconds and less than or equal to a month (2592000 seconds). LLDP and CDP information is sent to the Meraki dashboard every 10 minutes. In instances where this LLDP and CDP information matches an existing entry in the Meraki dashboard, the data is updated once every two hours. Meraki recommends querying LLDP and CDP information at an interval slightly greater than two hours, to ensure that unchanged CDP / LLDP information can be queried consistently.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDeviceLldp_cdp&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/lldp_cdp&#39;
+
+    query_params = [&#39;timespan&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDeviceLossAndLatencyHistory"><code class="name flex">
+<span>def <span class="ident">getNetworkDeviceLossAndLatencyHistory</span></span>(<span>self, networkId, serial, ip, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get the uplink loss percentage and latency in milliseconds for a wired network device.</strong>
+<a href="https://api.meraki.com/api_docs#get-the-uplink-loss-percentage-and-latency-in-milliseconds-for-a-wired-network-device">https://api.meraki.com/api_docs#get-the-uplink-loss-percentage-and-latency-in-milliseconds-for-a-wired-network-device</a>
+- networkId (string)
+- serial (string)
+- ip (string): The destination IP used to obtain the requested stats. This is required.
+- t0 (string): The beginning of the timespan for the data. The maximum lookback period is 365 days from today.
+- t1 (string): The end of the timespan for the data. t1 can be a maximum of 31 days after t0.
+- timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 31 days. The default is 1 day.
+- resolution (integer): The time resolution in seconds for returned data. The valid resolutions are: 60, 600, 3600, 86400. The default is 60.
+- uplink (string): The WAN uplink used to obtain the requested stats. Valid uplinks are wan1, wan2, cellular. The default is wan1.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDeviceLossAndLatencyHistory(self, networkId: str, serial: str, ip: str, **kwargs):
+    &#34;&#34;&#34;
+    **Get the uplink loss percentage and latency in milliseconds for a wired network device.**
+    https://api.meraki.com/api_docs#get-the-uplink-loss-percentage-and-latency-in-milliseconds-for-a-wired-network-device
+    - networkId (string)
+    - serial (string)
+    - ip (string): The destination IP used to obtain the requested stats. This is required.
+    - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 365 days from today.
+    - t1 (string): The end of the timespan for the data. t1 can be a maximum of 31 days after t0.
+    - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 31 days. The default is 1 day.
+    - resolution (integer): The time resolution in seconds for returned data. The valid resolutions are: 60, 600, 3600, 86400. The default is 60.
+    - uplink (string): The WAN uplink used to obtain the requested stats. Valid uplinks are wan1, wan2, cellular. The default is wan1.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;uplink&#39; in kwargs:
+        options = [&#39;wan1&#39;, &#39;wan2&#39;, &#39;cellular&#39;]
+        assert kwargs[&#39;uplink&#39;] in options, f&#39;&#39;&#39;&#34;uplink&#34; cannot be &#34;{kwargs[&#39;uplink&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDeviceLossAndLatencyHistory&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/lossAndLatencyHistory&#39;
+
+    query_params = [&#39;t0&#39;, &#39;t1&#39;, &#39;timespan&#39;, &#39;resolution&#39;, &#39;uplink&#39;, &#39;ip&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDevicePerformance"><code class="name flex">
+<span>def <span class="ident">getNetworkDevicePerformance</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the performance score for a single device. Only primary MX devices supported. If no data is available, a 204 error code is returned.</strong>
+<a href="https://api.meraki.com/api_docs#return-the-performance-score-for-a-single-device">https://api.meraki.com/api_docs#return-the-performance-score-for-a-single-device</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDevicePerformance(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Return the performance score for a single device. Only primary MX devices supported. If no data is available, a 204 error code is returned.**
+    https://api.meraki.com/api_docs#return-the-performance-score-for-a-single-device
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDevicePerformance&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/performance&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDeviceUplink"><code class="name flex">
+<span>def <span class="ident">getNetworkDeviceUplink</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the uplink information for a device.</strong>
+<a href="https://api.meraki.com/api_docs#return-the-uplink-information-for-a-device">https://api.meraki.com/api_docs#return-the-uplink-information-for-a-device</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDeviceUplink(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Return the uplink information for a device.**
+    https://api.meraki.com/api_docs#return-the-uplink-information-for-a-device
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDeviceUplink&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/uplink&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getNetworkDevices"><code class="name flex">
+<span>def <span class="ident">getNetworkDevices</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the devices in a network</strong>
+<a href="https://api.meraki.com/api_docs#list-the-devices-in-a-network">https://api.meraki.com/api_docs#list-the-devices-in-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDevices(self, networkId: str):
+    &#34;&#34;&#34;
+    **List the devices in a network**
+    https://api.meraki.com/api_docs#list-the-devices-in-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getNetworkDevices&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.getOrganizationDevices"><code class="name flex">
+<span>def <span class="ident">getOrganizationDevices</span></span>(<span>self, organizationId, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the devices in an organization</strong>
+<a href="https://api.meraki.com/api_docs#list-the-devices-in-an-organization">https://api.meraki.com/api_docs#list-the-devices-in-an-organization</a>
+- organizationId (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+- configurationUpdatedAfter (string): Filter results by whether or not the device's configuration has been updated after the given timestamp</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOrganizationDevices(self, organizationId: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+    &#34;&#34;&#34;
+    **List the devices in an organization**
+    https://api.meraki.com/api_docs#list-the-devices-in-an-organization
+    - organizationId (string)
+    - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+    - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+    - perPage (integer): The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.
+    - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+    - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.
+    - configurationUpdatedAfter (string): Filter results by whether or not the device&#39;s configuration has been updated after the given timestamp
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;getOrganizationDevices&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/devices&#39;
+
+    query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;, &#39;configurationUpdatedAfter&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.rebootNetworkDevice"><code class="name flex">
+<span>def <span class="ident">rebootNetworkDevice</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Reboot a device</strong>
+<a href="https://api.meraki.com/api_docs#reboot-a-device">https://api.meraki.com/api_docs#reboot-a-device</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rebootNetworkDevice(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Reboot a device**
+    https://api.meraki.com/api_docs#reboot-a-device
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;rebootNetworkDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/reboot&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.removeNetworkDevice"><code class="name flex">
+<span>def <span class="ident">removeNetworkDevice</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Remove a single device</strong>
+<a href="https://api.meraki.com/api_docs#remove-a-single-device">https://api.meraki.com/api_docs#remove-a-single-device</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeNetworkDevice(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Remove a single device**
+    https://api.meraki.com/api_docs#remove-a-single-device
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;removeNetworkDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/remove&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.devices.Devices.updateNetworkDevice"><code class="name flex">
+<span>def <span class="ident">updateNetworkDevice</span></span>(<span>self, networkId, serial, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update the attributes of a device</strong>
+<a href="https://api.meraki.com/api_docs#update-the-attributes-of-a-device">https://api.meraki.com/api_docs#update-the-attributes-of-a-device</a>
+- networkId (string)
+- serial (string)
+- name (string): The name of a device
+- tags (string): The tags of a device
+- lat (number): The latitude of a device
+- lng (number): The longitude of a device
+- address (string): The address of a device
+- notes (string): The notes for the device. String. Limited to 255 characters.
+- moveMapMarker (boolean): Whether or not to set the latitude and longitude of a device based on the new address. Only applies when lat and lng are not specified.
+- switchProfileId (string): The ID of a switch profile to bind to the device (for available switch profiles, see the 'Switch Profiles' endpoint). Use null to unbind the switch device from the current profile. For a device to be bindable to a switch profile, it must (1) be a switch, and (2) belong to a network that is bound to a configuration template.
+- floorPlanId (string): The floor plan to associate to this device. null disassociates the device from the floorplan.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkDevice(self, networkId: str, serial: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update the attributes of a device**
+    https://api.meraki.com/api_docs#update-the-attributes-of-a-device
+    - networkId (string)
+    - serial (string)
+    - name (string): The name of a device
+    - tags (string): The tags of a device
+    - lat (number): The latitude of a device
+    - lng (number): The longitude of a device
+    - address (string): The address of a device
+    - notes (string): The notes for the device. String. Limited to 255 characters.
+    - moveMapMarker (boolean): Whether or not to set the latitude and longitude of a device based on the new address. Only applies when lat and lng are not specified.
+    - switchProfileId (string): The ID of a switch profile to bind to the device (for available switch profiles, see the &#39;Switch Profiles&#39; endpoint). Use null to unbind the switch device from the current profile. For a device to be bindable to a switch profile, it must (1) be a switch, and (2) belong to a network that is bound to a configuration template.
+    - floorPlanId (string): The floor plan to associate to this device. null disassociates the device from the floorplan.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Devices&#39;],
+        &#39;operation&#39;: &#39;updateNetworkDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}&#39;
+
+    body_params = [&#39;name&#39;, &#39;tags&#39;, &#39;lat&#39;, &#39;lng&#39;, &#39;address&#39;, &#39;notes&#39;, &#39;moveMapMarker&#39;, &#39;switchProfileId&#39;, &#39;floorPlanId&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.devices.Devices" href="#meraki.api.devices.Devices">Devices</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.devices.Devices.blinkNetworkDeviceLeds" href="#meraki.api.devices.Devices.blinkNetworkDeviceLeds">blinkNetworkDeviceLeds</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.claimNetworkDevices" href="#meraki.api.devices.Devices.claimNetworkDevices">claimNetworkDevices</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDevice" href="#meraki.api.devices.Devices.getNetworkDevice">getNetworkDevice</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDeviceLldp_cdp" href="#meraki.api.devices.Devices.getNetworkDeviceLldp_cdp">getNetworkDeviceLldp_cdp</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDeviceLossAndLatencyHistory" href="#meraki.api.devices.Devices.getNetworkDeviceLossAndLatencyHistory">getNetworkDeviceLossAndLatencyHistory</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDevicePerformance" href="#meraki.api.devices.Devices.getNetworkDevicePerformance">getNetworkDevicePerformance</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDeviceUplink" href="#meraki.api.devices.Devices.getNetworkDeviceUplink">getNetworkDeviceUplink</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getNetworkDevices" href="#meraki.api.devices.Devices.getNetworkDevices">getNetworkDevices</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.getOrganizationDevices" href="#meraki.api.devices.Devices.getOrganizationDevices">getOrganizationDevices</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.rebootNetworkDevice" href="#meraki.api.devices.Devices.rebootNetworkDevice">rebootNetworkDevice</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.removeNetworkDevice" href="#meraki.api.devices.Devices.removeNetworkDevice">removeNetworkDevice</a></code></li>
+<li><code><a title="meraki.api.devices.Devices.updateNetworkDevice" href="#meraki.api.devices.Devices.updateNetworkDevice">updateNetworkDevice</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.ssids API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.ssids</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SSIDs(object):
+    def __init__(self, session):
+        super(SSIDs, self).__init__()
+        self._session = session
+    
+    def getNetworkDeviceWirelessStatus(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the SSID statuses of an access point**
+        https://api.meraki.com/api_docs#return-the-ssid-statuses-of-an-access-point
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceWirelessStatus&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/wireless/status&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSsids(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the SSIDs in a network. Supports networks with access points or wireless-enabled security appliances and teleworker gateways.**
+        https://api.meraki.com/api_docs#list-the-ssids-in-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkSsids&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSsid(self, networkId: str, number: str):
+        &#34;&#34;&#34;
+        **Return a single SSID**
+        https://api.meraki.com/api_docs#return-a-single-ssid
+        - networkId (string)
+        - number (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkSsid&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSsid(self, networkId: str, number: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the attributes of an SSID**
+        https://api.meraki.com/api_docs#update-the-attributes-of-an-ssid
+        - networkId (string)
+        - number (string)
+        - name (string): The name of the SSID
+        - enabled (boolean): Whether or not the SSID is enabled
+        - authMode (string): The association control method for the SSID (&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39; or &#39;8021x-radius&#39;)
+        - enterpriseAdminAccess (string): Whether or not an SSID is accessible by &#39;enterprise&#39; administrators (&#39;access disabled&#39; or &#39;access enabled&#39;)
+        - encryptionMode (string): The psk encryption mode for the SSID (&#39;wep&#39; or &#39;wpa&#39;). This param is only valid if the authMode is &#39;psk&#39;
+        - psk (string): The passkey for the SSID. This param is only valid if the authMode is &#39;psk&#39;
+        - wpaEncryptionMode (string): The types of WPA encryption. (&#39;WPA1 and WPA2&#39; or &#39;WPA2 only&#39;)
+        - splashPage (string): The type of splash page for the SSID (&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39; or &#39;Sponsored guest&#39;). This attribute is not supported for template children.
+        - radiusServers (array): The RADIUS 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+        - radiusCoaEnabled (boolean): If true, Meraki devices will act as a RADIUS Dynamic Authorization Server and will respond to RADIUS Change-of-Authorization and Disconnect messages sent by the RADIUS server.
+        - radiusFailoverPolicy (string): This policy determines how authentication requests should be handled in the event that all of the configured RADIUS servers are unreachable (&#39;Deny access&#39; or &#39;Allow access&#39;)
+        - radiusLoadBalancingPolicy (string): This policy determines which RADIUS server will be contacted first in an authentication attempt and the ordering of any necessary retry attempts (&#39;Strict priority order&#39; or &#39;Round robin&#39;)
+        - radiusAccountingEnabled (boolean): Whether or not RADIUS accounting is enabled. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+        - radiusAccountingServers (array): The RADIUS accounting 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39; and radiusAccountingEnabled is &#39;true&#39;
+        - radiusAttributeForGroupPolicies (string): Specify the RADIUS attribute used to look up group policies (&#39;Filter-Id&#39;, &#39;Reply-Message&#39;, &#39;Airespace-ACL-Name&#39; or &#39;Aruba-User-Role&#39;). Access points must receive this attribute in the RADIUS Access-Accept message
+        - ipAssignmentMode (string): The client IP assignment mode (&#39;NAT mode&#39;, &#39;Bridge mode&#39;, &#39;Layer 3 roaming&#39;, &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;)
+        - useVlanTagging (boolean): Whether or not traffic should be directed to use specific VLANs. This param is only valid if the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - concentratorNetworkId (string): The concentrator to use when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;.
+        - vlanId (integer): The VLAN ID used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;
+        - defaultVlanId (integer): The default VLAN ID used for &#39;all other APs&#39;. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - apTagsAndVlanIds (array): The list of tags and VLAN IDs used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - walledGardenEnabled (boolean): Allow access to a configurable list of IP ranges, which users may access prior to sign-on.
+        - walledGardenRanges (string): Specify your walled garden by entering space-separated addresses, ranges using CIDR notation, domain names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32 www.yahoo.com *.google.com). Meraki&#39;s splash page is automatically included in your walled garden.
+        - radiusOverride (boolean): If true, the RADIUS response can override VLAN tag. This is not valid when ipAssignmentMode is &#39;NAT mode&#39;.
+        - minBitrate (number): The minimum bitrate in Mbps. (&#39;1&#39;, &#39;2&#39;, &#39;5.5&#39;, &#39;6&#39;, &#39;9&#39;, &#39;11&#39;, &#39;12&#39;, &#39;18&#39;, &#39;24&#39;, &#39;36&#39;, &#39;48&#39; or &#39;54&#39;)
+        - bandSelection (string): The client-serving radio frequencies. (&#39;Dual band operation&#39;, &#39;5 GHz band only&#39; or &#39;Dual band operation with Band Steering&#39;)
+        - perClientBandwidthLimitUp (integer): The upload bandwidth limit in Kbps. (0 represents no limit.)
+        - perClientBandwidthLimitDown (integer): The download bandwidth limit in Kbps. (0 represents no limit.)
+        - lanIsolationEnabled (boolean): Boolean indicating whether Layer 2 LAN isolation should be enabled or disabled. Only configurable when ipAssignmentMode is &#39;Bridge mode&#39;.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;authMode&#39; in kwargs:
+            options = [&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39;, &#39;8021x-radius&#39;]
+            assert kwargs[&#39;authMode&#39;] in options, f&#39;&#39;&#39;&#34;authMode&#34; cannot be &#34;{kwargs[&#39;authMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;enterpriseAdminAccess&#39; in kwargs:
+            options = [&#39;access disabled&#39;, &#39;access enabled&#39;]
+            assert kwargs[&#39;enterpriseAdminAccess&#39;] in options, f&#39;&#39;&#39;&#34;enterpriseAdminAccess&#34; cannot be &#34;{kwargs[&#39;enterpriseAdminAccess&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;encryptionMode&#39; in kwargs:
+            options = [&#39;wep&#39;, &#39;wpa&#39;]
+            assert kwargs[&#39;encryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;encryptionMode&#34; cannot be &#34;{kwargs[&#39;encryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;wpaEncryptionMode&#39; in kwargs:
+            options = [&#39;WPA1 and WPA2&#39;, &#39;WPA2 only&#39;]
+            assert kwargs[&#39;wpaEncryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;wpaEncryptionMode&#34; cannot be &#34;{kwargs[&#39;wpaEncryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;splashPage&#39; in kwargs:
+            options = [&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39;, &#39;Sponsored guest&#39;]
+            assert kwargs[&#39;splashPage&#39;] in options, f&#39;&#39;&#39;&#34;splashPage&#34; cannot be &#34;{kwargs[&#39;splashPage&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;radiusFailoverPolicy&#39; in kwargs:
+            options = [&#39;Deny access&#39;, &#39;Allow access&#39;]
+            assert kwargs[&#39;radiusFailoverPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusFailoverPolicy&#34; cannot be &#34;{kwargs[&#39;radiusFailoverPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;radiusLoadBalancingPolicy&#39; in kwargs:
+            options = [&#39;Strict priority order&#39;, &#39;Round robin&#39;]
+            assert kwargs[&#39;radiusLoadBalancingPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusLoadBalancingPolicy&#34; cannot be &#34;{kwargs[&#39;radiusLoadBalancingPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSsid&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+        body_params = [&#39;name&#39;, &#39;enabled&#39;, &#39;authMode&#39;, &#39;enterpriseAdminAccess&#39;, &#39;encryptionMode&#39;, &#39;psk&#39;, &#39;wpaEncryptionMode&#39;, &#39;splashPage&#39;, &#39;radiusServers&#39;, &#39;radiusCoaEnabled&#39;, &#39;radiusFailoverPolicy&#39;, &#39;radiusLoadBalancingPolicy&#39;, &#39;radiusAccountingEnabled&#39;, &#39;radiusAccountingServers&#39;, &#39;radiusAttributeForGroupPolicies&#39;, &#39;ipAssignmentMode&#39;, &#39;useVlanTagging&#39;, &#39;concentratorNetworkId&#39;, &#39;vlanId&#39;, &#39;defaultVlanId&#39;, &#39;apTagsAndVlanIds&#39;, &#39;walledGardenEnabled&#39;, &#39;walledGardenRanges&#39;, &#39;radiusOverride&#39;, &#39;minBitrate&#39;, &#39;bandSelection&#39;, &#39;perClientBandwidthLimitUp&#39;, &#39;perClientBandwidthLimitDown&#39;, &#39;lanIsolationEnabled&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.ssids.SSIDs"><code class="flex name class">
+<span>class <span class="ident">SSIDs</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SSIDs(object):
+    def __init__(self, session):
+        super(SSIDs, self).__init__()
+        self._session = session
+    
+    def getNetworkDeviceWirelessStatus(self, networkId: str, serial: str):
+        &#34;&#34;&#34;
+        **Return the SSID statuses of an access point**
+        https://api.meraki.com/api_docs#return-the-ssid-statuses-of-an-access-point
+        - networkId (string)
+        - serial (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkDeviceWirelessStatus&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/devices/{serial}/wireless/status&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSsids(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the SSIDs in a network. Supports networks with access points or wireless-enabled security appliances and teleworker gateways.**
+        https://api.meraki.com/api_docs#list-the-ssids-in-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkSsids&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSsid(self, networkId: str, number: str):
+        &#34;&#34;&#34;
+        **Return a single SSID**
+        https://api.meraki.com/api_docs#return-a-single-ssid
+        - networkId (string)
+        - number (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;getNetworkSsid&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSsid(self, networkId: str, number: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the attributes of an SSID**
+        https://api.meraki.com/api_docs#update-the-attributes-of-an-ssid
+        - networkId (string)
+        - number (string)
+        - name (string): The name of the SSID
+        - enabled (boolean): Whether or not the SSID is enabled
+        - authMode (string): The association control method for the SSID (&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39; or &#39;8021x-radius&#39;)
+        - enterpriseAdminAccess (string): Whether or not an SSID is accessible by &#39;enterprise&#39; administrators (&#39;access disabled&#39; or &#39;access enabled&#39;)
+        - encryptionMode (string): The psk encryption mode for the SSID (&#39;wep&#39; or &#39;wpa&#39;). This param is only valid if the authMode is &#39;psk&#39;
+        - psk (string): The passkey for the SSID. This param is only valid if the authMode is &#39;psk&#39;
+        - wpaEncryptionMode (string): The types of WPA encryption. (&#39;WPA1 and WPA2&#39; or &#39;WPA2 only&#39;)
+        - splashPage (string): The type of splash page for the SSID (&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39; or &#39;Sponsored guest&#39;). This attribute is not supported for template children.
+        - radiusServers (array): The RADIUS 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+        - radiusCoaEnabled (boolean): If true, Meraki devices will act as a RADIUS Dynamic Authorization Server and will respond to RADIUS Change-of-Authorization and Disconnect messages sent by the RADIUS server.
+        - radiusFailoverPolicy (string): This policy determines how authentication requests should be handled in the event that all of the configured RADIUS servers are unreachable (&#39;Deny access&#39; or &#39;Allow access&#39;)
+        - radiusLoadBalancingPolicy (string): This policy determines which RADIUS server will be contacted first in an authentication attempt and the ordering of any necessary retry attempts (&#39;Strict priority order&#39; or &#39;Round robin&#39;)
+        - radiusAccountingEnabled (boolean): Whether or not RADIUS accounting is enabled. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+        - radiusAccountingServers (array): The RADIUS accounting 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39; and radiusAccountingEnabled is &#39;true&#39;
+        - radiusAttributeForGroupPolicies (string): Specify the RADIUS attribute used to look up group policies (&#39;Filter-Id&#39;, &#39;Reply-Message&#39;, &#39;Airespace-ACL-Name&#39; or &#39;Aruba-User-Role&#39;). Access points must receive this attribute in the RADIUS Access-Accept message
+        - ipAssignmentMode (string): The client IP assignment mode (&#39;NAT mode&#39;, &#39;Bridge mode&#39;, &#39;Layer 3 roaming&#39;, &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;)
+        - useVlanTagging (boolean): Whether or not traffic should be directed to use specific VLANs. This param is only valid if the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - concentratorNetworkId (string): The concentrator to use when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;.
+        - vlanId (integer): The VLAN ID used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;
+        - defaultVlanId (integer): The default VLAN ID used for &#39;all other APs&#39;. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - apTagsAndVlanIds (array): The list of tags and VLAN IDs used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+        - walledGardenEnabled (boolean): Allow access to a configurable list of IP ranges, which users may access prior to sign-on.
+        - walledGardenRanges (string): Specify your walled garden by entering space-separated addresses, ranges using CIDR notation, domain names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32 www.yahoo.com *.google.com). Meraki&#39;s splash page is automatically included in your walled garden.
+        - radiusOverride (boolean): If true, the RADIUS response can override VLAN tag. This is not valid when ipAssignmentMode is &#39;NAT mode&#39;.
+        - minBitrate (number): The minimum bitrate in Mbps. (&#39;1&#39;, &#39;2&#39;, &#39;5.5&#39;, &#39;6&#39;, &#39;9&#39;, &#39;11&#39;, &#39;12&#39;, &#39;18&#39;, &#39;24&#39;, &#39;36&#39;, &#39;48&#39; or &#39;54&#39;)
+        - bandSelection (string): The client-serving radio frequencies. (&#39;Dual band operation&#39;, &#39;5 GHz band only&#39; or &#39;Dual band operation with Band Steering&#39;)
+        - perClientBandwidthLimitUp (integer): The upload bandwidth limit in Kbps. (0 represents no limit.)
+        - perClientBandwidthLimitDown (integer): The download bandwidth limit in Kbps. (0 represents no limit.)
+        - lanIsolationEnabled (boolean): Boolean indicating whether Layer 2 LAN isolation should be enabled or disabled. Only configurable when ipAssignmentMode is &#39;Bridge mode&#39;.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;authMode&#39; in kwargs:
+            options = [&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39;, &#39;8021x-radius&#39;]
+            assert kwargs[&#39;authMode&#39;] in options, f&#39;&#39;&#39;&#34;authMode&#34; cannot be &#34;{kwargs[&#39;authMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;enterpriseAdminAccess&#39; in kwargs:
+            options = [&#39;access disabled&#39;, &#39;access enabled&#39;]
+            assert kwargs[&#39;enterpriseAdminAccess&#39;] in options, f&#39;&#39;&#39;&#34;enterpriseAdminAccess&#34; cannot be &#34;{kwargs[&#39;enterpriseAdminAccess&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;encryptionMode&#39; in kwargs:
+            options = [&#39;wep&#39;, &#39;wpa&#39;]
+            assert kwargs[&#39;encryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;encryptionMode&#34; cannot be &#34;{kwargs[&#39;encryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;wpaEncryptionMode&#39; in kwargs:
+            options = [&#39;WPA1 and WPA2&#39;, &#39;WPA2 only&#39;]
+            assert kwargs[&#39;wpaEncryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;wpaEncryptionMode&#34; cannot be &#34;{kwargs[&#39;wpaEncryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;splashPage&#39; in kwargs:
+            options = [&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39;, &#39;Sponsored guest&#39;]
+            assert kwargs[&#39;splashPage&#39;] in options, f&#39;&#39;&#39;&#34;splashPage&#34; cannot be &#34;{kwargs[&#39;splashPage&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;radiusFailoverPolicy&#39; in kwargs:
+            options = [&#39;Deny access&#39;, &#39;Allow access&#39;]
+            assert kwargs[&#39;radiusFailoverPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusFailoverPolicy&#34; cannot be &#34;{kwargs[&#39;radiusFailoverPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;radiusLoadBalancingPolicy&#39; in kwargs:
+            options = [&#39;Strict priority order&#39;, &#39;Round robin&#39;]
+            assert kwargs[&#39;radiusLoadBalancingPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusLoadBalancingPolicy&#34; cannot be &#34;{kwargs[&#39;radiusLoadBalancingPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SSIDs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSsid&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+        body_params = [&#39;name&#39;, &#39;enabled&#39;, &#39;authMode&#39;, &#39;enterpriseAdminAccess&#39;, &#39;encryptionMode&#39;, &#39;psk&#39;, &#39;wpaEncryptionMode&#39;, &#39;splashPage&#39;, &#39;radiusServers&#39;, &#39;radiusCoaEnabled&#39;, &#39;radiusFailoverPolicy&#39;, &#39;radiusLoadBalancingPolicy&#39;, &#39;radiusAccountingEnabled&#39;, &#39;radiusAccountingServers&#39;, &#39;radiusAttributeForGroupPolicies&#39;, &#39;ipAssignmentMode&#39;, &#39;useVlanTagging&#39;, &#39;concentratorNetworkId&#39;, &#39;vlanId&#39;, &#39;defaultVlanId&#39;, &#39;apTagsAndVlanIds&#39;, &#39;walledGardenEnabled&#39;, &#39;walledGardenRanges&#39;, &#39;radiusOverride&#39;, &#39;minBitrate&#39;, &#39;bandSelection&#39;, &#39;perClientBandwidthLimitUp&#39;, &#39;perClientBandwidthLimitDown&#39;, &#39;lanIsolationEnabled&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.ssids.SSIDs.getNetworkDeviceWirelessStatus"><code class="name flex">
+<span>def <span class="ident">getNetworkDeviceWirelessStatus</span></span>(<span>self, networkId, serial)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the SSID statuses of an access point</strong>
+<a href="https://api.meraki.com/api_docs#return-the-ssid-statuses-of-an-access-point">https://api.meraki.com/api_docs#return-the-ssid-statuses-of-an-access-point</a>
+- networkId (string)
+- serial (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkDeviceWirelessStatus(self, networkId: str, serial: str):
+    &#34;&#34;&#34;
+    **Return the SSID statuses of an access point**
+    https://api.meraki.com/api_docs#return-the-ssid-statuses-of-an-access-point
+    - networkId (string)
+    - serial (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SSIDs&#39;],
+        &#39;operation&#39;: &#39;getNetworkDeviceWirelessStatus&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/devices/{serial}/wireless/status&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.ssids.SSIDs.getNetworkSsid"><code class="name flex">
+<span>def <span class="ident">getNetworkSsid</span></span>(<span>self, networkId, number)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return a single SSID</strong>
+<a href="https://api.meraki.com/api_docs#return-a-single-ssid">https://api.meraki.com/api_docs#return-a-single-ssid</a>
+- networkId (string)
+- number (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSsid(self, networkId: str, number: str):
+    &#34;&#34;&#34;
+    **Return a single SSID**
+    https://api.meraki.com/api_docs#return-a-single-ssid
+    - networkId (string)
+    - number (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SSIDs&#39;],
+        &#39;operation&#39;: &#39;getNetworkSsid&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.ssids.SSIDs.getNetworkSsids"><code class="name flex">
+<span>def <span class="ident">getNetworkSsids</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the SSIDs in a network. Supports networks with access points or wireless-enabled security appliances and teleworker gateways.</strong>
+<a href="https://api.meraki.com/api_docs#list-the-ssids-in-a-network">https://api.meraki.com/api_docs#list-the-ssids-in-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSsids(self, networkId: str):
+    &#34;&#34;&#34;
+    **List the SSIDs in a network. Supports networks with access points or wireless-enabled security appliances and teleworker gateways.**
+    https://api.meraki.com/api_docs#list-the-ssids-in-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SSIDs&#39;],
+        &#39;operation&#39;: &#39;getNetworkSsids&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/ssids&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.ssids.SSIDs.updateNetworkSsid"><code class="name flex">
+<span>def <span class="ident">updateNetworkSsid</span></span>(<span>self, networkId, number, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update the attributes of an SSID</strong>
+<a href="https://api.meraki.com/api_docs#update-the-attributes-of-an-ssid">https://api.meraki.com/api_docs#update-the-attributes-of-an-ssid</a>
+- networkId (string)
+- number (string)
+- name (string): The name of the SSID
+- enabled (boolean): Whether or not the SSID is enabled
+- authMode (string): The association control method for the SSID ('open', 'psk', 'open-with-radius', '8021x-meraki' or '8021x-radius')
+- enterpriseAdminAccess (string): Whether or not an SSID is accessible by 'enterprise' administrators ('access disabled' or 'access enabled')
+- encryptionMode (string): The psk encryption mode for the SSID ('wep' or 'wpa'). This param is only valid if the authMode is 'psk'
+- psk (string): The passkey for the SSID. This param is only valid if the authMode is 'psk'
+- wpaEncryptionMode (string): The types of WPA encryption. ('WPA1 and WPA2' or 'WPA2 only')
+- splashPage (string): The type of splash page for the SSID ('None', 'Click-through splash page', 'Billing', 'Password-protected with Meraki RADIUS', 'Password-protected with custom RADIUS', 'Password-protected with Active Directory', 'Password-protected with LDAP', 'SMS authentication', 'Systems Manager Sentry', 'Facebook Wi-Fi', 'Google OAuth' or 'Sponsored guest'). This attribute is not supported for template children.
+- radiusServers (array): The RADIUS 802.1x servers to be used for authentication. This param is only valid if the authMode is 'open-with-radius' or '8021x-radius'
+- radiusCoaEnabled (boolean): If true, Meraki devices will act as a RADIUS Dynamic Authorization Server and will respond to RADIUS Change-of-Authorization and Disconnect messages sent by the RADIUS server.
+- radiusFailoverPolicy (string): This policy determines how authentication requests should be handled in the event that all of the configured RADIUS servers are unreachable ('Deny access' or 'Allow access')
+- radiusLoadBalancingPolicy (string): This policy determines which RADIUS server will be contacted first in an authentication attempt and the ordering of any necessary retry attempts ('Strict priority order' or 'Round robin')
+- radiusAccountingEnabled (boolean): Whether or not RADIUS accounting is enabled. This param is only valid if the authMode is 'open-with-radius' or '8021x-radius'
+- radiusAccountingServers (array): The RADIUS accounting 802.1x servers to be used for authentication. This param is only valid if the authMode is 'open-with-radius' or '8021x-radius' and radiusAccountingEnabled is 'true'
+- radiusAttributeForGroupPolicies (string): Specify the RADIUS attribute used to look up group policies ('Filter-Id', 'Reply-Message', 'Airespace-ACL-Name' or 'Aruba-User-Role'). Access points must receive this attribute in the RADIUS Access-Accept message
+- ipAssignmentMode (string): The client IP assignment mode ('NAT mode', 'Bridge mode', 'Layer 3 roaming', 'Layer 3 roaming with a concentrator' or 'VPN')
+- useVlanTagging (boolean): Whether or not traffic should be directed to use specific VLANs. This param is only valid if the ipAssignmentMode is 'Bridge mode' or 'Layer 3 roaming'
+- concentratorNetworkId (string): The concentrator to use when the ipAssignmentMode is 'Layer 3 roaming with a concentrator' or 'VPN'.
+- vlanId (integer): The VLAN ID used for VLAN tagging. This param is only valid when the ipAssignmentMode is 'Layer 3 roaming with a concentrator' or 'VPN'
+- defaultVlanId (integer): The default VLAN ID used for 'all other APs'. This param is only valid when the ipAssignmentMode is 'Bridge mode' or 'Layer 3 roaming'
+- apTagsAndVlanIds (array): The list of tags and VLAN IDs used for VLAN tagging. This param is only valid when the ipAssignmentMode is 'Bridge mode' or 'Layer 3 roaming'
+- walledGardenEnabled (boolean): Allow access to a configurable list of IP ranges, which users may access prior to sign-on.
+- walledGardenRanges (string): Specify your walled garden by entering space-separated addresses, ranges using CIDR notation, domain names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32 www.yahoo.com *.google.com). Meraki's splash page is automatically included in your walled garden.
+- radiusOverride (boolean): If true, the RADIUS response can override VLAN tag. This is not valid when ipAssignmentMode is 'NAT mode'.
+- minBitrate (number): The minimum bitrate in Mbps. ('1', '2', '5.5', '6', '9', '11', '12', '18', '24', '36', '48' or '54')
+- bandSelection (string): The client-serving radio frequencies. ('Dual band operation', '5 GHz band only' or 'Dual band operation with Band Steering')
+- perClientBandwidthLimitUp (integer): The upload bandwidth limit in Kbps. (0 represents no limit.)
+- perClientBandwidthLimitDown (integer): The download bandwidth limit in Kbps. (0 represents no limit.)
+- lanIsolationEnabled (boolean): Boolean indicating whether Layer 2 LAN isolation should be enabled or disabled. Only configurable when ipAssignmentMode is 'Bridge mode'.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSsid(self, networkId: str, number: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update the attributes of an SSID**
+    https://api.meraki.com/api_docs#update-the-attributes-of-an-ssid
+    - networkId (string)
+    - number (string)
+    - name (string): The name of the SSID
+    - enabled (boolean): Whether or not the SSID is enabled
+    - authMode (string): The association control method for the SSID (&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39; or &#39;8021x-radius&#39;)
+    - enterpriseAdminAccess (string): Whether or not an SSID is accessible by &#39;enterprise&#39; administrators (&#39;access disabled&#39; or &#39;access enabled&#39;)
+    - encryptionMode (string): The psk encryption mode for the SSID (&#39;wep&#39; or &#39;wpa&#39;). This param is only valid if the authMode is &#39;psk&#39;
+    - psk (string): The passkey for the SSID. This param is only valid if the authMode is &#39;psk&#39;
+    - wpaEncryptionMode (string): The types of WPA encryption. (&#39;WPA1 and WPA2&#39; or &#39;WPA2 only&#39;)
+    - splashPage (string): The type of splash page for the SSID (&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39; or &#39;Sponsored guest&#39;). This attribute is not supported for template children.
+    - radiusServers (array): The RADIUS 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+    - radiusCoaEnabled (boolean): If true, Meraki devices will act as a RADIUS Dynamic Authorization Server and will respond to RADIUS Change-of-Authorization and Disconnect messages sent by the RADIUS server.
+    - radiusFailoverPolicy (string): This policy determines how authentication requests should be handled in the event that all of the configured RADIUS servers are unreachable (&#39;Deny access&#39; or &#39;Allow access&#39;)
+    - radiusLoadBalancingPolicy (string): This policy determines which RADIUS server will be contacted first in an authentication attempt and the ordering of any necessary retry attempts (&#39;Strict priority order&#39; or &#39;Round robin&#39;)
+    - radiusAccountingEnabled (boolean): Whether or not RADIUS accounting is enabled. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39;
+    - radiusAccountingServers (array): The RADIUS accounting 802.1x servers to be used for authentication. This param is only valid if the authMode is &#39;open-with-radius&#39; or &#39;8021x-radius&#39; and radiusAccountingEnabled is &#39;true&#39;
+    - radiusAttributeForGroupPolicies (string): Specify the RADIUS attribute used to look up group policies (&#39;Filter-Id&#39;, &#39;Reply-Message&#39;, &#39;Airespace-ACL-Name&#39; or &#39;Aruba-User-Role&#39;). Access points must receive this attribute in the RADIUS Access-Accept message
+    - ipAssignmentMode (string): The client IP assignment mode (&#39;NAT mode&#39;, &#39;Bridge mode&#39;, &#39;Layer 3 roaming&#39;, &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;)
+    - useVlanTagging (boolean): Whether or not traffic should be directed to use specific VLANs. This param is only valid if the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+    - concentratorNetworkId (string): The concentrator to use when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;.
+    - vlanId (integer): The VLAN ID used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Layer 3 roaming with a concentrator&#39; or &#39;VPN&#39;
+    - defaultVlanId (integer): The default VLAN ID used for &#39;all other APs&#39;. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+    - apTagsAndVlanIds (array): The list of tags and VLAN IDs used for VLAN tagging. This param is only valid when the ipAssignmentMode is &#39;Bridge mode&#39; or &#39;Layer 3 roaming&#39;
+    - walledGardenEnabled (boolean): Allow access to a configurable list of IP ranges, which users may access prior to sign-on.
+    - walledGardenRanges (string): Specify your walled garden by entering space-separated addresses, ranges using CIDR notation, domain names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32 www.yahoo.com *.google.com). Meraki&#39;s splash page is automatically included in your walled garden.
+    - radiusOverride (boolean): If true, the RADIUS response can override VLAN tag. This is not valid when ipAssignmentMode is &#39;NAT mode&#39;.
+    - minBitrate (number): The minimum bitrate in Mbps. (&#39;1&#39;, &#39;2&#39;, &#39;5.5&#39;, &#39;6&#39;, &#39;9&#39;, &#39;11&#39;, &#39;12&#39;, &#39;18&#39;, &#39;24&#39;, &#39;36&#39;, &#39;48&#39; or &#39;54&#39;)
+    - bandSelection (string): The client-serving radio frequencies. (&#39;Dual band operation&#39;, &#39;5 GHz band only&#39; or &#39;Dual band operation with Band Steering&#39;)
+    - perClientBandwidthLimitUp (integer): The upload bandwidth limit in Kbps. (0 represents no limit.)
+    - perClientBandwidthLimitDown (integer): The download bandwidth limit in Kbps. (0 represents no limit.)
+    - lanIsolationEnabled (boolean): Boolean indicating whether Layer 2 LAN isolation should be enabled or disabled. Only configurable when ipAssignmentMode is &#39;Bridge mode&#39;.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;authMode&#39; in kwargs:
+        options = [&#39;open&#39;, &#39;psk&#39;, &#39;open-with-radius&#39;, &#39;8021x-meraki&#39;, &#39;8021x-radius&#39;]
+        assert kwargs[&#39;authMode&#39;] in options, f&#39;&#39;&#39;&#34;authMode&#34; cannot be &#34;{kwargs[&#39;authMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;enterpriseAdminAccess&#39; in kwargs:
+        options = [&#39;access disabled&#39;, &#39;access enabled&#39;]
+        assert kwargs[&#39;enterpriseAdminAccess&#39;] in options, f&#39;&#39;&#39;&#34;enterpriseAdminAccess&#34; cannot be &#34;{kwargs[&#39;enterpriseAdminAccess&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;encryptionMode&#39; in kwargs:
+        options = [&#39;wep&#39;, &#39;wpa&#39;]
+        assert kwargs[&#39;encryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;encryptionMode&#34; cannot be &#34;{kwargs[&#39;encryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;wpaEncryptionMode&#39; in kwargs:
+        options = [&#39;WPA1 and WPA2&#39;, &#39;WPA2 only&#39;]
+        assert kwargs[&#39;wpaEncryptionMode&#39;] in options, f&#39;&#39;&#39;&#34;wpaEncryptionMode&#34; cannot be &#34;{kwargs[&#39;wpaEncryptionMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;splashPage&#39; in kwargs:
+        options = [&#39;None&#39;, &#39;Click-through splash page&#39;, &#39;Billing&#39;, &#39;Password-protected with Meraki RADIUS&#39;, &#39;Password-protected with custom RADIUS&#39;, &#39;Password-protected with Active Directory&#39;, &#39;Password-protected with LDAP&#39;, &#39;SMS authentication&#39;, &#39;Systems Manager Sentry&#39;, &#39;Facebook Wi-Fi&#39;, &#39;Google OAuth&#39;, &#39;Sponsored guest&#39;]
+        assert kwargs[&#39;splashPage&#39;] in options, f&#39;&#39;&#39;&#34;splashPage&#34; cannot be &#34;{kwargs[&#39;splashPage&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;radiusFailoverPolicy&#39; in kwargs:
+        options = [&#39;Deny access&#39;, &#39;Allow access&#39;]
+        assert kwargs[&#39;radiusFailoverPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusFailoverPolicy&#34; cannot be &#34;{kwargs[&#39;radiusFailoverPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;radiusLoadBalancingPolicy&#39; in kwargs:
+        options = [&#39;Strict priority order&#39;, &#39;Round robin&#39;]
+        assert kwargs[&#39;radiusLoadBalancingPolicy&#39;] in options, f&#39;&#39;&#39;&#34;radiusLoadBalancingPolicy&#34; cannot be &#34;{kwargs[&#39;radiusLoadBalancingPolicy&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SSIDs&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSsid&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/ssids/{number}&#39;
+
+    body_params = [&#39;name&#39;, &#39;enabled&#39;, &#39;authMode&#39;, &#39;enterpriseAdminAccess&#39;, &#39;encryptionMode&#39;, &#39;psk&#39;, &#39;wpaEncryptionMode&#39;, &#39;splashPage&#39;, &#39;radiusServers&#39;, &#39;radiusCoaEnabled&#39;, &#39;radiusFailoverPolicy&#39;, &#39;radiusLoadBalancingPolicy&#39;, &#39;radiusAccountingEnabled&#39;, &#39;radiusAccountingServers&#39;, &#39;radiusAttributeForGroupPolicies&#39;, &#39;ipAssignmentMode&#39;, &#39;useVlanTagging&#39;, &#39;concentratorNetworkId&#39;, &#39;vlanId&#39;, &#39;defaultVlanId&#39;, &#39;apTagsAndVlanIds&#39;, &#39;walledGardenEnabled&#39;, &#39;walledGardenRanges&#39;, &#39;radiusOverride&#39;, &#39;minBitrate&#39;, &#39;bandSelection&#39;, &#39;perClientBandwidthLimitUp&#39;, &#39;perClientBandwidthLimitDown&#39;, &#39;lanIsolationEnabled&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.ssids.SSIDs" href="#meraki.api.ssids.SSIDs">SSIDs</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.ssids.SSIDs.getNetworkDeviceWirelessStatus" href="#meraki.api.ssids.SSIDs.getNetworkDeviceWirelessStatus">getNetworkDeviceWirelessStatus</a></code></li>
+<li><code><a title="meraki.api.ssids.SSIDs.getNetworkSsid" href="#meraki.api.ssids.SSIDs.getNetworkSsid">getNetworkSsid</a></code></li>
+<li><code><a title="meraki.api.ssids.SSIDs.getNetworkSsids" href="#meraki.api.ssids.SSIDs.getNetworkSsids">getNetworkSsids</a></code></li>
+<li><code><a title="meraki.api.ssids.SSIDs.updateNetworkSsid" href="#meraki.api.ssids.SSIDs.updateNetworkSsid">updateNetworkSsid</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

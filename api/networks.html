@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.networks API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.networks</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Networks(object):
+    def __init__(self, session):
+        super(Networks, self).__init__()
+        self._session = session
+    
+    def getNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return a network**
+        https://api.meraki.com/api_docs#return-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetwork(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a network**
+        https://api.meraki.com/api_docs#update-a-network
+        - networkId (string)
+        - name (string): The name of the network
+        - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+        - tags (string): A space-separated list of tags to be applied to the network
+        - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+        - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+        - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;timeZone&#39;, &#39;tags&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;, &#39;enrollmentString&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Delete a network**
+        https://api.meraki.com/api_docs#delete-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;deleteNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkAccessPolicies(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the access policies for this network. Only valid for MS networks.**
+        https://api.meraki.com/api_docs#list-the-access-policies-for-this-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkAccessPolicies&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/accessPolicies&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkAirMarshal(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List Air Marshal scan results from a network**
+        https://api.meraki.com/api_docs#list-air-marshal-scan-results-from-a-network
+        - networkId (string)
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 31 days from today.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 7 days.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkAirMarshal&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/airMarshal&#39;
+
+        query_params = [&#39;t0&#39;, &#39;timespan&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def bindNetwork(self, networkId: str, configTemplateId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Bind a network to a template.**
+        https://api.meraki.com/api_docs#bind-a-network-to-a-template
+        - networkId (string)
+        - configTemplateId (string): The ID of the template to which the network should be bound.
+        - autoBind (boolean): Optional boolean indicating whether the network&#39;s switches should automatically bind to profiles of the same model. Defaults to false if left unspecified. This option only affects switch networks and switch templates. Auto-bind is not valid unless the switch template has at least one profile and has at most one profile per switch model.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;bindNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bind&#39;
+
+        body_params = [&#39;configTemplateId&#39;, &#39;autoBind&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkBluetoothSettings(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return the Bluetooth settings for a network. &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt; must be enabled on the network.**
+        https://api.meraki.com/api_docs#return-the-bluetooth-settings-for-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkBluetoothSettings&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkBluetoothSettings(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the Bluetooth settings for a network. See the docs page for &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt;.**
+        https://api.meraki.com/api_docs#update-the-bluetooth-settings-for-a-network
+        - networkId (string)
+        - scanningEnabled (boolean): Whether APs will scan for Bluetooth enabled clients. (true, false)
+        - advertisingEnabled (boolean): Whether APs will advertise beacons. (true, false)
+        - uuid (string): The UUID to be used in the beacon identifier.
+        - majorMinorAssignmentMode (string): The way major and minor number should be assigned to nodes in the network. (&#39;Unique&#39;, &#39;Non-unique&#39;)
+        - major (integer): The major number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+        - minor (integer): The minor number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;majorMinorAssignmentMode&#39; in kwargs:
+            options = [&#39;Unique&#39;, &#39;Non-unique&#39;]
+            assert kwargs[&#39;majorMinorAssignmentMode&#39;] in options, f&#39;&#39;&#39;&#34;majorMinorAssignmentMode&#34; cannot be &#34;{kwargs[&#39;majorMinorAssignmentMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetworkBluetoothSettings&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+        body_params = [&#39;scanningEnabled&#39;, &#39;advertisingEnabled&#39;, &#39;uuid&#39;, &#39;majorMinorAssignmentMode&#39;, &#39;major&#39;, &#39;minor&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def getNetworkSiteToSiteVpn(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return the site-to-site VPN settings of a network. Only valid for MX networks.**
+        https://api.meraki.com/api_docs#return-the-site-to-site-vpn-settings-of-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkSiteToSiteVpn&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSiteToSiteVpn(self, networkId: str, mode: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the site-to-site VPN settings of a network. Only valid for MX networks in NAT mode.**
+        https://api.meraki.com/api_docs#update-the-site-to-site-vpn-settings-of-a-network
+        - networkId (string)
+        - mode (string): The site-to-site VPN mode. Can be one of &#39;none&#39;, &#39;spoke&#39; or &#39;hub&#39;
+        - hubs (array): The list of VPN hubs, in order of preference. In spoke mode, at least 1 hub is required.
+        - subnets (array): The list of subnets and their VPN presence.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;mode&#39; in kwargs:
+            options = [&#39;none&#39;, &#39;spoke&#39;, &#39;hub&#39;]
+            assert kwargs[&#39;mode&#39;] in options, f&#39;&#39;&#39;&#34;mode&#34; cannot be &#34;{kwargs[&#39;mode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSiteToSiteVpn&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+        body_params = [&#39;mode&#39;, &#39;hubs&#39;, &#39;subnets&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def splitNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Split a combined network into individual networks for each type of device**
+        https://api.meraki.com/api_docs#split-a-combined-network-into-individual-networks-for-each-type-of-device
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;splitNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/split&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkTraffic(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **    The traffic analysis data for this network.
+    &lt;a href=&#34;https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility&#34;&gt;Traffic Analysis with Hostname Visibility&lt;/a&gt; must be enabled on the network.
+**
+        https://api.meraki.com/api_docs#----the-traffic-analysis-data-for-this-network
+        - networkId (string)
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 30 days from today.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 30 days.
+        - deviceType (string):     Filter the data by device type: combined (default), wireless, switch, appliance.
+    When using combined, for each rule the data will come from the device type with the most usage.
+
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkTraffic&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/traffic&#39;
+
+        query_params = [&#39;t0&#39;, &#39;timespan&#39;, &#39;deviceType&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def unbindNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Unbind a network from a template.**
+        https://api.meraki.com/api_docs#unbind-a-network-from-a-template
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;unbindNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/unbind&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getOrganizationNetworks(self, organizationId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the networks in an organization**
+        https://api.meraki.com/api_docs#list-the-networks-in-an-organization
+        - organizationId (string)
+        - configTemplateId (string): An optional parameter that is the ID of a config template. Will return all networks bound to that template.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getOrganizationNetworks&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+        query_params = [&#39;configTemplateId&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def createOrganizationNetwork(self, organizationId: str, name: str, type: str, **kwargs):
+        &#34;&#34;&#34;
+        **Create a network**
+        https://api.meraki.com/api_docs#create-a-network
+        - organizationId (string)
+        - name (string): The name of the new network
+        - type (string): The type of the new network. Valid types are wireless, appliance, switch, systemsManager, camera, cellularGateway, or a space-separated list of those for a combined network.
+        - tags (string): A space-separated list of tags to be applied to the network
+        - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+        - copyFromNetworkId (string): The ID of the network to copy configuration from. Other provided parameters will override the copied configuration, except type which must match this network&#39;s type exactly.
+        - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+        - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;createOrganizationNetwork&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+        body_params = [&#39;name&#39;, &#39;type&#39;, &#39;tags&#39;, &#39;timeZone&#39;, &#39;copyFromNetworkId&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def combineOrganizationNetworks(self, organizationId: str, name: str, networkIds: list, **kwargs):
+        &#34;&#34;&#34;
+        **Combine multiple networks into a single network**
+        https://api.meraki.com/api_docs#combine-multiple-networks-into-a-single-network
+        - organizationId (string)
+        - name (string): The name of the combined network
+        - networkIds (array): A list of the network IDs that will be combined. If an ID of a combined network is included in this list, the other networks in the list will be grouped into that network
+        - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break. All networks that are part of this combined network will have their enrollment string appended by &#39;-network_type&#39;. If left empty, all exisitng enrollment strings will be deleted.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;combineOrganizationNetworks&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks/combine&#39;
+
+        body_params = [&#39;name&#39;, &#39;networkIds&#39;, &#39;enrollmentString&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.networks.Networks"><code class="flex name class">
+<span>class <span class="ident">Networks</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Networks(object):
+    def __init__(self, session):
+        super(Networks, self).__init__()
+        self._session = session
+    
+    def getNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return a network**
+        https://api.meraki.com/api_docs#return-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetwork(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a network**
+        https://api.meraki.com/api_docs#update-a-network
+        - networkId (string)
+        - name (string): The name of the network
+        - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+        - tags (string): A space-separated list of tags to be applied to the network
+        - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+        - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+        - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;timeZone&#39;, &#39;tags&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;, &#39;enrollmentString&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Delete a network**
+        https://api.meraki.com/api_docs#delete-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;deleteNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkAccessPolicies(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the access policies for this network. Only valid for MS networks.**
+        https://api.meraki.com/api_docs#list-the-access-policies-for-this-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkAccessPolicies&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/accessPolicies&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkAirMarshal(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List Air Marshal scan results from a network**
+        https://api.meraki.com/api_docs#list-air-marshal-scan-results-from-a-network
+        - networkId (string)
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 31 days from today.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 7 days.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkAirMarshal&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/airMarshal&#39;
+
+        query_params = [&#39;t0&#39;, &#39;timespan&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def bindNetwork(self, networkId: str, configTemplateId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Bind a network to a template.**
+        https://api.meraki.com/api_docs#bind-a-network-to-a-template
+        - networkId (string)
+        - configTemplateId (string): The ID of the template to which the network should be bound.
+        - autoBind (boolean): Optional boolean indicating whether the network&#39;s switches should automatically bind to profiles of the same model. Defaults to false if left unspecified. This option only affects switch networks and switch templates. Auto-bind is not valid unless the switch template has at least one profile and has at most one profile per switch model.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;bindNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bind&#39;
+
+        body_params = [&#39;configTemplateId&#39;, &#39;autoBind&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkBluetoothSettings(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return the Bluetooth settings for a network. &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt; must be enabled on the network.**
+        https://api.meraki.com/api_docs#return-the-bluetooth-settings-for-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkBluetoothSettings&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkBluetoothSettings(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the Bluetooth settings for a network. See the docs page for &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt;.**
+        https://api.meraki.com/api_docs#update-the-bluetooth-settings-for-a-network
+        - networkId (string)
+        - scanningEnabled (boolean): Whether APs will scan for Bluetooth enabled clients. (true, false)
+        - advertisingEnabled (boolean): Whether APs will advertise beacons. (true, false)
+        - uuid (string): The UUID to be used in the beacon identifier.
+        - majorMinorAssignmentMode (string): The way major and minor number should be assigned to nodes in the network. (&#39;Unique&#39;, &#39;Non-unique&#39;)
+        - major (integer): The major number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+        - minor (integer): The minor number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;majorMinorAssignmentMode&#39; in kwargs:
+            options = [&#39;Unique&#39;, &#39;Non-unique&#39;]
+            assert kwargs[&#39;majorMinorAssignmentMode&#39;] in options, f&#39;&#39;&#39;&#34;majorMinorAssignmentMode&#34; cannot be &#34;{kwargs[&#39;majorMinorAssignmentMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetworkBluetoothSettings&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+        body_params = [&#39;scanningEnabled&#39;, &#39;advertisingEnabled&#39;, &#39;uuid&#39;, &#39;majorMinorAssignmentMode&#39;, &#39;major&#39;, &#39;minor&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def getNetworkSiteToSiteVpn(self, networkId: str):
+        &#34;&#34;&#34;
+        **Return the site-to-site VPN settings of a network. Only valid for MX networks.**
+        https://api.meraki.com/api_docs#return-the-site-to-site-vpn-settings-of-a-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkSiteToSiteVpn&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSiteToSiteVpn(self, networkId: str, mode: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update the site-to-site VPN settings of a network. Only valid for MX networks in NAT mode.**
+        https://api.meraki.com/api_docs#update-the-site-to-site-vpn-settings-of-a-network
+        - networkId (string)
+        - mode (string): The site-to-site VPN mode. Can be one of &#39;none&#39;, &#39;spoke&#39; or &#39;hub&#39;
+        - hubs (array): The list of VPN hubs, in order of preference. In spoke mode, at least 1 hub is required.
+        - subnets (array): The list of subnets and their VPN presence.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;mode&#39; in kwargs:
+            options = [&#39;none&#39;, &#39;spoke&#39;, &#39;hub&#39;]
+            assert kwargs[&#39;mode&#39;] in options, f&#39;&#39;&#39;&#34;mode&#34; cannot be &#34;{kwargs[&#39;mode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSiteToSiteVpn&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+        body_params = [&#39;mode&#39;, &#39;hubs&#39;, &#39;subnets&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def splitNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Split a combined network into individual networks for each type of device**
+        https://api.meraki.com/api_docs#split-a-combined-network-into-individual-networks-for-each-type-of-device
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;splitNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/split&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkTraffic(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **    The traffic analysis data for this network.
+    &lt;a href=&#34;https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility&#34;&gt;Traffic Analysis with Hostname Visibility&lt;/a&gt; must be enabled on the network.
+**
+        https://api.meraki.com/api_docs#----the-traffic-analysis-data-for-this-network
+        - networkId (string)
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 30 days from today.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 30 days.
+        - deviceType (string):     Filter the data by device type: combined (default), wireless, switch, appliance.
+    When using combined, for each rule the data will come from the device type with the most usage.
+
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkTraffic&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/traffic&#39;
+
+        query_params = [&#39;t0&#39;, &#39;timespan&#39;, &#39;deviceType&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def unbindNetwork(self, networkId: str):
+        &#34;&#34;&#34;
+        **Unbind a network from a template.**
+        https://api.meraki.com/api_docs#unbind-a-network-from-a-template
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;unbindNetwork&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/unbind&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getOrganizationNetworks(self, organizationId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the networks in an organization**
+        https://api.meraki.com/api_docs#list-the-networks-in-an-organization
+        - organizationId (string)
+        - configTemplateId (string): An optional parameter that is the ID of a config template. Will return all networks bound to that template.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getOrganizationNetworks&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+        query_params = [&#39;configTemplateId&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def createOrganizationNetwork(self, organizationId: str, name: str, type: str, **kwargs):
+        &#34;&#34;&#34;
+        **Create a network**
+        https://api.meraki.com/api_docs#create-a-network
+        - organizationId (string)
+        - name (string): The name of the new network
+        - type (string): The type of the new network. Valid types are wireless, appliance, switch, systemsManager, camera, cellularGateway, or a space-separated list of those for a combined network.
+        - tags (string): A space-separated list of tags to be applied to the network
+        - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+        - copyFromNetworkId (string): The ID of the network to copy configuration from. Other provided parameters will override the copied configuration, except type which must match this network&#39;s type exactly.
+        - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+        - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;createOrganizationNetwork&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+        body_params = [&#39;name&#39;, &#39;type&#39;, &#39;tags&#39;, &#39;timeZone&#39;, &#39;copyFromNetworkId&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def combineOrganizationNetworks(self, organizationId: str, name: str, networkIds: list, **kwargs):
+        &#34;&#34;&#34;
+        **Combine multiple networks into a single network**
+        https://api.meraki.com/api_docs#combine-multiple-networks-into-a-single-network
+        - organizationId (string)
+        - name (string): The name of the combined network
+        - networkIds (array): A list of the network IDs that will be combined. If an ID of a combined network is included in this list, the other networks in the list will be grouped into that network
+        - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break. All networks that are part of this combined network will have their enrollment string appended by &#39;-network_type&#39;. If left empty, all exisitng enrollment strings will be deleted.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;combineOrganizationNetworks&#39;,
+        }
+        resource = f&#39;/organizations/{organizationId}/networks/combine&#39;
+
+        body_params = [&#39;name&#39;, &#39;networkIds&#39;, &#39;enrollmentString&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.networks.Networks.bindNetwork"><code class="name flex">
+<span>def <span class="ident">bindNetwork</span></span>(<span>self, networkId, configTemplateId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Bind a network to a template.</strong>
+<a href="https://api.meraki.com/api_docs#bind-a-network-to-a-template">https://api.meraki.com/api_docs#bind-a-network-to-a-template</a>
+- networkId (string)
+- configTemplateId (string): The ID of the template to which the network should be bound.
+- autoBind (boolean): Optional boolean indicating whether the network's switches should automatically bind to profiles of the same model. Defaults to false if left unspecified. This option only affects switch networks and switch templates. Auto-bind is not valid unless the switch template has at least one profile and has at most one profile per switch model.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bindNetwork(self, networkId: str, configTemplateId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Bind a network to a template.**
+    https://api.meraki.com/api_docs#bind-a-network-to-a-template
+    - networkId (string)
+    - configTemplateId (string): The ID of the template to which the network should be bound.
+    - autoBind (boolean): Optional boolean indicating whether the network&#39;s switches should automatically bind to profiles of the same model. Defaults to false if left unspecified. This option only affects switch networks and switch templates. Auto-bind is not valid unless the switch template has at least one profile and has at most one profile per switch model.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;bindNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/bind&#39;
+
+    body_params = [&#39;configTemplateId&#39;, &#39;autoBind&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.combineOrganizationNetworks"><code class="name flex">
+<span>def <span class="ident">combineOrganizationNetworks</span></span>(<span>self, organizationId, name, networkIds, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Combine multiple networks into a single network</strong>
+<a href="https://api.meraki.com/api_docs#combine-multiple-networks-into-a-single-network">https://api.meraki.com/api_docs#combine-multiple-networks-into-a-single-network</a>
+- organizationId (string)
+- name (string): The name of the combined network
+- networkIds (array): A list of the network IDs that will be combined. If an ID of a combined network is included in this list, the other networks in the list will be grouped into that network
+- enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break. All networks that are part of this combined network will have their enrollment string appended by '-network_type'. If left empty, all exisitng enrollment strings will be deleted.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def combineOrganizationNetworks(self, organizationId: str, name: str, networkIds: list, **kwargs):
+    &#34;&#34;&#34;
+    **Combine multiple networks into a single network**
+    https://api.meraki.com/api_docs#combine-multiple-networks-into-a-single-network
+    - organizationId (string)
+    - name (string): The name of the combined network
+    - networkIds (array): A list of the network IDs that will be combined. If an ID of a combined network is included in this list, the other networks in the list will be grouped into that network
+    - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break. All networks that are part of this combined network will have their enrollment string appended by &#39;-network_type&#39;. If left empty, all exisitng enrollment strings will be deleted.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;combineOrganizationNetworks&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/networks/combine&#39;
+
+    body_params = [&#39;name&#39;, &#39;networkIds&#39;, &#39;enrollmentString&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.createOrganizationNetwork"><code class="name flex">
+<span>def <span class="ident">createOrganizationNetwork</span></span>(<span>self, organizationId, name, type, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Create a network</strong>
+<a href="https://api.meraki.com/api_docs#create-a-network">https://api.meraki.com/api_docs#create-a-network</a>
+- organizationId (string)
+- name (string): The name of the new network
+- type (string): The type of the new network. Valid types are wireless, appliance, switch, systemsManager, camera, cellularGateway, or a space-separated list of those for a combined network.
+- tags (string): A space-separated list of tags to be applied to the network
+- timeZone (string): The timezone of the network. For a list of allowed timezones, please see the 'TZ' column in the table in <a target='_blank' href='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'>this article.</a>
+- copyFromNetworkId (string): The ID of the network to copy configuration from. Other provided parameters will override the copied configuration, except type which must match this network's type exactly.
+- disableMyMerakiCom (boolean): Disables the local device status pages (<a target='_blank' href='http://my.meraki.com/'>my.meraki.com, </a><a target='_blank' href='http://ap.meraki.com/'>ap.meraki.com, </a><a target='_blank' href='http://switch.meraki.com/'>switch.meraki.com, </a><a target='_blank' href='http://wired.meraki.com/'>wired.meraki.com</a>). Optional (defaults to false)
+- disableRemoteStatusPage (boolean): Disables access to the device status page (<a target='_blank'><a href="http://[device's">http://[device's</a> LAN IP])</a>. Optional. Can only be set if disableMyMerakiCom is set to false</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createOrganizationNetwork(self, organizationId: str, name: str, type: str, **kwargs):
+    &#34;&#34;&#34;
+    **Create a network**
+    https://api.meraki.com/api_docs#create-a-network
+    - organizationId (string)
+    - name (string): The name of the new network
+    - type (string): The type of the new network. Valid types are wireless, appliance, switch, systemsManager, camera, cellularGateway, or a space-separated list of those for a combined network.
+    - tags (string): A space-separated list of tags to be applied to the network
+    - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+    - copyFromNetworkId (string): The ID of the network to copy configuration from. Other provided parameters will override the copied configuration, except type which must match this network&#39;s type exactly.
+    - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+    - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;createOrganizationNetwork&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+    body_params = [&#39;name&#39;, &#39;type&#39;, &#39;tags&#39;, &#39;timeZone&#39;, &#39;copyFromNetworkId&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.deleteNetwork"><code class="name flex">
+<span>def <span class="ident">deleteNetwork</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a network</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-network">https://api.meraki.com/api_docs#delete-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetwork(self, networkId: str):
+    &#34;&#34;&#34;
+    **Delete a network**
+    https://api.meraki.com/api_docs#delete-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;deleteNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetwork"><code class="name flex">
+<span>def <span class="ident">getNetwork</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return a network</strong>
+<a href="https://api.meraki.com/api_docs#return-a-network">https://api.meraki.com/api_docs#return-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetwork(self, networkId: str):
+    &#34;&#34;&#34;
+    **Return a network**
+    https://api.meraki.com/api_docs#return-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetworkAccessPolicies"><code class="name flex">
+<span>def <span class="ident">getNetworkAccessPolicies</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the access policies for this network. Only valid for MS networks.</strong>
+<a href="https://api.meraki.com/api_docs#list-the-access-policies-for-this-network">https://api.meraki.com/api_docs#list-the-access-policies-for-this-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkAccessPolicies(self, networkId: str):
+    &#34;&#34;&#34;
+    **List the access policies for this network. Only valid for MS networks.**
+    https://api.meraki.com/api_docs#list-the-access-policies-for-this-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getNetworkAccessPolicies&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/accessPolicies&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetworkAirMarshal"><code class="name flex">
+<span>def <span class="ident">getNetworkAirMarshal</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List Air Marshal scan results from a network</strong>
+<a href="https://api.meraki.com/api_docs#list-air-marshal-scan-results-from-a-network">https://api.meraki.com/api_docs#list-air-marshal-scan-results-from-a-network</a>
+- networkId (string)
+- t0 (string): The beginning of the timespan for the data. The maximum lookback period is 31 days from today.
+- timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 7 days.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkAirMarshal(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **List Air Marshal scan results from a network**
+    https://api.meraki.com/api_docs#list-air-marshal-scan-results-from-a-network
+    - networkId (string)
+    - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 31 days from today.
+    - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 7 days.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getNetworkAirMarshal&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/airMarshal&#39;
+
+    query_params = [&#39;t0&#39;, &#39;timespan&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetworkBluetoothSettings"><code class="name flex">
+<span>def <span class="ident">getNetworkBluetoothSettings</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the Bluetooth settings for a network. <a href="https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)">Bluetooth settings</a> must be enabled on the network.</strong>
+<a href="https://api.meraki.com/api_docs#return-the-bluetooth-settings-for-a-network">https://api.meraki.com/api_docs#return-the-bluetooth-settings-for-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkBluetoothSettings(self, networkId: str):
+    &#34;&#34;&#34;
+    **Return the Bluetooth settings for a network. &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt; must be enabled on the network.**
+    https://api.meraki.com/api_docs#return-the-bluetooth-settings-for-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getNetworkBluetoothSettings&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetworkSiteToSiteVpn"><code class="name flex">
+<span>def <span class="ident">getNetworkSiteToSiteVpn</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the site-to-site VPN settings of a network. Only valid for MX networks.</strong>
+<a href="https://api.meraki.com/api_docs#return-the-site-to-site-vpn-settings-of-a-network">https://api.meraki.com/api_docs#return-the-site-to-site-vpn-settings-of-a-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSiteToSiteVpn(self, networkId: str):
+    &#34;&#34;&#34;
+    **Return the site-to-site VPN settings of a network. Only valid for MX networks.**
+    https://api.meraki.com/api_docs#return-the-site-to-site-vpn-settings-of-a-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getNetworkSiteToSiteVpn&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getNetworkTraffic"><code class="name flex">
+<span>def <span class="ident">getNetworkTraffic</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>
+The traffic analysis data for this network.
+<a href="https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility">Traffic Analysis with Hostname Visibility</a> must be enabled on the network.
+</strong>
+<a href="https://api.meraki.com/api_docs#----the-traffic-analysis-data-for-this-network">https://api.meraki.com/api_docs#----the-traffic-analysis-data-for-this-network</a>
+- networkId (string)
+- t0 (string): The beginning of the timespan for the data. The maximum lookback period is 30 days from today.
+- timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 30 days.
+- deviceType (string):
+Filter the data by device type: combined (default), wireless, switch, appliance.
+When using combined, for each rule the data will come from the device type with the most usage.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def getNetworkTraffic(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **    The traffic analysis data for this network.
+    &lt;a href=&#34;https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility&#34;&gt;Traffic Analysis with Hostname Visibility&lt;/a&gt; must be enabled on the network.
+**
+        https://api.meraki.com/api_docs#----the-traffic-analysis-data-for-this-network
+        - networkId (string)
+        - t0 (string): The beginning of the timespan for the data. The maximum lookback period is 30 days from today.
+        - timespan (number): The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 30 days.
+        - deviceType (string):     Filter the data by device type: combined (default), wireless, switch, appliance.
+    When using combined, for each rule the data will come from the device type with the most usage.
+
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;Networks&#39;],
+            &#39;operation&#39;: &#39;getNetworkTraffic&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/traffic&#39;
+
+        query_params = [&#39;t0&#39;, &#39;timespan&#39;, &#39;deviceType&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.getOrganizationNetworks"><code class="name flex">
+<span>def <span class="ident">getOrganizationNetworks</span></span>(<span>self, organizationId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the networks in an organization</strong>
+<a href="https://api.meraki.com/api_docs#list-the-networks-in-an-organization">https://api.meraki.com/api_docs#list-the-networks-in-an-organization</a>
+- organizationId (string)
+- configTemplateId (string): An optional parameter that is the ID of a config template. Will return all networks bound to that template.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOrganizationNetworks(self, organizationId: str, **kwargs):
+    &#34;&#34;&#34;
+    **List the networks in an organization**
+    https://api.meraki.com/api_docs#list-the-networks-in-an-organization
+    - organizationId (string)
+    - configTemplateId (string): An optional parameter that is the ID of a config template. Will return all networks bound to that template.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;getOrganizationNetworks&#39;,
+    }
+    resource = f&#39;/organizations/{organizationId}/networks&#39;
+
+    query_params = [&#39;configTemplateId&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.splitNetwork"><code class="name flex">
+<span>def <span class="ident">splitNetwork</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Split a combined network into individual networks for each type of device</strong>
+<a href="https://api.meraki.com/api_docs#split-a-combined-network-into-individual-networks-for-each-type-of-device">https://api.meraki.com/api_docs#split-a-combined-network-into-individual-networks-for-each-type-of-device</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def splitNetwork(self, networkId: str):
+    &#34;&#34;&#34;
+    **Split a combined network into individual networks for each type of device**
+    https://api.meraki.com/api_docs#split-a-combined-network-into-individual-networks-for-each-type-of-device
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;splitNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/split&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.unbindNetwork"><code class="name flex">
+<span>def <span class="ident">unbindNetwork</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Unbind a network from a template.</strong>
+<a href="https://api.meraki.com/api_docs#unbind-a-network-from-a-template">https://api.meraki.com/api_docs#unbind-a-network-from-a-template</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unbindNetwork(self, networkId: str):
+    &#34;&#34;&#34;
+    **Unbind a network from a template.**
+    https://api.meraki.com/api_docs#unbind-a-network-from-a-template
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;unbindNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/unbind&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.updateNetwork"><code class="name flex">
+<span>def <span class="ident">updateNetwork</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update a network</strong>
+<a href="https://api.meraki.com/api_docs#update-a-network">https://api.meraki.com/api_docs#update-a-network</a>
+- networkId (string)
+- name (string): The name of the network
+- timeZone (string): The timezone of the network. For a list of allowed timezones, please see the 'TZ' column in the table in <a target='_blank' href='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'>this article.</a>
+- tags (string): A space-separated list of tags to be applied to the network
+- disableMyMerakiCom (boolean): Disables the local device status pages (<a target='_blank' href='http://my.meraki.com/'>my.meraki.com, </a><a target='_blank' href='http://ap.meraki.com/'>ap.meraki.com, </a><a target='_blank' href='http://switch.meraki.com/'>switch.meraki.com, </a><a target='_blank' href='http://wired.meraki.com/'>wired.meraki.com</a>). Optional (defaults to false)
+- disableRemoteStatusPage (boolean): Disables access to the device status page (<a target='_blank'><a href="http://[device's">http://[device's</a> LAN IP])</a>. Optional. Can only be set if disableMyMerakiCom is set to false
+- enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetwork(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update a network**
+    https://api.meraki.com/api_docs#update-a-network
+    - networkId (string)
+    - name (string): The name of the network
+    - timeZone (string): The timezone of the network. For a list of allowed timezones, please see the &#39;TZ&#39; column in the table in &lt;a target=&#39;_blank&#39; href=&#39;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&#39;&gt;this article.&lt;/a&gt;
+    - tags (string): A space-separated list of tags to be applied to the network
+    - disableMyMerakiCom (boolean): Disables the local device status pages (&lt;a target=&#39;_blank&#39; href=&#39;http://my.meraki.com/&#39;&gt;my.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://ap.meraki.com/&#39;&gt;ap.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://switch.meraki.com/&#39;&gt;switch.meraki.com, &lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;http://wired.meraki.com/&#39;&gt;wired.meraki.com&lt;/a&gt;). Optional (defaults to false)
+    - disableRemoteStatusPage (boolean): Disables access to the device status page (&lt;a target=&#39;_blank&#39;&gt;http://[device&#39;s LAN IP])&lt;/a&gt;. Optional. Can only be set if disableMyMerakiCom is set to false
+    - enrollmentString (string): A unique identifier which can be used for device enrollment or easy access through the Meraki SM Registration page or the Self Service Portal. Please note that changing this field may cause existing bookmarks to break.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;updateNetwork&#39;,
+    }
+    resource = f&#39;/networks/{networkId}&#39;
+
+    body_params = [&#39;name&#39;, &#39;timeZone&#39;, &#39;tags&#39;, &#39;disableMyMerakiCom&#39;, &#39;disableRemoteStatusPage&#39;, &#39;enrollmentString&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.updateNetworkBluetoothSettings"><code class="name flex">
+<span>def <span class="ident">updateNetworkBluetoothSettings</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update the Bluetooth settings for a network. See the docs page for <a href="https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)">Bluetooth settings</a>.</strong>
+<a href="https://api.meraki.com/api_docs#update-the-bluetooth-settings-for-a-network">https://api.meraki.com/api_docs#update-the-bluetooth-settings-for-a-network</a>
+- networkId (string)
+- scanningEnabled (boolean): Whether APs will scan for Bluetooth enabled clients. (true, false)
+- advertisingEnabled (boolean): Whether APs will advertise beacons. (true, false)
+- uuid (string): The UUID to be used in the beacon identifier.
+- majorMinorAssignmentMode (string): The way major and minor number should be assigned to nodes in the network. ('Unique', 'Non-unique')
+- major (integer): The major number to be used in the beacon identifier. Only valid in 'Non-unique' mode.
+- minor (integer): The minor number to be used in the beacon identifier. Only valid in 'Non-unique' mode.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkBluetoothSettings(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update the Bluetooth settings for a network. See the docs page for &lt;a href=&#34;https://documentation.meraki.com/MR/Bluetooth/Bluetooth_Low_Energy_(BLE)&#34;&gt;Bluetooth settings&lt;/a&gt;.**
+    https://api.meraki.com/api_docs#update-the-bluetooth-settings-for-a-network
+    - networkId (string)
+    - scanningEnabled (boolean): Whether APs will scan for Bluetooth enabled clients. (true, false)
+    - advertisingEnabled (boolean): Whether APs will advertise beacons. (true, false)
+    - uuid (string): The UUID to be used in the beacon identifier.
+    - majorMinorAssignmentMode (string): The way major and minor number should be assigned to nodes in the network. (&#39;Unique&#39;, &#39;Non-unique&#39;)
+    - major (integer): The major number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+    - minor (integer): The minor number to be used in the beacon identifier. Only valid in &#39;Non-unique&#39; mode.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;majorMinorAssignmentMode&#39; in kwargs:
+        options = [&#39;Unique&#39;, &#39;Non-unique&#39;]
+        assert kwargs[&#39;majorMinorAssignmentMode&#39;] in options, f&#39;&#39;&#39;&#34;majorMinorAssignmentMode&#34; cannot be &#34;{kwargs[&#39;majorMinorAssignmentMode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;updateNetworkBluetoothSettings&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/bluetoothSettings&#39;
+
+    body_params = [&#39;scanningEnabled&#39;, &#39;advertisingEnabled&#39;, &#39;uuid&#39;, &#39;majorMinorAssignmentMode&#39;, &#39;major&#39;, &#39;minor&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.networks.Networks.updateNetworkSiteToSiteVpn"><code class="name flex">
+<span>def <span class="ident">updateNetworkSiteToSiteVpn</span></span>(<span>self, networkId, mode, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update the site-to-site VPN settings of a network. Only valid for MX networks in NAT mode.</strong>
+<a href="https://api.meraki.com/api_docs#update-the-site-to-site-vpn-settings-of-a-network">https://api.meraki.com/api_docs#update-the-site-to-site-vpn-settings-of-a-network</a>
+- networkId (string)
+- mode (string): The site-to-site VPN mode. Can be one of 'none', 'spoke' or 'hub'
+- hubs (array): The list of VPN hubs, in order of preference. In spoke mode, at least 1 hub is required.
+- subnets (array): The list of subnets and their VPN presence.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSiteToSiteVpn(self, networkId: str, mode: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update the site-to-site VPN settings of a network. Only valid for MX networks in NAT mode.**
+    https://api.meraki.com/api_docs#update-the-site-to-site-vpn-settings-of-a-network
+    - networkId (string)
+    - mode (string): The site-to-site VPN mode. Can be one of &#39;none&#39;, &#39;spoke&#39; or &#39;hub&#39;
+    - hubs (array): The list of VPN hubs, in order of preference. In spoke mode, at least 1 hub is required.
+    - subnets (array): The list of subnets and their VPN presence.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;mode&#39; in kwargs:
+        options = [&#39;none&#39;, &#39;spoke&#39;, &#39;hub&#39;]
+        assert kwargs[&#39;mode&#39;] in options, f&#39;&#39;&#39;&#34;mode&#34; cannot be &#34;{kwargs[&#39;mode&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;Networks&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSiteToSiteVpn&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/siteToSiteVpn&#39;
+
+    body_params = [&#39;mode&#39;, &#39;hubs&#39;, &#39;subnets&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.networks.Networks" href="#meraki.api.networks.Networks">Networks</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.networks.Networks.bindNetwork" href="#meraki.api.networks.Networks.bindNetwork">bindNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.combineOrganizationNetworks" href="#meraki.api.networks.Networks.combineOrganizationNetworks">combineOrganizationNetworks</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.createOrganizationNetwork" href="#meraki.api.networks.Networks.createOrganizationNetwork">createOrganizationNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.deleteNetwork" href="#meraki.api.networks.Networks.deleteNetwork">deleteNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetwork" href="#meraki.api.networks.Networks.getNetwork">getNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetworkAccessPolicies" href="#meraki.api.networks.Networks.getNetworkAccessPolicies">getNetworkAccessPolicies</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetworkAirMarshal" href="#meraki.api.networks.Networks.getNetworkAirMarshal">getNetworkAirMarshal</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetworkBluetoothSettings" href="#meraki.api.networks.Networks.getNetworkBluetoothSettings">getNetworkBluetoothSettings</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetworkSiteToSiteVpn" href="#meraki.api.networks.Networks.getNetworkSiteToSiteVpn">getNetworkSiteToSiteVpn</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getNetworkTraffic" href="#meraki.api.networks.Networks.getNetworkTraffic">getNetworkTraffic</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.getOrganizationNetworks" href="#meraki.api.networks.Networks.getOrganizationNetworks">getOrganizationNetworks</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.splitNetwork" href="#meraki.api.networks.Networks.splitNetwork">splitNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.unbindNetwork" href="#meraki.api.networks.Networks.unbindNetwork">unbindNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.updateNetwork" href="#meraki.api.networks.Networks.updateNetwork">updateNetwork</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.updateNetworkBluetoothSettings" href="#meraki.api.networks.Networks.updateNetworkBluetoothSettings">updateNetworkBluetoothSettings</a></code></li>
+<li><code><a title="meraki.api.networks.Networks.updateNetworkSiteToSiteVpn" href="#meraki.api.networks.Networks.updateNetworkSiteToSiteVpn">updateNetworkSiteToSiteVpn</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.vlans API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.vlans</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VLANs(object):
+    def __init__(self, session):
+        super(VLANs, self).__init__()
+        self._session = session
+    
+    def getNetworkVlans(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the VLANs for an MX network**
+        https://api.meraki.com/api_docs#list-the-vlans-for-an-mx-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlans&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans&#39;
+
+        return self._session.get(metadata, resource)
+
+    def createNetworkVlan(self, networkId: str, id: str, name: str, subnet: str, applianceIp: str):
+        &#34;&#34;&#34;
+        **Add a VLAN**
+        https://api.meraki.com/api_docs#add-a-vlan
+        - networkId (string)
+        - id (string): The VLAN ID of the new VLAN (must be between 1 and 4094)
+        - name (string): The name of the new VLAN
+        - subnet (string): The subnet of the VLAN
+        - applianceIp (string): The local IP of the appliance on the VLAN
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;createNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans&#39;
+
+        body_params = [&#39;id&#39;, &#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkVlan(self, networkId: str, vlanId: str):
+        &#34;&#34;&#34;
+        **Return a VLAN**
+        https://api.meraki.com/api_docs#return-a-vlan
+        - networkId (string)
+        - vlanId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkVlan(self, networkId: str, vlanId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a VLAN**
+        https://api.meraki.com/api_docs#update-a-vlan
+        - networkId (string)
+        - vlanId (string)
+        - name (string): The name of the VLAN
+        - subnet (string): The subnet of the VLAN
+        - applianceIp (string): The local IP of the appliance on the VLAN
+        - vpnNatSubnet (string): The translated VPN subnet if VPN and VPN subnet translation are enabled on the VLAN
+        - dhcpHandling (string): The appliance&#39;s handling of DHCP requests on this VLAN. One of: &#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39; or &#39;Do not respond to DHCP requests&#39;
+        - dhcpRelayServerIps (array): The IPs of the DHCP servers that DHCP requests should be relayed to
+        - dhcpLeaseTime (string): The term of DHCP leases if the appliance is running a DHCP server on this VLAN. One of: &#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39; or &#39;1 week&#39;
+        - dhcpBootOptionsEnabled (boolean): Use DHCP boot options specified in other properties
+        - dhcpBootNextServer (string): DHCP boot option to direct boot clients to the server to load the boot file from
+        - dhcpBootFilename (string): DHCP boot option for boot filename
+        - fixedIpAssignments (object): The DHCP fixed IP assignments on the VLAN. This should be an object that contains mappings from MAC addresses to objects that themselves each contain &#34;ip&#34; and &#34;name&#34; string fields. See the sample request/response for more details.
+        - reservedIpRanges (array): The DHCP reserved IP ranges on the VLAN
+        - dnsNameservers (string): The DNS nameservers used for DHCP responses, either &#34;upstream_dns&#34;, &#34;google_dns&#34;, &#34;opendns&#34;, or a newline seperated string of IP addresses or domain names
+        - dhcpOptions (array): The list of DHCP options that will be included in DHCP responses. Each object in the list should have &#34;code&#34;, &#34;type&#34;, and &#34;value&#34; properties.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;dhcpHandling&#39; in kwargs:
+            options = [&#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39;, &#39;Do not respond to DHCP requests&#39;]
+            assert kwargs[&#39;dhcpHandling&#39;] in options, f&#39;&#39;&#39;&#34;dhcpHandling&#34; cannot be &#34;{kwargs[&#39;dhcpHandling&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;dhcpLeaseTime&#39; in kwargs:
+            options = [&#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39;, &#39;1 week&#39;]
+            assert kwargs[&#39;dhcpLeaseTime&#39;] in options, f&#39;&#39;&#39;&#34;dhcpLeaseTime&#34; cannot be &#34;{kwargs[&#39;dhcpLeaseTime&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;, &#39;vpnNatSubnet&#39;, &#39;dhcpHandling&#39;, &#39;dhcpRelayServerIps&#39;, &#39;dhcpLeaseTime&#39;, &#39;dhcpBootOptionsEnabled&#39;, &#39;dhcpBootNextServer&#39;, &#39;dhcpBootFilename&#39;, &#39;fixedIpAssignments&#39;, &#39;reservedIpRanges&#39;, &#39;dnsNameservers&#39;, &#39;dhcpOptions&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetworkVlan(self, networkId: str, vlanId: str):
+        &#34;&#34;&#34;
+        **Delete a VLAN from a network**
+        https://api.meraki.com/api_docs#delete-a-vlan-from-a-network
+        - networkId (string)
+        - vlanId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkVlansEnabledState(self, networkId: str):
+        &#34;&#34;&#34;
+        **Returns the enabled status of VLANs for the network**
+        https://api.meraki.com/api_docs#returns-the-enabled-status-of-vlans-for-the-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlansEnabledState&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkVlansEnabledState(self, networkId: str, enabled: bool):
+        &#34;&#34;&#34;
+        **Enable/Disable VLANs for the given network**
+        https://api.meraki.com/api_docs#enable/disable-vlans-for-the-given-network
+        - networkId (string)
+        - enabled (boolean): Boolean indicating whether to enable (true) or disable (false) VLANs for the network
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkVlansEnabledState&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+        body_params = [&#39;enabled&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.vlans.VLANs"><code class="flex name class">
+<span>class <span class="ident">VLANs</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VLANs(object):
+    def __init__(self, session):
+        super(VLANs, self).__init__()
+        self._session = session
+    
+    def getNetworkVlans(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the VLANs for an MX network**
+        https://api.meraki.com/api_docs#list-the-vlans-for-an-mx-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlans&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans&#39;
+
+        return self._session.get(metadata, resource)
+
+    def createNetworkVlan(self, networkId: str, id: str, name: str, subnet: str, applianceIp: str):
+        &#34;&#34;&#34;
+        **Add a VLAN**
+        https://api.meraki.com/api_docs#add-a-vlan
+        - networkId (string)
+        - id (string): The VLAN ID of the new VLAN (must be between 1 and 4094)
+        - name (string): The name of the new VLAN
+        - subnet (string): The subnet of the VLAN
+        - applianceIp (string): The local IP of the appliance on the VLAN
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;createNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans&#39;
+
+        body_params = [&#39;id&#39;, &#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkVlan(self, networkId: str, vlanId: str):
+        &#34;&#34;&#34;
+        **Return a VLAN**
+        https://api.meraki.com/api_docs#return-a-vlan
+        - networkId (string)
+        - vlanId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkVlan(self, networkId: str, vlanId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update a VLAN**
+        https://api.meraki.com/api_docs#update-a-vlan
+        - networkId (string)
+        - vlanId (string)
+        - name (string): The name of the VLAN
+        - subnet (string): The subnet of the VLAN
+        - applianceIp (string): The local IP of the appliance on the VLAN
+        - vpnNatSubnet (string): The translated VPN subnet if VPN and VPN subnet translation are enabled on the VLAN
+        - dhcpHandling (string): The appliance&#39;s handling of DHCP requests on this VLAN. One of: &#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39; or &#39;Do not respond to DHCP requests&#39;
+        - dhcpRelayServerIps (array): The IPs of the DHCP servers that DHCP requests should be relayed to
+        - dhcpLeaseTime (string): The term of DHCP leases if the appliance is running a DHCP server on this VLAN. One of: &#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39; or &#39;1 week&#39;
+        - dhcpBootOptionsEnabled (boolean): Use DHCP boot options specified in other properties
+        - dhcpBootNextServer (string): DHCP boot option to direct boot clients to the server to load the boot file from
+        - dhcpBootFilename (string): DHCP boot option for boot filename
+        - fixedIpAssignments (object): The DHCP fixed IP assignments on the VLAN. This should be an object that contains mappings from MAC addresses to objects that themselves each contain &#34;ip&#34; and &#34;name&#34; string fields. See the sample request/response for more details.
+        - reservedIpRanges (array): The DHCP reserved IP ranges on the VLAN
+        - dnsNameservers (string): The DNS nameservers used for DHCP responses, either &#34;upstream_dns&#34;, &#34;google_dns&#34;, &#34;opendns&#34;, or a newline seperated string of IP addresses or domain names
+        - dhcpOptions (array): The list of DHCP options that will be included in DHCP responses. Each object in the list should have &#34;code&#34;, &#34;type&#34;, and &#34;value&#34; properties.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;dhcpHandling&#39; in kwargs:
+            options = [&#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39;, &#39;Do not respond to DHCP requests&#39;]
+            assert kwargs[&#39;dhcpHandling&#39;] in options, f&#39;&#39;&#39;&#34;dhcpHandling&#34; cannot be &#34;{kwargs[&#39;dhcpHandling&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+        if &#39;dhcpLeaseTime&#39; in kwargs:
+            options = [&#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39;, &#39;1 week&#39;]
+            assert kwargs[&#39;dhcpLeaseTime&#39;] in options, f&#39;&#39;&#39;&#34;dhcpLeaseTime&#34; cannot be &#34;{kwargs[&#39;dhcpLeaseTime&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;, &#39;vpnNatSubnet&#39;, &#39;dhcpHandling&#39;, &#39;dhcpRelayServerIps&#39;, &#39;dhcpLeaseTime&#39;, &#39;dhcpBootOptionsEnabled&#39;, &#39;dhcpBootNextServer&#39;, &#39;dhcpBootFilename&#39;, &#39;fixedIpAssignments&#39;, &#39;reservedIpRanges&#39;, &#39;dnsNameservers&#39;, &#39;dhcpOptions&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetworkVlan(self, networkId: str, vlanId: str):
+        &#34;&#34;&#34;
+        **Delete a VLAN from a network**
+        https://api.meraki.com/api_docs#delete-a-vlan-from-a-network
+        - networkId (string)
+        - vlanId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkVlan&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkVlansEnabledState(self, networkId: str):
+        &#34;&#34;&#34;
+        **Returns the enabled status of VLANs for the network**
+        https://api.meraki.com/api_docs#returns-the-enabled-status-of-vlans-for-the-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;getNetworkVlansEnabledState&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkVlansEnabledState(self, networkId: str, enabled: bool):
+        &#34;&#34;&#34;
+        **Enable/Disable VLANs for the given network**
+        https://api.meraki.com/api_docs#enable/disable-vlans-for-the-given-network
+        - networkId (string)
+        - enabled (boolean): Boolean indicating whether to enable (true) or disable (false) VLANs for the network
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;VLANs&#39;],
+            &#39;operation&#39;: &#39;updateNetworkVlansEnabledState&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+        body_params = [&#39;enabled&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.vlans.VLANs.createNetworkVlan"><code class="name flex">
+<span>def <span class="ident">createNetworkVlan</span></span>(<span>self, networkId, id, name, subnet, applianceIp)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Add a VLAN</strong>
+<a href="https://api.meraki.com/api_docs#add-a-vlan">https://api.meraki.com/api_docs#add-a-vlan</a>
+- networkId (string)
+- id (string): The VLAN ID of the new VLAN (must be between 1 and 4094)
+- name (string): The name of the new VLAN
+- subnet (string): The subnet of the VLAN
+- applianceIp (string): The local IP of the appliance on the VLAN</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkVlan(self, networkId: str, id: str, name: str, subnet: str, applianceIp: str):
+    &#34;&#34;&#34;
+    **Add a VLAN**
+    https://api.meraki.com/api_docs#add-a-vlan
+    - networkId (string)
+    - id (string): The VLAN ID of the new VLAN (must be between 1 and 4094)
+    - name (string): The name of the new VLAN
+    - subnet (string): The subnet of the VLAN
+    - applianceIp (string): The local IP of the appliance on the VLAN
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;createNetworkVlan&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlans&#39;
+
+    body_params = [&#39;id&#39;, &#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.deleteNetworkVlan"><code class="name flex">
+<span>def <span class="ident">deleteNetworkVlan</span></span>(<span>self, networkId, vlanId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a VLAN from a network</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-vlan-from-a-network">https://api.meraki.com/api_docs#delete-a-vlan-from-a-network</a>
+- networkId (string)
+- vlanId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetworkVlan(self, networkId: str, vlanId: str):
+    &#34;&#34;&#34;
+    **Delete a VLAN from a network**
+    https://api.meraki.com/api_docs#delete-a-vlan-from-a-network
+    - networkId (string)
+    - vlanId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;deleteNetworkVlan&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.getNetworkVlan"><code class="name flex">
+<span>def <span class="ident">getNetworkVlan</span></span>(<span>self, networkId, vlanId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return a VLAN</strong>
+<a href="https://api.meraki.com/api_docs#return-a-vlan">https://api.meraki.com/api_docs#return-a-vlan</a>
+- networkId (string)
+- vlanId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkVlan(self, networkId: str, vlanId: str):
+    &#34;&#34;&#34;
+    **Return a VLAN**
+    https://api.meraki.com/api_docs#return-a-vlan
+    - networkId (string)
+    - vlanId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;getNetworkVlan&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.getNetworkVlans"><code class="name flex">
+<span>def <span class="ident">getNetworkVlans</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the VLANs for an MX network</strong>
+<a href="https://api.meraki.com/api_docs#list-the-vlans-for-an-mx-network">https://api.meraki.com/api_docs#list-the-vlans-for-an-mx-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkVlans(self, networkId: str):
+    &#34;&#34;&#34;
+    **List the VLANs for an MX network**
+    https://api.meraki.com/api_docs#list-the-vlans-for-an-mx-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;getNetworkVlans&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlans&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.getNetworkVlansEnabledState"><code class="name flex">
+<span>def <span class="ident">getNetworkVlansEnabledState</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Returns the enabled status of VLANs for the network</strong>
+<a href="https://api.meraki.com/api_docs#returns-the-enabled-status-of-vlans-for-the-network">https://api.meraki.com/api_docs#returns-the-enabled-status-of-vlans-for-the-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkVlansEnabledState(self, networkId: str):
+    &#34;&#34;&#34;
+    **Returns the enabled status of VLANs for the network**
+    https://api.meraki.com/api_docs#returns-the-enabled-status-of-vlans-for-the-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;getNetworkVlansEnabledState&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.updateNetworkVlan"><code class="name flex">
+<span>def <span class="ident">updateNetworkVlan</span></span>(<span>self, networkId, vlanId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update a VLAN</strong>
+<a href="https://api.meraki.com/api_docs#update-a-vlan">https://api.meraki.com/api_docs#update-a-vlan</a>
+- networkId (string)
+- vlanId (string)
+- name (string): The name of the VLAN
+- subnet (string): The subnet of the VLAN
+- applianceIp (string): The local IP of the appliance on the VLAN
+- vpnNatSubnet (string): The translated VPN subnet if VPN and VPN subnet translation are enabled on the VLAN
+- dhcpHandling (string): The appliance's handling of DHCP requests on this VLAN. One of: 'Run a DHCP server', 'Relay DHCP to another server' or 'Do not respond to DHCP requests'
+- dhcpRelayServerIps (array): The IPs of the DHCP servers that DHCP requests should be relayed to
+- dhcpLeaseTime (string): The term of DHCP leases if the appliance is running a DHCP server on this VLAN. One of: '30 minutes', '1 hour', '4 hours', '12 hours', '1 day' or '1 week'
+- dhcpBootOptionsEnabled (boolean): Use DHCP boot options specified in other properties
+- dhcpBootNextServer (string): DHCP boot option to direct boot clients to the server to load the boot file from
+- dhcpBootFilename (string): DHCP boot option for boot filename
+- fixedIpAssignments (object): The DHCP fixed IP assignments on the VLAN. This should be an object that contains mappings from MAC addresses to objects that themselves each contain "ip" and "name" string fields. See the sample request/response for more details.
+- reservedIpRanges (array): The DHCP reserved IP ranges on the VLAN
+- dnsNameservers (string): The DNS nameservers used for DHCP responses, either "upstream_dns", "google_dns", "opendns", or a newline seperated string of IP addresses or domain names
+- dhcpOptions (array): The list of DHCP options that will be included in DHCP responses. Each object in the list should have "code", "type", and "value" properties.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkVlan(self, networkId: str, vlanId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update a VLAN**
+    https://api.meraki.com/api_docs#update-a-vlan
+    - networkId (string)
+    - vlanId (string)
+    - name (string): The name of the VLAN
+    - subnet (string): The subnet of the VLAN
+    - applianceIp (string): The local IP of the appliance on the VLAN
+    - vpnNatSubnet (string): The translated VPN subnet if VPN and VPN subnet translation are enabled on the VLAN
+    - dhcpHandling (string): The appliance&#39;s handling of DHCP requests on this VLAN. One of: &#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39; or &#39;Do not respond to DHCP requests&#39;
+    - dhcpRelayServerIps (array): The IPs of the DHCP servers that DHCP requests should be relayed to
+    - dhcpLeaseTime (string): The term of DHCP leases if the appliance is running a DHCP server on this VLAN. One of: &#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39; or &#39;1 week&#39;
+    - dhcpBootOptionsEnabled (boolean): Use DHCP boot options specified in other properties
+    - dhcpBootNextServer (string): DHCP boot option to direct boot clients to the server to load the boot file from
+    - dhcpBootFilename (string): DHCP boot option for boot filename
+    - fixedIpAssignments (object): The DHCP fixed IP assignments on the VLAN. This should be an object that contains mappings from MAC addresses to objects that themselves each contain &#34;ip&#34; and &#34;name&#34; string fields. See the sample request/response for more details.
+    - reservedIpRanges (array): The DHCP reserved IP ranges on the VLAN
+    - dnsNameservers (string): The DNS nameservers used for DHCP responses, either &#34;upstream_dns&#34;, &#34;google_dns&#34;, &#34;opendns&#34;, or a newline seperated string of IP addresses or domain names
+    - dhcpOptions (array): The list of DHCP options that will be included in DHCP responses. Each object in the list should have &#34;code&#34;, &#34;type&#34;, and &#34;value&#34; properties.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;dhcpHandling&#39; in kwargs:
+        options = [&#39;Run a DHCP server&#39;, &#39;Relay DHCP to another server&#39;, &#39;Do not respond to DHCP requests&#39;]
+        assert kwargs[&#39;dhcpHandling&#39;] in options, f&#39;&#39;&#39;&#34;dhcpHandling&#34; cannot be &#34;{kwargs[&#39;dhcpHandling&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+    if &#39;dhcpLeaseTime&#39; in kwargs:
+        options = [&#39;30 minutes&#39;, &#39;1 hour&#39;, &#39;4 hours&#39;, &#39;12 hours&#39;, &#39;1 day&#39;, &#39;1 week&#39;]
+        assert kwargs[&#39;dhcpLeaseTime&#39;] in options, f&#39;&#39;&#39;&#34;dhcpLeaseTime&#34; cannot be &#34;{kwargs[&#39;dhcpLeaseTime&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;updateNetworkVlan&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlans/{vlanId}&#39;
+
+    body_params = [&#39;name&#39;, &#39;subnet&#39;, &#39;applianceIp&#39;, &#39;vpnNatSubnet&#39;, &#39;dhcpHandling&#39;, &#39;dhcpRelayServerIps&#39;, &#39;dhcpLeaseTime&#39;, &#39;dhcpBootOptionsEnabled&#39;, &#39;dhcpBootNextServer&#39;, &#39;dhcpBootFilename&#39;, &#39;fixedIpAssignments&#39;, &#39;reservedIpRanges&#39;, &#39;dnsNameservers&#39;, &#39;dhcpOptions&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.vlans.VLANs.updateNetworkVlansEnabledState"><code class="name flex">
+<span>def <span class="ident">updateNetworkVlansEnabledState</span></span>(<span>self, networkId, enabled)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Enable/Disable VLANs for the given network</strong>
+<a href="https://api.meraki.com/api_docs#enable/disable-vlans-for-the-given-network">https://api.meraki.com/api_docs#enable/disable-vlans-for-the-given-network</a>
+- networkId (string)
+- enabled (boolean): Boolean indicating whether to enable (true) or disable (false) VLANs for the network</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkVlansEnabledState(self, networkId: str, enabled: bool):
+    &#34;&#34;&#34;
+    **Enable/Disable VLANs for the given network**
+    https://api.meraki.com/api_docs#enable/disable-vlans-for-the-given-network
+    - networkId (string)
+    - enabled (boolean): Boolean indicating whether to enable (true) or disable (false) VLANs for the network
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;VLANs&#39;],
+        &#39;operation&#39;: &#39;updateNetworkVlansEnabledState&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/vlansEnabledState&#39;
+
+    body_params = [&#39;enabled&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.vlans.VLANs" href="#meraki.api.vlans.VLANs">VLANs</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.vlans.VLANs.createNetworkVlan" href="#meraki.api.vlans.VLANs.createNetworkVlan">createNetworkVlan</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.deleteNetworkVlan" href="#meraki.api.vlans.VLANs.deleteNetworkVlan">deleteNetworkVlan</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.getNetworkVlan" href="#meraki.api.vlans.VLANs.getNetworkVlan">getNetworkVlan</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.getNetworkVlans" href="#meraki.api.vlans.VLANs.getNetworkVlans">getNetworkVlans</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.getNetworkVlansEnabledState" href="#meraki.api.vlans.VLANs.getNetworkVlansEnabledState">getNetworkVlansEnabledState</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.updateNetworkVlan" href="#meraki.api.vlans.VLANs.updateNetworkVlan">updateNetworkVlan</a></code></li>
+<li><code><a title="meraki.api.vlans.VLANs.updateNetworkVlansEnabledState" href="#meraki.api.vlans.VLANs.updateNetworkVlansEnabledState">updateNetworkVlansEnabledState</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

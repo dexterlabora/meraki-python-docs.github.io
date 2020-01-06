@@ -1,1 +1,438 @@
-Hello world
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from datetime import datetime
+import logging
+import os
+
+from .legacy import *
+from .rest_session import *
+from .api.api_usage import APIUsage
+from .api.action_batches import ActionBatches
+from .api.admins import Admins
+from .api.alert_settings import AlertSettings
+from .api.bluetooth_clients import BluetoothClients
+from .api.cameras import Cameras
+from .api.clients import Clients
+from .api.config_templates import ConfigTemplates
+from .api.connectivity_monitoring_destinations import ConnectivityMonitoringDestinations
+from .api.content_filtering_categories import ContentFilteringCategories
+from .api.content_filtering_rules import ContentFilteringRules
+from .api.dashboard_branding_policies import DashboardBrandingPolicies
+from .api.devices import Devices
+from .api.events import Events
+from .api.firewalled_services import FirewalledServices
+from .api.floorplans import Floorplans
+from .api.group_policies import GroupPolicies
+from .api.http_servers import HTTPServers
+from .api.intrusion_settings import IntrusionSettings
+from .api.licenses import Licenses
+from .api.mg_dhcp_settings import MGDHCPSettings
+from .api.mg_lan_settings import MGLANSettings
+from .api.mg_connectivity_monitoring_destinations import MGConnectivityMonitoringDestinations
+from .api.mg_port_forwarding_rules import MGPortForwardingRules
+from .api.mg_subnet_pool_settings import MGSubnetPoolSettings
+from .api.mg_uplink_settings import MGUplinkSettings
+from .api.mr_l3_firewall import MRL3Firewall
+from .api.mv_sense import MVSense
+from .api.mx_1_1_nat_rules import MX11NATRules
+from .api.mx_1_many_nat_rules import MX1ManyNATRules
+from .api.mx_l3_firewall import MXL3Firewall
+from .api.mx_l7_application_categories import MXL7ApplicationCategories
+from .api.mx_l7_firewall import MXL7Firewall
+from .api.mx_vlan_ports import MXVLANPorts
+from .api.mx_vpn_firewall import MXVPNFirewall
+from .api.mx_cellular_firewall import MXCellularFirewall
+from .api.mx_port_forwarding_rules import MXPortForwardingRules
+from .api.mx_static_routes import MXStaticRoutes
+from .api.mx_warm_spare_settings import MXWarmSpareSettings
+from .api.malware_settings import MalwareSettings
+from .api.management_interface_settings import ManagementInterfaceSettings
+from .api.meraki_auth_users import MerakiAuthUsers
+from .api.named_tag_scope import NamedTagScope
+from .api.netflow_settings import NetFlowSettings
+from .api.networks import Networks
+from .api.openapi_spec import OpenAPISpec
+from .api.organizations import Organizations
+from .api.pii import PII
+from .api.radio_settings import RadioSettings
+from .api.saml_roles import SAMLRoles
+from .api.sm import SM
+from .api.snmp_settings import SNMPSettings
+from .api.ssids import SSIDs
+from .api.security_events import SecurityEvents
+from .api.splash_login_attempts import SplashLoginAttempts
+from .api.splash_settings import SplashSettings
+from .api.switch_acls import SwitchACLs
+from .api.switch_port_schedules import SwitchPortSchedules
+from .api.switch_ports import SwitchPorts
+from .api.switch_profiles import SwitchProfiles
+from .api.switch_settings import SwitchSettings
+from .api.switch_stacks import SwitchStacks
+from .api.syslog_servers import SyslogServers
+from .api.traffic_analysis_settings import TrafficAnalysisSettings
+from .api.traffic_shaping import TrafficShaping
+from .api.uplink_settings import UplinkSettings
+from .api.vlans import VLANs
+from .api.webhook_logs import WebhookLogs
+from .api.wireless_health import WirelessHealth
+from .api.wireless_settings import WirelessSettings
+from .config import (
+    API_KEY_ENVIRONMENT_VARIABLE, DEFAULT_BASE_URL, DEFAULT_SINGLE_REQUEST_TIMEOUT, DEFAULT_WAIT_ON_RATE_LIMIT,
+    MAXIMUM_RETRIES, OUTPUT_LOG, LOG_FILE_PREFIX, PRINT_TO_CONSOLE, SIMULATE_API_CALLS
+)
+
+
+class DashboardAPI(object):
+    &#34;&#34;&#34;
+    **Creates a persistent Meraki dashboard API session**
+    - api_key (string): API key generated in dashboard; can also be set as an environment variable MERAKI_DASHBOARD_API_KEY
+    - base_url (string): preceding all endpoint resources
+    - single_request_timeout (integer): maximum number of seconds for each API call
+    - wait_on_rate_limit (boolean): retry if 429 rate limit error encountered?
+    - maximum_retries_on_rate_limit (integer): retry up to this many times when encountering 429s or other server-side errors
+    - output_log (boolean): create an output log file?
+    - log_file_prefix (string): log file name appended with date and timestamp
+    - print_console (boolean): if output log used, output to console too?
+    - simulate (boolean): simulate POST/PUT/DELETE calls to prevent changes?
+    &#34;&#34;&#34;
+    def __init__(self, api_key=None, base_url=DEFAULT_BASE_URL, single_request_timeout=DEFAULT_SINGLE_REQUEST_TIMEOUT,
+                 wait_on_rate_limit=DEFAULT_WAIT_ON_RATE_LIMIT, maximum_retries=MAXIMUM_RETRIES, output_log=OUTPUT_LOG,
+                 log_file_prefix=LOG_FILE_PREFIX, print_console=PRINT_TO_CONSOLE, simulate=SIMULATE_API_CALLS):
+        # Check API key
+        api_key = api_key or os.environ.get(API_KEY_ENVIRONMENT_VARIABLE)
+        if not api_key:
+            raise APIKeyError()
+        
+        # Configure logging
+        self._logger = logging.getLogger(__name__)
+        self._log_file = f&#39;{log_file_prefix}_log__{datetime.now():%Y-%m-%d_%H-%M-%S}.txt&#39;
+        if output_log:
+            logging.basicConfig(
+                filename=self._log_file,
+                level=logging.DEBUG,
+                format=&#39;%(asctime)s %(name)12s: %(levelname)8s &gt; %(message)s&#39;,
+                datefmt=&#39;%Y-%m-%d %H:%M:%S&#39;)
+
+            if print_console:
+                console = logging.StreamHandler()
+                console.setLevel(logging.INFO)
+                formatter = logging.Formatter(&#39;%(name)12s: %(levelname)8s &gt; %(message)s&#39;)
+                console.setFormatter(formatter)
+                logging.getLogger(&#39;&#39;).addHandler(console)
+
+        # Creates the API session
+        self._session = RestSession(
+            logger=self._logger,
+            api_key=api_key,
+            base_url=base_url,
+            single_request_timeout=single_request_timeout,
+            wait_on_rate_limit=wait_on_rate_limit,
+            maximum_retries=maximum_retries,
+            simulate=simulate,
+        )
+
+        # API endpoints by section
+        self.api_usage = APIUsage(self._session)
+        self.action_batches = ActionBatches(self._session)
+        self.admins = Admins(self._session)
+        self.alert_settings = AlertSettings(self._session)
+        self.bluetooth_clients = BluetoothClients(self._session)
+        self.cameras = Cameras(self._session)
+        self.clients = Clients(self._session)
+        self.config_templates = ConfigTemplates(self._session)
+        self.connectivity_monitoring_destinations = ConnectivityMonitoringDestinations(self._session)
+        self.content_filtering_categories = ContentFilteringCategories(self._session)
+        self.content_filtering_rules = ContentFilteringRules(self._session)
+        self.dashboard_branding_policies = DashboardBrandingPolicies(self._session)
+        self.devices = Devices(self._session)
+        self.events = Events(self._session)
+        self.firewalled_services = FirewalledServices(self._session)
+        self.floorplans = Floorplans(self._session)
+        self.group_policies = GroupPolicies(self._session)
+        self.http_servers = HTTPServers(self._session)
+        self.intrusion_settings = IntrusionSettings(self._session)
+        self.licenses = Licenses(self._session)
+        self.mg_dhcp_settings = MGDHCPSettings(self._session)
+        self.mg_lan_settings = MGLANSettings(self._session)
+        self.mg_connectivity_monitoring_destinations = MGConnectivityMonitoringDestinations(self._session)
+        self.mg_port_forwarding_rules = MGPortForwardingRules(self._session)
+        self.mg_subnet_pool_settings = MGSubnetPoolSettings(self._session)
+        self.mg_uplink_settings = MGUplinkSettings(self._session)
+        self.mr_l3_firewall = MRL3Firewall(self._session)
+        self.mv_sense = MVSense(self._session)
+        self.mx_1_1_nat_rules = MX11NATRules(self._session)
+        self.mx_1_many_nat_rules = MX1ManyNATRules(self._session)
+        self.mx_l3_firewall = MXL3Firewall(self._session)
+        self.mx_l7_application_categories = MXL7ApplicationCategories(self._session)
+        self.mx_l7_firewall = MXL7Firewall(self._session)
+        self.mx_vlan_ports = MXVLANPorts(self._session)
+        self.mx_vpn_firewall = MXVPNFirewall(self._session)
+        self.mx_cellular_firewall = MXCellularFirewall(self._session)
+        self.mx_port_forwarding_rules = MXPortForwardingRules(self._session)
+        self.mx_static_routes = MXStaticRoutes(self._session)
+        self.mx_warm_spare_settings = MXWarmSpareSettings(self._session)
+        self.malware_settings = MalwareSettings(self._session)
+        self.management_interface_settings = ManagementInterfaceSettings(self._session)
+        self.meraki_auth_users = MerakiAuthUsers(self._session)
+        self.named_tag_scope = NamedTagScope(self._session)
+        self.netflow_settings = NetFlowSettings(self._session)
+        self.networks = Networks(self._session)
+        self.openapi_spec = OpenAPISpec(self._session)
+        self.organizations = Organizations(self._session)
+        self.pii = PII(self._session)
+        self.radio_settings = RadioSettings(self._session)
+        self.saml_roles = SAMLRoles(self._session)
+        self.sm = SM(self._session)
+        self.snmp_settings = SNMPSettings(self._session)
+        self.ssids = SSIDs(self._session)
+        self.security_events = SecurityEvents(self._session)
+        self.splash_login_attempts = SplashLoginAttempts(self._session)
+        self.splash_settings = SplashSettings(self._session)
+        self.switch_acls = SwitchACLs(self._session)
+        self.switch_port_schedules = SwitchPortSchedules(self._session)
+        self.switch_ports = SwitchPorts(self._session)
+        self.switch_profiles = SwitchProfiles(self._session)
+        self.switch_settings = SwitchSettings(self._session)
+        self.switch_stacks = SwitchStacks(self._session)
+        self.syslog_servers = SyslogServers(self._session)
+        self.traffic_analysis_settings = TrafficAnalysisSettings(self._session)
+        self.traffic_shaping = TrafficShaping(self._session)
+        self.uplink_settings = UplinkSettings(self._session)
+        self.vlans = VLANs(self._session)
+        self.webhook_logs = WebhookLogs(self._session)
+        self.wireless_health = WirelessHealth(self._session)
+        self.wireless_settings = WirelessSettings(self._session)</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="meraki.api" href="api/index.html">meraki.api</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="meraki.config" href="config.html">meraki.config</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="meraki.exceptions" href="exceptions.html">meraki.exceptions</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="meraki.legacy" href="legacy.html">meraki.legacy</a></code></dt>
+<dd>
+<section class="desc"><p>Cisco Meraki Dashboard API Python 3.6 Module …</p></section>
+</dd>
+<dt><code class="name"><a title="meraki.rest_session" href="rest_session.html">meraki.rest_session</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.DashboardAPI"><code class="flex name class">
+<span>class <span class="ident">DashboardAPI</span></span>
+<span>(</span><span>api_key=None, base_url='https://api.meraki.com/api/v0', single_request_timeout=60, wait_on_rate_limit=True, maximum_retries=2, output_log=True, log_file_prefix='meraki_api_', print_console=True, simulate=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Creates a persistent Meraki dashboard API session</strong>
+- api_key (string): API key generated in dashboard; can also be set as an environment variable MERAKI_DASHBOARD_API_KEY
+- base_url (string): preceding all endpoint resources
+- single_request_timeout (integer): maximum number of seconds for each API call
+- wait_on_rate_limit (boolean): retry if 429 rate limit error encountered?
+- maximum_retries_on_rate_limit (integer): retry up to this many times when encountering 429s or other server-side errors
+- output_log (boolean): create an output log file?
+- log_file_prefix (string): log file name appended with date and timestamp
+- print_console (boolean): if output log used, output to console too?
+- simulate (boolean): simulate POST/PUT/DELETE calls to prevent changes?</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DashboardAPI(object):
+    &#34;&#34;&#34;
+    **Creates a persistent Meraki dashboard API session**
+    - api_key (string): API key generated in dashboard; can also be set as an environment variable MERAKI_DASHBOARD_API_KEY
+    - base_url (string): preceding all endpoint resources
+    - single_request_timeout (integer): maximum number of seconds for each API call
+    - wait_on_rate_limit (boolean): retry if 429 rate limit error encountered?
+    - maximum_retries_on_rate_limit (integer): retry up to this many times when encountering 429s or other server-side errors
+    - output_log (boolean): create an output log file?
+    - log_file_prefix (string): log file name appended with date and timestamp
+    - print_console (boolean): if output log used, output to console too?
+    - simulate (boolean): simulate POST/PUT/DELETE calls to prevent changes?
+    &#34;&#34;&#34;
+    def __init__(self, api_key=None, base_url=DEFAULT_BASE_URL, single_request_timeout=DEFAULT_SINGLE_REQUEST_TIMEOUT,
+                 wait_on_rate_limit=DEFAULT_WAIT_ON_RATE_LIMIT, maximum_retries=MAXIMUM_RETRIES, output_log=OUTPUT_LOG,
+                 log_file_prefix=LOG_FILE_PREFIX, print_console=PRINT_TO_CONSOLE, simulate=SIMULATE_API_CALLS):
+        # Check API key
+        api_key = api_key or os.environ.get(API_KEY_ENVIRONMENT_VARIABLE)
+        if not api_key:
+            raise APIKeyError()
+        
+        # Configure logging
+        self._logger = logging.getLogger(__name__)
+        self._log_file = f&#39;{log_file_prefix}_log__{datetime.now():%Y-%m-%d_%H-%M-%S}.txt&#39;
+        if output_log:
+            logging.basicConfig(
+                filename=self._log_file,
+                level=logging.DEBUG,
+                format=&#39;%(asctime)s %(name)12s: %(levelname)8s &gt; %(message)s&#39;,
+                datefmt=&#39;%Y-%m-%d %H:%M:%S&#39;)
+
+            if print_console:
+                console = logging.StreamHandler()
+                console.setLevel(logging.INFO)
+                formatter = logging.Formatter(&#39;%(name)12s: %(levelname)8s &gt; %(message)s&#39;)
+                console.setFormatter(formatter)
+                logging.getLogger(&#39;&#39;).addHandler(console)
+
+        # Creates the API session
+        self._session = RestSession(
+            logger=self._logger,
+            api_key=api_key,
+            base_url=base_url,
+            single_request_timeout=single_request_timeout,
+            wait_on_rate_limit=wait_on_rate_limit,
+            maximum_retries=maximum_retries,
+            simulate=simulate,
+        )
+
+        # API endpoints by section
+        self.api_usage = APIUsage(self._session)
+        self.action_batches = ActionBatches(self._session)
+        self.admins = Admins(self._session)
+        self.alert_settings = AlertSettings(self._session)
+        self.bluetooth_clients = BluetoothClients(self._session)
+        self.cameras = Cameras(self._session)
+        self.clients = Clients(self._session)
+        self.config_templates = ConfigTemplates(self._session)
+        self.connectivity_monitoring_destinations = ConnectivityMonitoringDestinations(self._session)
+        self.content_filtering_categories = ContentFilteringCategories(self._session)
+        self.content_filtering_rules = ContentFilteringRules(self._session)
+        self.dashboard_branding_policies = DashboardBrandingPolicies(self._session)
+        self.devices = Devices(self._session)
+        self.events = Events(self._session)
+        self.firewalled_services = FirewalledServices(self._session)
+        self.floorplans = Floorplans(self._session)
+        self.group_policies = GroupPolicies(self._session)
+        self.http_servers = HTTPServers(self._session)
+        self.intrusion_settings = IntrusionSettings(self._session)
+        self.licenses = Licenses(self._session)
+        self.mg_dhcp_settings = MGDHCPSettings(self._session)
+        self.mg_lan_settings = MGLANSettings(self._session)
+        self.mg_connectivity_monitoring_destinations = MGConnectivityMonitoringDestinations(self._session)
+        self.mg_port_forwarding_rules = MGPortForwardingRules(self._session)
+        self.mg_subnet_pool_settings = MGSubnetPoolSettings(self._session)
+        self.mg_uplink_settings = MGUplinkSettings(self._session)
+        self.mr_l3_firewall = MRL3Firewall(self._session)
+        self.mv_sense = MVSense(self._session)
+        self.mx_1_1_nat_rules = MX11NATRules(self._session)
+        self.mx_1_many_nat_rules = MX1ManyNATRules(self._session)
+        self.mx_l3_firewall = MXL3Firewall(self._session)
+        self.mx_l7_application_categories = MXL7ApplicationCategories(self._session)
+        self.mx_l7_firewall = MXL7Firewall(self._session)
+        self.mx_vlan_ports = MXVLANPorts(self._session)
+        self.mx_vpn_firewall = MXVPNFirewall(self._session)
+        self.mx_cellular_firewall = MXCellularFirewall(self._session)
+        self.mx_port_forwarding_rules = MXPortForwardingRules(self._session)
+        self.mx_static_routes = MXStaticRoutes(self._session)
+        self.mx_warm_spare_settings = MXWarmSpareSettings(self._session)
+        self.malware_settings = MalwareSettings(self._session)
+        self.management_interface_settings = ManagementInterfaceSettings(self._session)
+        self.meraki_auth_users = MerakiAuthUsers(self._session)
+        self.named_tag_scope = NamedTagScope(self._session)
+        self.netflow_settings = NetFlowSettings(self._session)
+        self.networks = Networks(self._session)
+        self.openapi_spec = OpenAPISpec(self._session)
+        self.organizations = Organizations(self._session)
+        self.pii = PII(self._session)
+        self.radio_settings = RadioSettings(self._session)
+        self.saml_roles = SAMLRoles(self._session)
+        self.sm = SM(self._session)
+        self.snmp_settings = SNMPSettings(self._session)
+        self.ssids = SSIDs(self._session)
+        self.security_events = SecurityEvents(self._session)
+        self.splash_login_attempts = SplashLoginAttempts(self._session)
+        self.splash_settings = SplashSettings(self._session)
+        self.switch_acls = SwitchACLs(self._session)
+        self.switch_port_schedules = SwitchPortSchedules(self._session)
+        self.switch_ports = SwitchPorts(self._session)
+        self.switch_profiles = SwitchProfiles(self._session)
+        self.switch_settings = SwitchSettings(self._session)
+        self.switch_stacks = SwitchStacks(self._session)
+        self.syslog_servers = SyslogServers(self._session)
+        self.traffic_analysis_settings = TrafficAnalysisSettings(self._session)
+        self.traffic_shaping = TrafficShaping(self._session)
+        self.uplink_settings = UplinkSettings(self._session)
+        self.vlans = VLANs(self._session)
+        self.webhook_logs = WebhookLogs(self._session)
+        self.wireless_health = WirelessHealth(self._session)
+        self.wireless_settings = WirelessSettings(self._session)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="meraki.api" href="api/index.html">meraki.api</a></code></li>
+<li><code><a title="meraki.config" href="config.html">meraki.config</a></code></li>
+<li><code><a title="meraki.exceptions" href="exceptions.html">meraki.exceptions</a></code></li>
+<li><code><a title="meraki.legacy" href="legacy.html">meraki.legacy</a></code></li>
+<li><code><a title="meraki.rest_session" href="rest_session.html">meraki.rest_session</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.DashboardAPI" href="#meraki.DashboardAPI">DashboardAPI</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

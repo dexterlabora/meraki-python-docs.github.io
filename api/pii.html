@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.pii API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.pii</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PII(object):
+    def __init__(self, session):
+        super(PII, self).__init__()
+        self._session = session
+    
+    def getNetworkPiiPiiKeys(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the keys required to access Personally Identifiable Information (PII) for a given identifier. Exactly one identifier will be accepted. If the organization contains org-wide Systems Manager users matching the key provided then there will be an entry with the key &#34;0&#34; containing the applicable keys.**
+        https://api.meraki.com/api_docs#list-the-keys-required-to-access-personally-identifiable-information-pii-for-a-given-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiPiiKeys&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/piiKeys&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkPiiRequests(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the PII requests for this network or organization**
+        https://api.meraki.com/api_docs#list-the-pii-requests-for-this-network-or-organization
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiRequests&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+        return self._session.get(metadata, resource)
+
+    def createNetworkPiiRequest(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Submit a new delete or restrict processing PII request**
+        https://api.meraki.com/api_docs#submit-a-new-delete-or-restrict-processing-pii-request
+        - networkId (string)
+        - type (string): One of &#34;delete&#34; or &#34;restrict processing&#34;
+        - datasets (array): The datasets related to the provided key that should be deleted. Only applies to &#34;delete&#34; requests. The value &#34;all&#34; will be expanded to all datasets applicable to this type. The datasets by applicable to each type are: mac (usage, events, traffic), email (users, loginAttempts), username (users, loginAttempts), bluetoothMac (client, connectivity), smDeviceId (device), smUserId (user)
+        - username (string): The username of a network log in. Only applies to &#34;delete&#34; requests.
+        - email (string): The email of a network user account. Only applies to &#34;delete&#34; requests.
+        - mac (string): The MAC of a network client device. Applies to both &#34;restrict processing&#34; and &#34;delete&#34; requests.
+        - smDeviceId (string): The sm_device_id of a Systems Manager device. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager device. Must include &#34;device&#34; in the dataset for a &#34;delete&#34; request to destroy the device.
+        - smUserId (string): The sm_user_id of a Systems Manager user. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager user. Must include &#34;user&#34; in the dataset for a &#34;delete&#34; request to destroy the user.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;type&#39; in kwargs:
+            options = [&#39;delete&#39;, &#39;restrict processing&#39;]
+            assert kwargs[&#39;type&#39;] in options, f&#39;&#39;&#39;&#34;type&#34; cannot be &#34;{kwargs[&#39;type&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;createNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+        body_params = [&#39;type&#39;, &#39;datasets&#39;, &#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;smDeviceId&#39;, &#39;smUserId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkPiiRequest(self, networkId: str, requestId: str):
+        &#34;&#34;&#34;
+        **Return a PII request**
+        https://api.meraki.com/api_docs#return-a-pii-request
+        - networkId (string)
+        - requestId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkPiiRequest(self, networkId: str, requestId: str):
+        &#34;&#34;&#34;
+        **Delete a restrict processing PII request**
+        https://api.meraki.com/api_docs#delete-a-restrict-processing-pii-request
+        - networkId (string)
+        - requestId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkPiiSmDevicesForKey(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Given a piece of Personally Identifiable Information (PII), return the Systems Manager device ID(s) associated with that identifier. These device IDs can be used with the Systems Manager API endpoints to retrieve device details. Exactly one identifier will be accepted.**
+        https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-device-ids-associated-with-that-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiSmDevicesForKey&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/smDevicesForKey&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkPiiSmOwnersForKey(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Given a piece of Personally Identifiable Information (PII), return the Systems Manager owner ID(s) associated with that identifier. These owner IDs can be used with the Systems Manager API endpoints to retrieve owner details. Exactly one identifier will be accepted.**
+        https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-owner-ids-associated-with-that-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiSmOwnersForKey&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/smOwnersForKey&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.pii.PII"><code class="flex name class">
+<span>class <span class="ident">PII</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PII(object):
+    def __init__(self, session):
+        super(PII, self).__init__()
+        self._session = session
+    
+    def getNetworkPiiPiiKeys(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the keys required to access Personally Identifiable Information (PII) for a given identifier. Exactly one identifier will be accepted. If the organization contains org-wide Systems Manager users matching the key provided then there will be an entry with the key &#34;0&#34; containing the applicable keys.**
+        https://api.meraki.com/api_docs#list-the-keys-required-to-access-personally-identifiable-information-pii-for-a-given-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiPiiKeys&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/piiKeys&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkPiiRequests(self, networkId: str):
+        &#34;&#34;&#34;
+        **List the PII requests for this network or organization**
+        https://api.meraki.com/api_docs#list-the-pii-requests-for-this-network-or-organization
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiRequests&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+        return self._session.get(metadata, resource)
+
+    def createNetworkPiiRequest(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Submit a new delete or restrict processing PII request**
+        https://api.meraki.com/api_docs#submit-a-new-delete-or-restrict-processing-pii-request
+        - networkId (string)
+        - type (string): One of &#34;delete&#34; or &#34;restrict processing&#34;
+        - datasets (array): The datasets related to the provided key that should be deleted. Only applies to &#34;delete&#34; requests. The value &#34;all&#34; will be expanded to all datasets applicable to this type. The datasets by applicable to each type are: mac (usage, events, traffic), email (users, loginAttempts), username (users, loginAttempts), bluetoothMac (client, connectivity), smDeviceId (device), smUserId (user)
+        - username (string): The username of a network log in. Only applies to &#34;delete&#34; requests.
+        - email (string): The email of a network user account. Only applies to &#34;delete&#34; requests.
+        - mac (string): The MAC of a network client device. Applies to both &#34;restrict processing&#34; and &#34;delete&#34; requests.
+        - smDeviceId (string): The sm_device_id of a Systems Manager device. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager device. Must include &#34;device&#34; in the dataset for a &#34;delete&#34; request to destroy the device.
+        - smUserId (string): The sm_user_id of a Systems Manager user. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager user. Must include &#34;user&#34; in the dataset for a &#34;delete&#34; request to destroy the user.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        if &#39;type&#39; in kwargs:
+            options = [&#39;delete&#39;, &#39;restrict processing&#39;]
+            assert kwargs[&#39;type&#39;] in options, f&#39;&#39;&#39;&#34;type&#34; cannot be &#34;{kwargs[&#39;type&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;createNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+        body_params = [&#39;type&#39;, &#39;datasets&#39;, &#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;smDeviceId&#39;, &#39;smUserId&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkPiiRequest(self, networkId: str, requestId: str):
+        &#34;&#34;&#34;
+        **Return a PII request**
+        https://api.meraki.com/api_docs#return-a-pii-request
+        - networkId (string)
+        - requestId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkPiiRequest(self, networkId: str, requestId: str):
+        &#34;&#34;&#34;
+        **Delete a restrict processing PII request**
+        https://api.meraki.com/api_docs#delete-a-restrict-processing-pii-request
+        - networkId (string)
+        - requestId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkPiiRequest&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkPiiSmDevicesForKey(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Given a piece of Personally Identifiable Information (PII), return the Systems Manager device ID(s) associated with that identifier. These device IDs can be used with the Systems Manager API endpoints to retrieve device details. Exactly one identifier will be accepted.**
+        https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-device-ids-associated-with-that-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiSmDevicesForKey&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/smDevicesForKey&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkPiiSmOwnersForKey(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Given a piece of Personally Identifiable Information (PII), return the Systems Manager owner ID(s) associated with that identifier. These owner IDs can be used with the Systems Manager API endpoints to retrieve owner details. Exactly one identifier will be accepted.**
+        https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-owner-ids-associated-with-that-identifier
+        - networkId (string)
+        - username (string): The username of a Systems Manager user
+        - email (string): The email of a network user account or a Systems Manager device
+        - mac (string): The MAC of a network client device or a Systems Manager device
+        - serial (string): The serial of a Systems Manager device
+        - imei (string): The IMEI of a Systems Manager device
+        - bluetoothMac (string): The MAC of a Bluetooth client
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;PII&#39;],
+            &#39;operation&#39;: &#39;getNetworkPiiSmOwnersForKey&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/pii/smOwnersForKey&#39;
+
+        query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.pii.PII.createNetworkPiiRequest"><code class="name flex">
+<span>def <span class="ident">createNetworkPiiRequest</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Submit a new delete or restrict processing PII request</strong>
+<a href="https://api.meraki.com/api_docs#submit-a-new-delete-or-restrict-processing-pii-request">https://api.meraki.com/api_docs#submit-a-new-delete-or-restrict-processing-pii-request</a>
+- networkId (string)
+- type (string): One of "delete" or "restrict processing"
+- datasets (array): The datasets related to the provided key that should be deleted. Only applies to "delete" requests. The value "all" will be expanded to all datasets applicable to this type. The datasets by applicable to each type are: mac (usage, events, traffic), email (users, loginAttempts), username (users, loginAttempts), bluetoothMac (client, connectivity), smDeviceId (device), smUserId (user)
+- username (string): The username of a network log in. Only applies to "delete" requests.
+- email (string): The email of a network user account. Only applies to "delete" requests.
+- mac (string): The MAC of a network client device. Applies to both "restrict processing" and "delete" requests.
+- smDeviceId (string): The sm_device_id of a Systems Manager device. The only way to "restrict processing" or "delete" a Systems Manager device. Must include "device" in the dataset for a "delete" request to destroy the device.
+- smUserId (string): The sm_user_id of a Systems Manager user. The only way to "restrict processing" or "delete" a Systems Manager user. Must include "user" in the dataset for a "delete" request to destroy the user.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkPiiRequest(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Submit a new delete or restrict processing PII request**
+    https://api.meraki.com/api_docs#submit-a-new-delete-or-restrict-processing-pii-request
+    - networkId (string)
+    - type (string): One of &#34;delete&#34; or &#34;restrict processing&#34;
+    - datasets (array): The datasets related to the provided key that should be deleted. Only applies to &#34;delete&#34; requests. The value &#34;all&#34; will be expanded to all datasets applicable to this type. The datasets by applicable to each type are: mac (usage, events, traffic), email (users, loginAttempts), username (users, loginAttempts), bluetoothMac (client, connectivity), smDeviceId (device), smUserId (user)
+    - username (string): The username of a network log in. Only applies to &#34;delete&#34; requests.
+    - email (string): The email of a network user account. Only applies to &#34;delete&#34; requests.
+    - mac (string): The MAC of a network client device. Applies to both &#34;restrict processing&#34; and &#34;delete&#34; requests.
+    - smDeviceId (string): The sm_device_id of a Systems Manager device. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager device. Must include &#34;device&#34; in the dataset for a &#34;delete&#34; request to destroy the device.
+    - smUserId (string): The sm_user_id of a Systems Manager user. The only way to &#34;restrict processing&#34; or &#34;delete&#34; a Systems Manager user. Must include &#34;user&#34; in the dataset for a &#34;delete&#34; request to destroy the user.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    if &#39;type&#39; in kwargs:
+        options = [&#39;delete&#39;, &#39;restrict processing&#39;]
+        assert kwargs[&#39;type&#39;] in options, f&#39;&#39;&#39;&#34;type&#34; cannot be &#34;{kwargs[&#39;type&#39;]}&#34;, &amp; must be set to one of: {options}&#39;&#39;&#39;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;createNetworkPiiRequest&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+    body_params = [&#39;type&#39;, &#39;datasets&#39;, &#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;smDeviceId&#39;, &#39;smUserId&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.deleteNetworkPiiRequest"><code class="name flex">
+<span>def <span class="ident">deleteNetworkPiiRequest</span></span>(<span>self, networkId, requestId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a restrict processing PII request</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-restrict-processing-pii-request">https://api.meraki.com/api_docs#delete-a-restrict-processing-pii-request</a>
+- networkId (string)
+- requestId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetworkPiiRequest(self, networkId: str, requestId: str):
+    &#34;&#34;&#34;
+    **Delete a restrict processing PII request**
+    https://api.meraki.com/api_docs#delete-a-restrict-processing-pii-request
+    - networkId (string)
+    - requestId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;deleteNetworkPiiRequest&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.getNetworkPiiPiiKeys"><code class="name flex">
+<span>def <span class="ident">getNetworkPiiPiiKeys</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the keys required to access Personally Identifiable Information (PII) for a given identifier. Exactly one identifier will be accepted. If the organization contains org-wide Systems Manager users matching the key provided then there will be an entry with the key "0" containing the applicable keys.</strong>
+<a href="https://api.meraki.com/api_docs#list-the-keys-required-to-access-personally-identifiable-information-pii-for-a-given-identifier">https://api.meraki.com/api_docs#list-the-keys-required-to-access-personally-identifiable-information-pii-for-a-given-identifier</a>
+- networkId (string)
+- username (string): The username of a Systems Manager user
+- email (string): The email of a network user account or a Systems Manager device
+- mac (string): The MAC of a network client device or a Systems Manager device
+- serial (string): The serial of a Systems Manager device
+- imei (string): The IMEI of a Systems Manager device
+- bluetoothMac (string): The MAC of a Bluetooth client</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkPiiPiiKeys(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **List the keys required to access Personally Identifiable Information (PII) for a given identifier. Exactly one identifier will be accepted. If the organization contains org-wide Systems Manager users matching the key provided then there will be an entry with the key &#34;0&#34; containing the applicable keys.**
+    https://api.meraki.com/api_docs#list-the-keys-required-to-access-personally-identifiable-information-pii-for-a-given-identifier
+    - networkId (string)
+    - username (string): The username of a Systems Manager user
+    - email (string): The email of a network user account or a Systems Manager device
+    - mac (string): The MAC of a network client device or a Systems Manager device
+    - serial (string): The serial of a Systems Manager device
+    - imei (string): The IMEI of a Systems Manager device
+    - bluetoothMac (string): The MAC of a Bluetooth client
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;getNetworkPiiPiiKeys&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/piiKeys&#39;
+
+    query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.getNetworkPiiRequest"><code class="name flex">
+<span>def <span class="ident">getNetworkPiiRequest</span></span>(<span>self, networkId, requestId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return a PII request</strong>
+<a href="https://api.meraki.com/api_docs#return-a-pii-request">https://api.meraki.com/api_docs#return-a-pii-request</a>
+- networkId (string)
+- requestId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkPiiRequest(self, networkId: str, requestId: str):
+    &#34;&#34;&#34;
+    **Return a PII request**
+    https://api.meraki.com/api_docs#return-a-pii-request
+    - networkId (string)
+    - requestId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;getNetworkPiiRequest&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/requests/{requestId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.getNetworkPiiRequests"><code class="name flex">
+<span>def <span class="ident">getNetworkPiiRequests</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the PII requests for this network or organization</strong>
+<a href="https://api.meraki.com/api_docs#list-the-pii-requests-for-this-network-or-organization">https://api.meraki.com/api_docs#list-the-pii-requests-for-this-network-or-organization</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkPiiRequests(self, networkId: str):
+    &#34;&#34;&#34;
+    **List the PII requests for this network or organization**
+    https://api.meraki.com/api_docs#list-the-pii-requests-for-this-network-or-organization
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;getNetworkPiiRequests&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/requests&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.getNetworkPiiSmDevicesForKey"><code class="name flex">
+<span>def <span class="ident">getNetworkPiiSmDevicesForKey</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Given a piece of Personally Identifiable Information (PII), return the Systems Manager device ID(s) associated with that identifier. These device IDs can be used with the Systems Manager API endpoints to retrieve device details. Exactly one identifier will be accepted.</strong>
+<a href="https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-device-ids-associated-with-that-identifier">https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-device-ids-associated-with-that-identifier</a>
+- networkId (string)
+- username (string): The username of a Systems Manager user
+- email (string): The email of a network user account or a Systems Manager device
+- mac (string): The MAC of a network client device or a Systems Manager device
+- serial (string): The serial of a Systems Manager device
+- imei (string): The IMEI of a Systems Manager device
+- bluetoothMac (string): The MAC of a Bluetooth client</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkPiiSmDevicesForKey(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Given a piece of Personally Identifiable Information (PII), return the Systems Manager device ID(s) associated with that identifier. These device IDs can be used with the Systems Manager API endpoints to retrieve device details. Exactly one identifier will be accepted.**
+    https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-device-ids-associated-with-that-identifier
+    - networkId (string)
+    - username (string): The username of a Systems Manager user
+    - email (string): The email of a network user account or a Systems Manager device
+    - mac (string): The MAC of a network client device or a Systems Manager device
+    - serial (string): The serial of a Systems Manager device
+    - imei (string): The IMEI of a Systems Manager device
+    - bluetoothMac (string): The MAC of a Bluetooth client
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;getNetworkPiiSmDevicesForKey&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/smDevicesForKey&#39;
+
+    query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.pii.PII.getNetworkPiiSmOwnersForKey"><code class="name flex">
+<span>def <span class="ident">getNetworkPiiSmOwnersForKey</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Given a piece of Personally Identifiable Information (PII), return the Systems Manager owner ID(s) associated with that identifier. These owner IDs can be used with the Systems Manager API endpoints to retrieve owner details. Exactly one identifier will be accepted.</strong>
+<a href="https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-owner-ids-associated-with-that-identifier">https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-owner-ids-associated-with-that-identifier</a>
+- networkId (string)
+- username (string): The username of a Systems Manager user
+- email (string): The email of a network user account or a Systems Manager device
+- mac (string): The MAC of a network client device or a Systems Manager device
+- serial (string): The serial of a Systems Manager device
+- imei (string): The IMEI of a Systems Manager device
+- bluetoothMac (string): The MAC of a Bluetooth client</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkPiiSmOwnersForKey(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Given a piece of Personally Identifiable Information (PII), return the Systems Manager owner ID(s) associated with that identifier. These owner IDs can be used with the Systems Manager API endpoints to retrieve owner details. Exactly one identifier will be accepted.**
+    https://api.meraki.com/api_docs#given-a-piece-of-personally-identifiable-information-pii-return-the-systems-manager-owner-ids-associated-with-that-identifier
+    - networkId (string)
+    - username (string): The username of a Systems Manager user
+    - email (string): The email of a network user account or a Systems Manager device
+    - mac (string): The MAC of a network client device or a Systems Manager device
+    - serial (string): The serial of a Systems Manager device
+    - imei (string): The IMEI of a Systems Manager device
+    - bluetoothMac (string): The MAC of a Bluetooth client
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;PII&#39;],
+        &#39;operation&#39;: &#39;getNetworkPiiSmOwnersForKey&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/pii/smOwnersForKey&#39;
+
+    query_params = [&#39;username&#39;, &#39;email&#39;, &#39;mac&#39;, &#39;serial&#39;, &#39;imei&#39;, &#39;bluetoothMac&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.pii.PII" href="#meraki.api.pii.PII">PII</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.pii.PII.createNetworkPiiRequest" href="#meraki.api.pii.PII.createNetworkPiiRequest">createNetworkPiiRequest</a></code></li>
+<li><code><a title="meraki.api.pii.PII.deleteNetworkPiiRequest" href="#meraki.api.pii.PII.deleteNetworkPiiRequest">deleteNetworkPiiRequest</a></code></li>
+<li><code><a title="meraki.api.pii.PII.getNetworkPiiPiiKeys" href="#meraki.api.pii.PII.getNetworkPiiPiiKeys">getNetworkPiiPiiKeys</a></code></li>
+<li><code><a title="meraki.api.pii.PII.getNetworkPiiRequest" href="#meraki.api.pii.PII.getNetworkPiiRequest">getNetworkPiiRequest</a></code></li>
+<li><code><a title="meraki.api.pii.PII.getNetworkPiiRequests" href="#meraki.api.pii.PII.getNetworkPiiRequests">getNetworkPiiRequests</a></code></li>
+<li><code><a title="meraki.api.pii.PII.getNetworkPiiSmDevicesForKey" href="#meraki.api.pii.PII.getNetworkPiiSmDevicesForKey">getNetworkPiiSmDevicesForKey</a></code></li>
+<li><code><a title="meraki.api.pii.PII.getNetworkPiiSmOwnersForKey" href="#meraki.api.pii.PII.getNetworkPiiSmOwnersForKey">getNetworkPiiSmOwnersForKey</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

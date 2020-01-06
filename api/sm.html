@@ -1,0 +1,3372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.api.sm API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.api.sm</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SM(object):
+    def __init__(self, session):
+        super(SM, self).__init__()
+        self._session = session
+    
+    def createNetworkSmAppPolaris(self, networkId: str, scope: str, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new Polaris app**
+        https://api.meraki.com/api_docs#create-a-new-polaris-app
+        - networkId (string)
+        - scope (string): The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - manifestUrl (string): The manifest URL of the Polaris app (one of manifestUrl and bundleId must be provided)
+        - bundleId (string): The bundleId of the Polaris app (one of manifestUrl and bundleId must be provided)
+        - preventAutoInstall (boolean): (optional) Whether or not SM should auto-install this app (one of true or false). False by default.
+        - usesVPP (boolean): (optional) Whether or not the app should use VPP by device assignment (one of true or false). False by default.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+        body_params = [&#39;scope&#39;, &#39;manifestUrl&#39;, &#39;bundleId&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmAppPolaris(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Polaris app if it exists**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-polaris-app-if-it-exists
+        - networkId (string)
+        - bundleId (string): The bundle ID of the app to be found, defaults to com.cisco.ciscosecurity.app
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+        query_params = [&#39;bundleId&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def updateNetworkSmAppPolaris(self, networkId: str, appId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing Polaris app**
+        https://api.meraki.com/api_docs#update-an-existing-polaris-app
+        - networkId (string)
+        - appId (string)
+        - scope (string): optional: The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - preventAutoInstall (boolean): optional: Whether or not SM should auto-install this app (one of true or false)
+        - usesVPP (boolean): optional: Whether or not the app should use VPP by device assignment (one of true or false)
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+        body_params = [&#39;scope&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetworkSmAppPolaris(self, networkId: str, appId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Polaris app**
+        https://api.meraki.com/api_docs#delete-a-cisco-polaris-app
+        - networkId (string)
+        - appId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def createNetworkSmBypassActivationLockAttempt(self, networkId: str, ids: list):
+        &#34;&#34;&#34;
+        **Bypass activation lock attempt**
+        https://api.meraki.com/api_docs#bypass-activation-lock-attempt
+        - networkId (string)
+        - ids (array): The ids of the devices to attempt activation lock bypass.
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmBypassActivationLockAttempt&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts&#39;
+
+        body_params = [&#39;ids&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmBypassActivationLockAttempt(self, networkId: str, attemptId: str):
+        &#34;&#34;&#34;
+        **Bypass activation lock attempt status**
+        https://api.meraki.com/api_docs#bypass-activation-lock-attempt-status
+        - networkId (string)
+        - attemptId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmBypassActivationLockAttempt&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts/{attemptId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSmDeviceFields(self, networkId: str, deviceFields: dict, **kwargs):
+        &#34;&#34;&#34;
+        **Modify the fields of a device**
+        https://api.meraki.com/api_docs#modify-the-fields-of-a-device
+        - networkId (string)
+        - deviceFields (object): The new fields of the device. Each field of this object is optional.
+        - wifiMac (string): The wifiMac of the device to be modified.
+        - id (string): The id of the device to be modified.
+        - serial (string): The serial of the device to be modified.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmDeviceFields&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/fields&#39;
+
+        body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;deviceFields&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def wipeNetworkSmDevice(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Wipe a device**
+        https://api.meraki.com/api_docs#wipe-a-device
+        - networkId (string)
+        - wifiMac (string): The wifiMac of the device to be wiped.
+        - id (string): The id of the device to be wiped.
+        - serial (string): The serial of the device to be wiped.
+        - pin (integer): The pin number (a six digit value) for wiping a macOS device. Required only for macOS devices.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;wipeNetworkSmDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/wipe&#39;
+
+        body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;pin&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def refreshNetworkSmDeviceDetails(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Refresh the details of a device**
+        https://api.meraki.com/api_docs#refresh-the-details-of-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;refreshNetworkSmDeviceDetails&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/{deviceId}/refreshDetails&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkSmDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the devices enrolled in an SM network with various specified fields and filters**
+        https://api.meraki.com/api_docs#list-the-devices-enrolled-in-an-sm-network-with-various-specified-fields-and-filters
+        - networkId (string)
+        - fields (string): Additional fields that will be displayed for each device. Multiple fields can be passed in as comma separated values.
+    The default fields are: id, name, tags, ssid, wifiMac, osName, systemModel, uuid, and serialNumber. The additional fields are: ip,
+    systemType, availableDeviceCapacity, kioskAppName, biosVersion, lastConnected, missingAppsCount, userSuppliedAddress, location, lastUser,
+    ownerEmail, ownerUsername, publicIp, phoneNumber, diskInfoJson, deviceCapacity, isManaged, hadMdm, isSupervised, meid, imei, iccid,
+    simCarrierNetwork, cellularDataUsed, isHotspotEnabled, createdAt, batteryEstCharge, quarantined, avName, avRunning, asName, fwName,
+    isRooted, loginRequired, screenLockEnabled, screenLockDelay, autoLoginDisabled, autoTags, hasMdm, hasDesktopAgent, diskEncryptionEnabled,
+    hardwareEncryptionCaps, passCodeLock, usesHardwareKeystore, and androidSecurityPatchVersion.
+        - wifiMacs (string): Filter devices by wifi mac(s). Multiple wifi macs can be passed in as comma separated values.
+        - serials (string): Filter devices by serial(s). Multiple serials can be passed in as comma separated values.
+        - ids (string): Filter devices by id(s). Multiple ids can be passed in as comma separated values.
+        - scope (string): Specify a scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags as comma separated values.
+        - batchSize (integer): Number of devices to return, 1000 is the default as well as the max.
+        - batchToken (string): If the network has more devices than the batch size, a batch token will be returned
+    as a part of the device list. To see the remainder of the devices, pass in the batchToken as a parameter in the next request.
+    Requests made with the batchToken do not require additional parameters as the batchToken includes the parameters passed in
+    with the original request. Additional parameters passed in with the batchToken will be ignored.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices&#39;
+
+        query_params = [&#39;fields&#39;, &#39;wifiMacs&#39;, &#39;serials&#39;, &#39;ids&#39;, &#39;scope&#39;, &#39;batchSize&#39;, &#39;batchToken&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def checkinNetworkSmDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Force check-in a set of devices**
+        https://api.meraki.com/api_docs#force-check-in-a-set-of-devices
+        - networkId (string)
+        - wifiMacs (string): The wifiMacs of the devices to be checked-in.
+        - ids (string): The ids of the devices to be checked-in.
+        - serials (string): The serials of the devices to be checked-in.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be checked-in.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;checkinNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/checkin&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def moveNetworkSmDevices(self, networkId: str, newNetwork: str, **kwargs):
+        &#34;&#34;&#34;
+        **Move a set of devices to a new network**
+        https://api.meraki.com/api_docs#move-a-set-of-devices-to-a-new-network
+        - networkId (string)
+        - newNetwork (string): The new network to which the devices will be moved.
+        - wifiMacs (string): The wifiMacs of the devices to be moved.
+        - ids (string): The ids of the devices to be moved.
+        - serials (string): The serials of the devices to be moved.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be moved.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;moveNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/move&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;newNetwork&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def updateNetworkSmDevicesTags(self, networkId: str, tags: str, updateAction: str, **kwargs):
+        &#34;&#34;&#34;
+        **Add, delete, or update the tags of a set of devices**
+        https://api.meraki.com/api_docs#add-delete-or-update-the-tags-of-a-set-of-devices
+        - networkId (string)
+        - tags (string): The tags to be added, deleted, or updated.
+        - updateAction (string): One of add, delete, or update. Only devices that have been modified will be returned.
+        - wifiMacs (string): The wifiMacs of the devices to be modified.
+        - ids (string): The ids of the devices to be modified.
+        - serials (string): The serials of the devices to be modified.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be modified.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmDevicesTags&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/tags&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;tags&#39;, &#39;updateAction&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def unenrollNetworkSmDevice(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Unenroll a device**
+        https://api.meraki.com/api_docs#unenroll-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;unenrollNetworkSmDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/{deviceId}/unenroll&#39;
+
+        return self._session.post(metadata, resource)
+
+    def createNetworkSmProfileClarity(self, networkId: str, name: str, scope: str, VendorConfig: list, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new profile containing a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-clarity-payload
+        - networkId (string)
+        - name (string): The name to be given to the new profile
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Default true.
+        - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Default true.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def updateNetworkSmProfileClarity(self, networkId: str, profileId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing profile containing a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        - name (string): optional: A new name for the profile
+        - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - PluginBundleID (string): optional: The new bundle ID of the application
+        - FilterBrowsers (boolean): optional: Whether or not to enable browser traffic filtering (one of true, false).
+        - FilterSockets (boolean): optional: Whether or not to enable socket traffic filtering (one of true, false).
+        - VendorConfig (array): optional: The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def addNetworkSmProfileClarity(self, networkId: str, profileId: str, VendorConfig: list, **kwargs):
+        &#34;&#34;&#34;
+        **Add a Cisco Clarity payload to an existing profile**
+        https://api.meraki.com/api_docs#add-a-cisco-clarity-payload-to-an-existing-profile
+        - networkId (string)
+        - profileId (string)
+        - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Defaults to true
+        - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Defaults to true
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;addNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        body_params = [&#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmProfileClarity(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkSmProfileClarity(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Clarity payload. Deletes the entire profile if it&#39;s empty after removing the payload.**
+        https://api.meraki.com/api_docs#delete-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def createNetworkSmProfileUmbrella(self, networkId: str, name: str, scope: str, ProviderConfiguration: list, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new profile containing a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-umbrella-payload
+        - networkId (string)
+        - name (string): The name to be given to the new profile
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+        - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def updateNetworkSmProfileUmbrella(self, networkId: str, profileId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing profile containing a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        - name (string): optional: A new name for the profile
+        - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - AppBundleIdentifier (string): optional: The bundle ID of the application
+        - ProviderBundleIdentifier (string): optional: The bundle ID of the provider
+        - ProviderConfiguration (array): optional: The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - usesCert (boolean): optional: Whether the certificate should be attached to this profile (one of true, false)
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def addNetworkSmProfileUmbrella(self, networkId: str, profileId: str, ProviderConfiguration: list, **kwargs):
+        &#34;&#34;&#34;
+        **Add a Cisco Umbrella payload to an existing profile**
+        https://api.meraki.com/api_docs#add-a-cisco-umbrella-payload-to-an-existing-profile
+        - networkId (string)
+        - profileId (string)
+        - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+        - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;addNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        body_params = [&#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Umbrella payload. Deletes the entire profile if it&#39;s empty after removing the payload**
+        https://api.meraki.com/api_docs#delete-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkSmProfiles(self, networkId: str):
+        &#34;&#34;&#34;
+        **List all the profiles in the network**
+        https://api.meraki.com/api_docs#list-all-the-profiles-in-the-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUserDeviceProfiles(self, networkId: str, userId: str):
+        &#34;&#34;&#34;
+        **Get the profiles associated with a user**
+        https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-user
+        - networkId (string)
+        - userId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUserDeviceProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/user/{userId}/deviceProfiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUserSoftwares(self, networkId: str, userId: str):
+        &#34;&#34;&#34;
+        **Get a list of softwares associated with a user**
+        https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-user
+        - networkId (string)
+        - userId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUserSoftwares&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/user/{userId}/softwares&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUsers(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the owners in an SM network with various specified fields and filters**
+        https://api.meraki.com/api_docs#list-the-owners-in-an-sm-network-with-various-specified-fields-and-filters
+        - networkId (string)
+        - ids (string): Filter users by id(s). Multiple ids can be passed in as comma separated values.
+        - usernames (string): Filter users by username(s). Multiple usernames can be passed in as comma separated values.
+        - emails (string): Filter users by email(s). Multiple emails can be passed in as comma separated values.
+        - scope (string): Specifiy a scope (one of all, none, withAny, withAll, withoutAny, withoutAll) and a set of tags as comma separated values.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUsers&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/users&#39;
+
+        query_params = [&#39;ids&#39;, &#39;usernames&#39;, &#39;emails&#39;, &#39;scope&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkSmCellularUsageHistory(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Return the client&#39;s daily cellular data usage history. Usage data is in kilobytes.**
+        https://api.meraki.com/api_docs#return-the-clients-daily-cellular-data-usage-history
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmCellularUsageHistory&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/cellularUsageHistory&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmCerts(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the certs on a device**
+        https://api.meraki.com/api_docs#list-the-certs-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmCerts&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/certs&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmDeviceProfiles(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Get the profiles associated with a device**
+        https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDeviceProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/deviceProfiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmNetworkAdapters(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the network adapters of a device**
+        https://api.meraki.com/api_docs#list-the-network-adapters-of-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmNetworkAdapters&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/networkAdapters&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmRestrictions(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the restrictions on a device**
+        https://api.meraki.com/api_docs#list-the-restrictions-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmRestrictions&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/restrictions&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmSecurityCenters(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the security centers on a device**
+        https://api.meraki.com/api_docs#list-the-security-centers-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmSecurityCenters&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/securityCenters&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmSoftwares(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Get a list of softwares associated with a device**
+        https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmSoftwares&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/softwares&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmWlanLists(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the saved SSID names on a device**
+        https://api.meraki.com/api_docs#list-the-saved-ssid-names-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmWlanLists&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/wlanLists&#39;
+
+        return self._session.get(metadata, resource)
+
+    def lockNetworkSmDevices(self, network_id: str, **kwargs):
+        &#34;&#34;&#34;
+        **Lock a set of devices**
+        https://api.meraki.com/api_docs#lock-a-set-of-devices
+        - network_id (string)
+        - wifiMacs (string): The wifiMacs of the devices to be locked.
+        - ids (string): The ids of the devices to be locked.
+        - serials (string): The serials of the devices to be locked.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be wiped.
+        - pin (integer): The pin number for locking macOS devices (a six digit number). Required only for macOS devices.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;lockNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/devices/lock&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;pin&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def getNetworkSmConnectivity(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Returns historical connectivity data (whether a device is regularly checking in to Dashboard).**
+        https://api.meraki.com/api_docs#returns-historical-connectivity-data-whether-a-device-is-regularly-checking-in-to-dashboard
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmConnectivity&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/connectivity&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmDesktopLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Return historical records of various Systems Manager network connection details for desktop devices.**
+        https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-network-connection-details-for-desktop-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDesktopLogs&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/desktopLogs&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmDeviceCommandLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **    Return historical records of commands sent to Systems Manager devices.
+    &lt;p&gt;Note that this will include the name of the Dashboard user who initiated the command if it was generated
+    by a Dashboard admin rather than the automatic behavior of the system; you may wish to filter this out
+    of any reports.&lt;/p&gt;
+**
+        https://api.meraki.com/api_docs#----return-historical-records-of-commands-sent-to-systems-manager-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDeviceCommandLogs&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/deviceCommandLogs&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmPerformanceHistory(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Return historical records of various Systems Manager client metrics for desktop devices.**
+        https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-client-metrics-for-desktop-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmPerformanceHistory&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/performanceHistory&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.api.sm.SM"><code class="flex name class">
+<span>class <span class="ident">SM</span></span>
+<span>(</span><span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SM(object):
+    def __init__(self, session):
+        super(SM, self).__init__()
+        self._session = session
+    
+    def createNetworkSmAppPolaris(self, networkId: str, scope: str, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new Polaris app**
+        https://api.meraki.com/api_docs#create-a-new-polaris-app
+        - networkId (string)
+        - scope (string): The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - manifestUrl (string): The manifest URL of the Polaris app (one of manifestUrl and bundleId must be provided)
+        - bundleId (string): The bundleId of the Polaris app (one of manifestUrl and bundleId must be provided)
+        - preventAutoInstall (boolean): (optional) Whether or not SM should auto-install this app (one of true or false). False by default.
+        - usesVPP (boolean): (optional) Whether or not the app should use VPP by device assignment (one of true or false). False by default.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+        body_params = [&#39;scope&#39;, &#39;manifestUrl&#39;, &#39;bundleId&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmAppPolaris(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Polaris app if it exists**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-polaris-app-if-it-exists
+        - networkId (string)
+        - bundleId (string): The bundle ID of the app to be found, defaults to com.cisco.ciscosecurity.app
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+        query_params = [&#39;bundleId&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def updateNetworkSmAppPolaris(self, networkId: str, appId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing Polaris app**
+        https://api.meraki.com/api_docs#update-an-existing-polaris-app
+        - networkId (string)
+        - appId (string)
+        - scope (string): optional: The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - preventAutoInstall (boolean): optional: Whether or not SM should auto-install this app (one of true or false)
+        - usesVPP (boolean): optional: Whether or not the app should use VPP by device assignment (one of true or false)
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+        body_params = [&#39;scope&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def deleteNetworkSmAppPolaris(self, networkId: str, appId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Polaris app**
+        https://api.meraki.com/api_docs#delete-a-cisco-polaris-app
+        - networkId (string)
+        - appId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmAppPolaris&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def createNetworkSmBypassActivationLockAttempt(self, networkId: str, ids: list):
+        &#34;&#34;&#34;
+        **Bypass activation lock attempt**
+        https://api.meraki.com/api_docs#bypass-activation-lock-attempt
+        - networkId (string)
+        - ids (array): The ids of the devices to attempt activation lock bypass.
+        &#34;&#34;&#34;
+
+        kwargs = locals()
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmBypassActivationLockAttempt&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts&#39;
+
+        body_params = [&#39;ids&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmBypassActivationLockAttempt(self, networkId: str, attemptId: str):
+        &#34;&#34;&#34;
+        **Bypass activation lock attempt status**
+        https://api.meraki.com/api_docs#bypass-activation-lock-attempt-status
+        - networkId (string)
+        - attemptId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmBypassActivationLockAttempt&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts/{attemptId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def updateNetworkSmDeviceFields(self, networkId: str, deviceFields: dict, **kwargs):
+        &#34;&#34;&#34;
+        **Modify the fields of a device**
+        https://api.meraki.com/api_docs#modify-the-fields-of-a-device
+        - networkId (string)
+        - deviceFields (object): The new fields of the device. Each field of this object is optional.
+        - wifiMac (string): The wifiMac of the device to be modified.
+        - id (string): The id of the device to be modified.
+        - serial (string): The serial of the device to be modified.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmDeviceFields&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/fields&#39;
+
+        body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;deviceFields&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def wipeNetworkSmDevice(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Wipe a device**
+        https://api.meraki.com/api_docs#wipe-a-device
+        - networkId (string)
+        - wifiMac (string): The wifiMac of the device to be wiped.
+        - id (string): The id of the device to be wiped.
+        - serial (string): The serial of the device to be wiped.
+        - pin (integer): The pin number (a six digit value) for wiping a macOS device. Required only for macOS devices.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;wipeNetworkSmDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/wipe&#39;
+
+        body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;pin&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def refreshNetworkSmDeviceDetails(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Refresh the details of a device**
+        https://api.meraki.com/api_docs#refresh-the-details-of-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;refreshNetworkSmDeviceDetails&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/device/{deviceId}/refreshDetails&#39;
+
+        return self._session.post(metadata, resource)
+
+    def getNetworkSmDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the devices enrolled in an SM network with various specified fields and filters**
+        https://api.meraki.com/api_docs#list-the-devices-enrolled-in-an-sm-network-with-various-specified-fields-and-filters
+        - networkId (string)
+        - fields (string): Additional fields that will be displayed for each device. Multiple fields can be passed in as comma separated values.
+    The default fields are: id, name, tags, ssid, wifiMac, osName, systemModel, uuid, and serialNumber. The additional fields are: ip,
+    systemType, availableDeviceCapacity, kioskAppName, biosVersion, lastConnected, missingAppsCount, userSuppliedAddress, location, lastUser,
+    ownerEmail, ownerUsername, publicIp, phoneNumber, diskInfoJson, deviceCapacity, isManaged, hadMdm, isSupervised, meid, imei, iccid,
+    simCarrierNetwork, cellularDataUsed, isHotspotEnabled, createdAt, batteryEstCharge, quarantined, avName, avRunning, asName, fwName,
+    isRooted, loginRequired, screenLockEnabled, screenLockDelay, autoLoginDisabled, autoTags, hasMdm, hasDesktopAgent, diskEncryptionEnabled,
+    hardwareEncryptionCaps, passCodeLock, usesHardwareKeystore, and androidSecurityPatchVersion.
+        - wifiMacs (string): Filter devices by wifi mac(s). Multiple wifi macs can be passed in as comma separated values.
+        - serials (string): Filter devices by serial(s). Multiple serials can be passed in as comma separated values.
+        - ids (string): Filter devices by id(s). Multiple ids can be passed in as comma separated values.
+        - scope (string): Specify a scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags as comma separated values.
+        - batchSize (integer): Number of devices to return, 1000 is the default as well as the max.
+        - batchToken (string): If the network has more devices than the batch size, a batch token will be returned
+    as a part of the device list. To see the remainder of the devices, pass in the batchToken as a parameter in the next request.
+    Requests made with the batchToken do not require additional parameters as the batchToken includes the parameters passed in
+    with the original request. Additional parameters passed in with the batchToken will be ignored.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices&#39;
+
+        query_params = [&#39;fields&#39;, &#39;wifiMacs&#39;, &#39;serials&#39;, &#39;ids&#39;, &#39;scope&#39;, &#39;batchSize&#39;, &#39;batchToken&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def checkinNetworkSmDevices(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Force check-in a set of devices**
+        https://api.meraki.com/api_docs#force-check-in-a-set-of-devices
+        - networkId (string)
+        - wifiMacs (string): The wifiMacs of the devices to be checked-in.
+        - ids (string): The ids of the devices to be checked-in.
+        - serials (string): The serials of the devices to be checked-in.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be checked-in.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;checkinNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/checkin&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def moveNetworkSmDevices(self, networkId: str, newNetwork: str, **kwargs):
+        &#34;&#34;&#34;
+        **Move a set of devices to a new network**
+        https://api.meraki.com/api_docs#move-a-set-of-devices-to-a-new-network
+        - networkId (string)
+        - newNetwork (string): The new network to which the devices will be moved.
+        - wifiMacs (string): The wifiMacs of the devices to be moved.
+        - ids (string): The ids of the devices to be moved.
+        - serials (string): The serials of the devices to be moved.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be moved.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;moveNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/move&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;newNetwork&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def updateNetworkSmDevicesTags(self, networkId: str, tags: str, updateAction: str, **kwargs):
+        &#34;&#34;&#34;
+        **Add, delete, or update the tags of a set of devices**
+        https://api.meraki.com/api_docs#add-delete-or-update-the-tags-of-a-set-of-devices
+        - networkId (string)
+        - tags (string): The tags to be added, deleted, or updated.
+        - updateAction (string): One of add, delete, or update. Only devices that have been modified will be returned.
+        - wifiMacs (string): The wifiMacs of the devices to be modified.
+        - ids (string): The ids of the devices to be modified.
+        - serials (string): The serials of the devices to be modified.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be modified.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmDevicesTags&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/tags&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;tags&#39;, &#39;updateAction&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def unenrollNetworkSmDevice(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Unenroll a device**
+        https://api.meraki.com/api_docs#unenroll-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;unenrollNetworkSmDevice&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/devices/{deviceId}/unenroll&#39;
+
+        return self._session.post(metadata, resource)
+
+    def createNetworkSmProfileClarity(self, networkId: str, name: str, scope: str, VendorConfig: list, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new profile containing a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-clarity-payload
+        - networkId (string)
+        - name (string): The name to be given to the new profile
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Default true.
+        - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Default true.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def updateNetworkSmProfileClarity(self, networkId: str, profileId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing profile containing a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        - name (string): optional: A new name for the profile
+        - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - PluginBundleID (string): optional: The new bundle ID of the application
+        - FilterBrowsers (boolean): optional: Whether or not to enable browser traffic filtering (one of true, false).
+        - FilterSockets (boolean): optional: Whether or not to enable socket traffic filtering (one of true, false).
+        - VendorConfig (array): optional: The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def addNetworkSmProfileClarity(self, networkId: str, profileId: str, VendorConfig: list, **kwargs):
+        &#34;&#34;&#34;
+        **Add a Cisco Clarity payload to an existing profile**
+        https://api.meraki.com/api_docs#add-a-cisco-clarity-payload-to-an-existing-profile
+        - networkId (string)
+        - profileId (string)
+        - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Defaults to true
+        - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Defaults to true
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;addNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        body_params = [&#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmProfileClarity(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Clarity payload**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkSmProfileClarity(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Clarity payload. Deletes the entire profile if it&#39;s empty after removing the payload.**
+        https://api.meraki.com/api_docs#delete-a-cisco-clarity-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmProfileClarity&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def createNetworkSmProfileUmbrella(self, networkId: str, name: str, scope: str, ProviderConfiguration: list, **kwargs):
+        &#34;&#34;&#34;
+        **Create a new profile containing a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-umbrella-payload
+        - networkId (string)
+        - name (string): The name to be given to the new profile
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+        - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;createNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def updateNetworkSmProfileUmbrella(self, networkId: str, profileId: str, **kwargs):
+        &#34;&#34;&#34;
+        **Update an existing profile containing a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        - name (string): optional: A new name for the profile
+        - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+        - AppBundleIdentifier (string): optional: The bundle ID of the application
+        - ProviderBundleIdentifier (string): optional: The bundle ID of the provider
+        - ProviderConfiguration (array): optional: The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - usesCert (boolean): optional: Whether the certificate should be attached to this profile (one of true, false)
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;updateNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def addNetworkSmProfileUmbrella(self, networkId: str, profileId: str, ProviderConfiguration: list, **kwargs):
+        &#34;&#34;&#34;
+        **Add a Cisco Umbrella payload to an existing profile**
+        https://api.meraki.com/api_docs#add-a-cisco-umbrella-payload-to-an-existing-profile
+        - networkId (string)
+        - profileId (string)
+        - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+        - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+        - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+        - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;addNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        body_params = [&#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.post(metadata, resource, payload)
+
+    def getNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Get details for a Cisco Umbrella payload**
+        https://api.meraki.com/api_docs#get-details-for-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        return self._session.get(metadata, resource)
+
+    def deleteNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+        &#34;&#34;&#34;
+        **Delete a Cisco Umbrella payload. Deletes the entire profile if it&#39;s empty after removing the payload**
+        https://api.meraki.com/api_docs#delete-a-cisco-umbrella-payload
+        - networkId (string)
+        - profileId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;deleteNetworkSmProfileUmbrella&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+        return self._session.delete(metadata, resource)
+
+    def getNetworkSmProfiles(self, networkId: str):
+        &#34;&#34;&#34;
+        **List all the profiles in the network**
+        https://api.meraki.com/api_docs#list-all-the-profiles-in-the-network
+        - networkId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/profiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUserDeviceProfiles(self, networkId: str, userId: str):
+        &#34;&#34;&#34;
+        **Get the profiles associated with a user**
+        https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-user
+        - networkId (string)
+        - userId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUserDeviceProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/user/{userId}/deviceProfiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUserSoftwares(self, networkId: str, userId: str):
+        &#34;&#34;&#34;
+        **Get a list of softwares associated with a user**
+        https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-user
+        - networkId (string)
+        - userId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUserSoftwares&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/user/{userId}/softwares&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmUsers(self, networkId: str, **kwargs):
+        &#34;&#34;&#34;
+        **List the owners in an SM network with various specified fields and filters**
+        https://api.meraki.com/api_docs#list-the-owners-in-an-sm-network-with-various-specified-fields-and-filters
+        - networkId (string)
+        - ids (string): Filter users by id(s). Multiple ids can be passed in as comma separated values.
+        - usernames (string): Filter users by username(s). Multiple usernames can be passed in as comma separated values.
+        - emails (string): Filter users by email(s). Multiple emails can be passed in as comma separated values.
+        - scope (string): Specifiy a scope (one of all, none, withAny, withAll, withoutAny, withoutAll) and a set of tags as comma separated values.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmUsers&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/users&#39;
+
+        query_params = [&#39;ids&#39;, &#39;usernames&#39;, &#39;emails&#39;, &#39;scope&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get(metadata, resource, params)
+
+    def getNetworkSmCellularUsageHistory(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Return the client&#39;s daily cellular data usage history. Usage data is in kilobytes.**
+        https://api.meraki.com/api_docs#return-the-clients-daily-cellular-data-usage-history
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmCellularUsageHistory&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/cellularUsageHistory&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmCerts(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the certs on a device**
+        https://api.meraki.com/api_docs#list-the-certs-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmCerts&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/certs&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmDeviceProfiles(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Get the profiles associated with a device**
+        https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDeviceProfiles&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/deviceProfiles&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmNetworkAdapters(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the network adapters of a device**
+        https://api.meraki.com/api_docs#list-the-network-adapters-of-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmNetworkAdapters&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/networkAdapters&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmRestrictions(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the restrictions on a device**
+        https://api.meraki.com/api_docs#list-the-restrictions-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmRestrictions&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/restrictions&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmSecurityCenters(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the security centers on a device**
+        https://api.meraki.com/api_docs#list-the-security-centers-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmSecurityCenters&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/securityCenters&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmSoftwares(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **Get a list of softwares associated with a device**
+        https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmSoftwares&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/softwares&#39;
+
+        return self._session.get(metadata, resource)
+
+    def getNetworkSmWlanLists(self, networkId: str, deviceId: str):
+        &#34;&#34;&#34;
+        **List the saved SSID names on a device**
+        https://api.meraki.com/api_docs#list-the-saved-ssid-names-on-a-device
+        - networkId (string)
+        - deviceId (string)
+        &#34;&#34;&#34;
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmWlanLists&#39;,
+        }
+        resource = f&#39;/networks/{networkId}/sm/{deviceId}/wlanLists&#39;
+
+        return self._session.get(metadata, resource)
+
+    def lockNetworkSmDevices(self, network_id: str, **kwargs):
+        &#34;&#34;&#34;
+        **Lock a set of devices**
+        https://api.meraki.com/api_docs#lock-a-set-of-devices
+        - network_id (string)
+        - wifiMacs (string): The wifiMacs of the devices to be locked.
+        - ids (string): The ids of the devices to be locked.
+        - serials (string): The serials of the devices to be locked.
+        - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be wiped.
+        - pin (integer): The pin number for locking macOS devices (a six digit number). Required only for macOS devices.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;lockNetworkSmDevices&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/devices/lock&#39;
+
+        body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;pin&#39;]
+        payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+        return self._session.put(metadata, resource, payload)
+
+    def getNetworkSmConnectivity(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Returns historical connectivity data (whether a device is regularly checking in to Dashboard).**
+        https://api.meraki.com/api_docs#returns-historical-connectivity-data-whether-a-device-is-regularly-checking-in-to-dashboard
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmConnectivity&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/connectivity&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmDesktopLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Return historical records of various Systems Manager network connection details for desktop devices.**
+        https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-network-connection-details-for-desktop-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDesktopLogs&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/desktopLogs&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmDeviceCommandLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **    Return historical records of commands sent to Systems Manager devices.
+    &lt;p&gt;Note that this will include the name of the Dashboard user who initiated the command if it was generated
+    by a Dashboard admin rather than the automatic behavior of the system; you may wish to filter this out
+    of any reports.&lt;/p&gt;
+**
+        https://api.meraki.com/api_docs#----return-historical-records-of-commands-sent-to-systems-manager-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDeviceCommandLogs&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/deviceCommandLogs&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)
+
+
+    def getNetworkSmPerformanceHistory(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **Return historical records of various Systems Manager client metrics for desktop devices.**
+        https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-client-metrics-for-desktop-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmPerformanceHistory&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/performanceHistory&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.api.sm.SM.addNetworkSmProfileClarity"><code class="name flex">
+<span>def <span class="ident">addNetworkSmProfileClarity</span></span>(<span>self, networkId, profileId, VendorConfig, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Add a Cisco Clarity payload to an existing profile</strong>
+<a href="https://api.meraki.com/api_docs#add-a-cisco-clarity-payload-to-an-existing-profile">https://api.meraki.com/api_docs#add-a-cisco-clarity-payload-to-an-existing-profile</a>
+- networkId (string)
+- profileId (string)
+- VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+- PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+- FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Defaults to true
+- FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Defaults to true</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addNetworkSmProfileClarity(self, networkId: str, profileId: str, VendorConfig: list, **kwargs):
+    &#34;&#34;&#34;
+    **Add a Cisco Clarity payload to an existing profile**
+    https://api.meraki.com/api_docs#add-a-cisco-clarity-payload-to-an-existing-profile
+    - networkId (string)
+    - profileId (string)
+    - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+    - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Defaults to true
+    - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Defaults to true
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;addNetworkSmProfileClarity&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+    body_params = [&#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.addNetworkSmProfileUmbrella"><code class="name flex">
+<span>def <span class="ident">addNetworkSmProfileUmbrella</span></span>(<span>self, networkId, profileId, ProviderConfiguration, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Add a Cisco Umbrella payload to an existing profile</strong>
+<a href="https://api.meraki.com/api_docs#add-a-cisco-umbrella-payload-to-an-existing-profile">https://api.meraki.com/api_docs#add-a-cisco-umbrella-payload-to-an-existing-profile</a>
+- networkId (string)
+- profileId (string)
+- ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+- AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+- ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+- usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addNetworkSmProfileUmbrella(self, networkId: str, profileId: str, ProviderConfiguration: list, **kwargs):
+    &#34;&#34;&#34;
+    **Add a Cisco Umbrella payload to an existing profile**
+    https://api.meraki.com/api_docs#add-a-cisco-umbrella-payload-to-an-existing-profile
+    - networkId (string)
+    - profileId (string)
+    - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+    - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+    - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;addNetworkSmProfileUmbrella&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+    body_params = [&#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.checkinNetworkSmDevices"><code class="name flex">
+<span>def <span class="ident">checkinNetworkSmDevices</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Force check-in a set of devices</strong>
+<a href="https://api.meraki.com/api_docs#force-check-in-a-set-of-devices">https://api.meraki.com/api_docs#force-check-in-a-set-of-devices</a>
+- networkId (string)
+- wifiMacs (string): The wifiMacs of the devices to be checked-in.
+- ids (string): The ids of the devices to be checked-in.
+- serials (string): The serials of the devices to be checked-in.
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be checked-in.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def checkinNetworkSmDevices(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Force check-in a set of devices**
+    https://api.meraki.com/api_docs#force-check-in-a-set-of-devices
+    - networkId (string)
+    - wifiMacs (string): The wifiMacs of the devices to be checked-in.
+    - ids (string): The ids of the devices to be checked-in.
+    - serials (string): The serials of the devices to be checked-in.
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be checked-in.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;checkinNetworkSmDevices&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/devices/checkin&#39;
+
+    body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.createNetworkSmAppPolaris"><code class="name flex">
+<span>def <span class="ident">createNetworkSmAppPolaris</span></span>(<span>self, networkId, scope, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Create a new Polaris app</strong>
+<a href="https://api.meraki.com/api_docs#create-a-new-polaris-app">https://api.meraki.com/api_docs#create-a-new-polaris-app</a>
+- networkId (string)
+- scope (string): The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- manifestUrl (string): The manifest URL of the Polaris app (one of manifestUrl and bundleId must be provided)
+- bundleId (string): The bundleId of the Polaris app (one of manifestUrl and bundleId must be provided)
+- preventAutoInstall (boolean): (optional) Whether or not SM should auto-install this app (one of true or false). False by default.
+- usesVPP (boolean): (optional) Whether or not the app should use VPP by device assignment (one of true or false). False by default.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkSmAppPolaris(self, networkId: str, scope: str, **kwargs):
+    &#34;&#34;&#34;
+    **Create a new Polaris app**
+    https://api.meraki.com/api_docs#create-a-new-polaris-app
+    - networkId (string)
+    - scope (string): The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - manifestUrl (string): The manifest URL of the Polaris app (one of manifestUrl and bundleId must be provided)
+    - bundleId (string): The bundleId of the Polaris app (one of manifestUrl and bundleId must be provided)
+    - preventAutoInstall (boolean): (optional) Whether or not SM should auto-install this app (one of true or false). False by default.
+    - usesVPP (boolean): (optional) Whether or not the app should use VPP by device assignment (one of true or false). False by default.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;createNetworkSmAppPolaris&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+    body_params = [&#39;scope&#39;, &#39;manifestUrl&#39;, &#39;bundleId&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.createNetworkSmBypassActivationLockAttempt"><code class="name flex">
+<span>def <span class="ident">createNetworkSmBypassActivationLockAttempt</span></span>(<span>self, networkId, ids)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Bypass activation lock attempt</strong>
+<a href="https://api.meraki.com/api_docs#bypass-activation-lock-attempt">https://api.meraki.com/api_docs#bypass-activation-lock-attempt</a>
+- networkId (string)
+- ids (array): The ids of the devices to attempt activation lock bypass.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkSmBypassActivationLockAttempt(self, networkId: str, ids: list):
+    &#34;&#34;&#34;
+    **Bypass activation lock attempt**
+    https://api.meraki.com/api_docs#bypass-activation-lock-attempt
+    - networkId (string)
+    - ids (array): The ids of the devices to attempt activation lock bypass.
+    &#34;&#34;&#34;
+
+    kwargs = locals()
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;createNetworkSmBypassActivationLockAttempt&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts&#39;
+
+    body_params = [&#39;ids&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.createNetworkSmProfileClarity"><code class="name flex">
+<span>def <span class="ident">createNetworkSmProfileClarity</span></span>(<span>self, networkId, name, scope, VendorConfig, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Create a new profile containing a Cisco Clarity payload</strong>
+<a href="https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-clarity-payload">https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-clarity-payload</a>
+- networkId (string)
+- name (string): The name to be given to the new profile
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+- PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+- FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Default true.
+- FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Default true.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkSmProfileClarity(self, networkId: str, name: str, scope: str, VendorConfig: list, **kwargs):
+    &#34;&#34;&#34;
+    **Create a new profile containing a Cisco Clarity payload**
+    https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-clarity-payload
+    - networkId (string)
+    - name (string): The name to be given to the new profile
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - VendorConfig (array): The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    - PluginBundleID (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+    - FilterBrowsers (boolean): Whether or not to enable browser traffic filtering (one of true, false). Default true.
+    - FilterSockets (boolean): Whether or not to enable socket traffic filtering (one of true, false). Default true.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;createNetworkSmProfileClarity&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/clarity&#39;
+
+    body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.createNetworkSmProfileUmbrella"><code class="name flex">
+<span>def <span class="ident">createNetworkSmProfileUmbrella</span></span>(<span>self, networkId, name, scope, ProviderConfiguration, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Create a new profile containing a Cisco Umbrella payload</strong>
+<a href="https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-umbrella-payload">https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-umbrella-payload</a>
+- networkId (string)
+- name (string): The name to be given to the new profile
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+- AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+- ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+- usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createNetworkSmProfileUmbrella(self, networkId: str, name: str, scope: str, ProviderConfiguration: list, **kwargs):
+    &#34;&#34;&#34;
+    **Create a new profile containing a Cisco Umbrella payload**
+    https://api.meraki.com/api_docs#create-a-new-profile-containing-a-cisco-umbrella-payload
+    - networkId (string)
+    - name (string): The name to be given to the new profile
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - ProviderConfiguration (array): The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    - AppBundleIdentifier (string): The bundle ID of the application, defaults to com.cisco.ciscosecurity.app
+    - ProviderBundleIdentifier (string): The bundle ID of the provider, defaults to com.cisco.ciscosecurity.app.CiscoUmbrella
+    - usesCert (boolean): Whether the certificate should be attached to this profile (one of true, false). False by default
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;createNetworkSmProfileUmbrella&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/umbrella&#39;
+
+    body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.post(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.deleteNetworkSmAppPolaris"><code class="name flex">
+<span>def <span class="ident">deleteNetworkSmAppPolaris</span></span>(<span>self, networkId, appId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a Cisco Polaris app</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-cisco-polaris-app">https://api.meraki.com/api_docs#delete-a-cisco-polaris-app</a>
+- networkId (string)
+- appId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetworkSmAppPolaris(self, networkId: str, appId: str):
+    &#34;&#34;&#34;
+    **Delete a Cisco Polaris app**
+    https://api.meraki.com/api_docs#delete-a-cisco-polaris-app
+    - networkId (string)
+    - appId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;deleteNetworkSmAppPolaris&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.deleteNetworkSmProfileClarity"><code class="name flex">
+<span>def <span class="ident">deleteNetworkSmProfileClarity</span></span>(<span>self, networkId, profileId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a Cisco Clarity payload. Deletes the entire profile if it's empty after removing the payload.</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-cisco-clarity-payload">https://api.meraki.com/api_docs#delete-a-cisco-clarity-payload</a>
+- networkId (string)
+- profileId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetworkSmProfileClarity(self, networkId: str, profileId: str):
+    &#34;&#34;&#34;
+    **Delete a Cisco Clarity payload. Deletes the entire profile if it&#39;s empty after removing the payload.**
+    https://api.meraki.com/api_docs#delete-a-cisco-clarity-payload
+    - networkId (string)
+    - profileId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;deleteNetworkSmProfileClarity&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.deleteNetworkSmProfileUmbrella"><code class="name flex">
+<span>def <span class="ident">deleteNetworkSmProfileUmbrella</span></span>(<span>self, networkId, profileId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Delete a Cisco Umbrella payload. Deletes the entire profile if it's empty after removing the payload</strong>
+<a href="https://api.meraki.com/api_docs#delete-a-cisco-umbrella-payload">https://api.meraki.com/api_docs#delete-a-cisco-umbrella-payload</a>
+- networkId (string)
+- profileId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+    &#34;&#34;&#34;
+    **Delete a Cisco Umbrella payload. Deletes the entire profile if it&#39;s empty after removing the payload**
+    https://api.meraki.com/api_docs#delete-a-cisco-umbrella-payload
+    - networkId (string)
+    - profileId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;deleteNetworkSmProfileUmbrella&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+    return self._session.delete(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmAppPolaris"><code class="name flex">
+<span>def <span class="ident">getNetworkSmAppPolaris</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get details for a Cisco Polaris app if it exists</strong>
+<a href="https://api.meraki.com/api_docs#get-details-for-a-cisco-polaris-app-if-it-exists">https://api.meraki.com/api_docs#get-details-for-a-cisco-polaris-app-if-it-exists</a>
+- networkId (string)
+- bundleId (string): The bundle ID of the app to be found, defaults to com.cisco.ciscosecurity.app</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmAppPolaris(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Get details for a Cisco Polaris app if it exists**
+    https://api.meraki.com/api_docs#get-details-for-a-cisco-polaris-app-if-it-exists
+    - networkId (string)
+    - bundleId (string): The bundle ID of the app to be found, defaults to com.cisco.ciscosecurity.app
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmAppPolaris&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/app/polaris&#39;
+
+    query_params = [&#39;bundleId&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmBypassActivationLockAttempt"><code class="name flex">
+<span>def <span class="ident">getNetworkSmBypassActivationLockAttempt</span></span>(<span>self, networkId, attemptId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Bypass activation lock attempt status</strong>
+<a href="https://api.meraki.com/api_docs#bypass-activation-lock-attempt-status">https://api.meraki.com/api_docs#bypass-activation-lock-attempt-status</a>
+- networkId (string)
+- attemptId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmBypassActivationLockAttempt(self, networkId: str, attemptId: str):
+    &#34;&#34;&#34;
+    **Bypass activation lock attempt status**
+    https://api.meraki.com/api_docs#bypass-activation-lock-attempt-status
+    - networkId (string)
+    - attemptId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmBypassActivationLockAttempt&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/bypassActivationLockAttempts/{attemptId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmCellularUsageHistory"><code class="name flex">
+<span>def <span class="ident">getNetworkSmCellularUsageHistory</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return the client's daily cellular data usage history. Usage data is in kilobytes.</strong>
+<a href="https://api.meraki.com/api_docs#return-the-clients-daily-cellular-data-usage-history">https://api.meraki.com/api_docs#return-the-clients-daily-cellular-data-usage-history</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmCellularUsageHistory(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **Return the client&#39;s daily cellular data usage history. Usage data is in kilobytes.**
+    https://api.meraki.com/api_docs#return-the-clients-daily-cellular-data-usage-history
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmCellularUsageHistory&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/cellularUsageHistory&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmCerts"><code class="name flex">
+<span>def <span class="ident">getNetworkSmCerts</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the certs on a device</strong>
+<a href="https://api.meraki.com/api_docs#list-the-certs-on-a-device">https://api.meraki.com/api_docs#list-the-certs-on-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmCerts(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **List the certs on a device**
+    https://api.meraki.com/api_docs#list-the-certs-on-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmCerts&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/certs&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmConnectivity"><code class="name flex">
+<span>def <span class="ident">getNetworkSmConnectivity</span></span>(<span>self, network_id, id, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Returns historical connectivity data (whether a device is regularly checking in to Dashboard).</strong>
+<a href="https://api.meraki.com/api_docs#returns-historical-connectivity-data-whether-a-device-is-regularly-checking-in-to-dashboard">https://api.meraki.com/api_docs#returns-historical-connectivity-data-whether-a-device-is-regularly-checking-in-to-dashboard</a>
+- network_id (string)
+- id (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (string): The number of entries per page returned
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmConnectivity(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+    &#34;&#34;&#34;
+    **Returns historical connectivity data (whether a device is regularly checking in to Dashboard).**
+    https://api.meraki.com/api_docs#returns-historical-connectivity-data-whether-a-device-is-regularly-checking-in-to-dashboard
+    - network_id (string)
+    - id (string)
+    - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+    - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+    - perPage (string): The number of entries per page returned
+    - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmConnectivity&#39;,
+    }
+    resource = f&#39;/networks/{network_id}/sm/{id}/connectivity&#39;
+
+    query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmDesktopLogs"><code class="name flex">
+<span>def <span class="ident">getNetworkSmDesktopLogs</span></span>(<span>self, network_id, id, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return historical records of various Systems Manager network connection details for desktop devices.</strong>
+<a href="https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-network-connection-details-for-desktop-devices">https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-network-connection-details-for-desktop-devices</a>
+- network_id (string)
+- id (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (string): The number of entries per page returned
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmDesktopLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+    &#34;&#34;&#34;
+    **Return historical records of various Systems Manager network connection details for desktop devices.**
+    https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-network-connection-details-for-desktop-devices
+    - network_id (string)
+    - id (string)
+    - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+    - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+    - perPage (string): The number of entries per page returned
+    - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmDesktopLogs&#39;,
+    }
+    resource = f&#39;/networks/{network_id}/sm/{id}/desktopLogs&#39;
+
+    query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmDeviceCommandLogs"><code class="name flex">
+<span>def <span class="ident">getNetworkSmDeviceCommandLogs</span></span>(<span>self, network_id, id, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>
+Return historical records of commands sent to Systems Manager devices.
+<p>Note that this will include the name of the Dashboard user who initiated the command if it was generated
+by a Dashboard admin rather than the automatic behavior of the system; you may wish to filter this out
+of any reports.</p>
+</strong>
+<a href="https://api.meraki.com/api_docs#----return-historical-records-of-commands-sent-to-systems-manager-devices">https://api.meraki.com/api_docs#----return-historical-records-of-commands-sent-to-systems-manager-devices</a>
+- network_id (string)
+- id (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (string): The number of entries per page returned
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    def getNetworkSmDeviceCommandLogs(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+        &#34;&#34;&#34;
+        **    Return historical records of commands sent to Systems Manager devices.
+    &lt;p&gt;Note that this will include the name of the Dashboard user who initiated the command if it was generated
+    by a Dashboard admin rather than the automatic behavior of the system; you may wish to filter this out
+    of any reports.&lt;/p&gt;
+**
+        https://api.meraki.com/api_docs#----return-historical-records-of-commands-sent-to-systems-manager-devices
+        - network_id (string)
+        - id (string)
+        - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+        - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+        - perPage (string): The number of entries per page returned
+        - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+        &#34;&#34;&#34;
+
+        kwargs.update(locals())
+
+        metadata = {
+            &#39;tags&#39;: [&#39;SM&#39;],
+            &#39;operation&#39;: &#39;getNetworkSmDeviceCommandLogs&#39;,
+        }
+        resource = f&#39;/networks/{network_id}/sm/{id}/deviceCommandLogs&#39;
+
+        query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+        params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+        return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmDeviceProfiles"><code class="name flex">
+<span>def <span class="ident">getNetworkSmDeviceProfiles</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get the profiles associated with a device</strong>
+<a href="https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-device">https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmDeviceProfiles(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **Get the profiles associated with a device**
+    https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmDeviceProfiles&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/deviceProfiles&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmDevices"><code class="name flex">
+<span>def <span class="ident">getNetworkSmDevices</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the devices enrolled in an SM network with various specified fields and filters</strong>
+<a href="https://api.meraki.com/api_docs#list-the-devices-enrolled-in-an-sm-network-with-various-specified-fields-and-filters">https://api.meraki.com/api_docs#list-the-devices-enrolled-in-an-sm-network-with-various-specified-fields-and-filters</a>
+- networkId (string)
+- fields (string): Additional fields that will be displayed for each device. Multiple fields can be passed in as comma separated values.
+The default fields are: id, name, tags, ssid, wifiMac, osName, systemModel, uuid, and serialNumber. The additional fields are: ip,
+systemType, availableDeviceCapacity, kioskAppName, biosVersion, lastConnected, missingAppsCount, userSuppliedAddress, location, lastUser,
+ownerEmail, ownerUsername, publicIp, phoneNumber, diskInfoJson, deviceCapacity, isManaged, hadMdm, isSupervised, meid, imei, iccid,
+simCarrierNetwork, cellularDataUsed, isHotspotEnabled, createdAt, batteryEstCharge, quarantined, avName, avRunning, asName, fwName,
+isRooted, loginRequired, screenLockEnabled, screenLockDelay, autoLoginDisabled, autoTags, hasMdm, hasDesktopAgent, diskEncryptionEnabled,
+hardwareEncryptionCaps, passCodeLock, usesHardwareKeystore, and androidSecurityPatchVersion.
+- wifiMacs (string): Filter devices by wifi mac(s). Multiple wifi macs can be passed in as comma separated values.
+- serials (string): Filter devices by serial(s). Multiple serials can be passed in as comma separated values.
+- ids (string): Filter devices by id(s). Multiple ids can be passed in as comma separated values.
+- scope (string): Specify a scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags as comma separated values.
+- batchSize (integer): Number of devices to return, 1000 is the default as well as the max.
+- batchToken (string): If the network has more devices than the batch size, a batch token will be returned
+as a part of the device list. To see the remainder of the devices, pass in the batchToken as a parameter in the next request.
+Requests made with the batchToken do not require additional parameters as the batchToken includes the parameters passed in
+with the original request. Additional parameters passed in with the batchToken will be ignored.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmDevices(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **List the devices enrolled in an SM network with various specified fields and filters**
+    https://api.meraki.com/api_docs#list-the-devices-enrolled-in-an-sm-network-with-various-specified-fields-and-filters
+    - networkId (string)
+    - fields (string): Additional fields that will be displayed for each device. Multiple fields can be passed in as comma separated values.
+The default fields are: id, name, tags, ssid, wifiMac, osName, systemModel, uuid, and serialNumber. The additional fields are: ip,
+systemType, availableDeviceCapacity, kioskAppName, biosVersion, lastConnected, missingAppsCount, userSuppliedAddress, location, lastUser,
+ownerEmail, ownerUsername, publicIp, phoneNumber, diskInfoJson, deviceCapacity, isManaged, hadMdm, isSupervised, meid, imei, iccid,
+simCarrierNetwork, cellularDataUsed, isHotspotEnabled, createdAt, batteryEstCharge, quarantined, avName, avRunning, asName, fwName,
+isRooted, loginRequired, screenLockEnabled, screenLockDelay, autoLoginDisabled, autoTags, hasMdm, hasDesktopAgent, diskEncryptionEnabled,
+hardwareEncryptionCaps, passCodeLock, usesHardwareKeystore, and androidSecurityPatchVersion.
+    - wifiMacs (string): Filter devices by wifi mac(s). Multiple wifi macs can be passed in as comma separated values.
+    - serials (string): Filter devices by serial(s). Multiple serials can be passed in as comma separated values.
+    - ids (string): Filter devices by id(s). Multiple ids can be passed in as comma separated values.
+    - scope (string): Specify a scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags as comma separated values.
+    - batchSize (integer): Number of devices to return, 1000 is the default as well as the max.
+    - batchToken (string): If the network has more devices than the batch size, a batch token will be returned
+as a part of the device list. To see the remainder of the devices, pass in the batchToken as a parameter in the next request.
+Requests made with the batchToken do not require additional parameters as the batchToken includes the parameters passed in
+with the original request. Additional parameters passed in with the batchToken will be ignored.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmDevices&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/devices&#39;
+
+    query_params = [&#39;fields&#39;, &#39;wifiMacs&#39;, &#39;serials&#39;, &#39;ids&#39;, &#39;scope&#39;, &#39;batchSize&#39;, &#39;batchToken&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmNetworkAdapters"><code class="name flex">
+<span>def <span class="ident">getNetworkSmNetworkAdapters</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the network adapters of a device</strong>
+<a href="https://api.meraki.com/api_docs#list-the-network-adapters-of-a-device">https://api.meraki.com/api_docs#list-the-network-adapters-of-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmNetworkAdapters(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **List the network adapters of a device**
+    https://api.meraki.com/api_docs#list-the-network-adapters-of-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmNetworkAdapters&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/networkAdapters&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmPerformanceHistory"><code class="name flex">
+<span>def <span class="ident">getNetworkSmPerformanceHistory</span></span>(<span>self, network_id, id, total_pages=1, direction='next', **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Return historical records of various Systems Manager client metrics for desktop devices.</strong>
+<a href="https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-client-metrics-for-desktop-devices">https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-client-metrics-for-desktop-devices</a>
+- network_id (string)
+- id (string)
+- total_pages (integer or string): total number of pages to retrieve, -1 or "all" for all pages
+- direction (string): direction to paginate, either "next" (default) or "prev" page
+- perPage (string): The number of entries per page returned
+- startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+- endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmPerformanceHistory(self, network_id: str, id: str, total_pages=1, direction=&#39;next&#39;, **kwargs):
+    &#34;&#34;&#34;
+    **Return historical records of various Systems Manager client metrics for desktop devices.**
+    https://api.meraki.com/api_docs#return-historical-records-of-various-systems-manager-client-metrics-for-desktop-devices
+    - network_id (string)
+    - id (string)
+    - total_pages (integer or string): total number of pages to retrieve, -1 or &#34;all&#34; for all pages
+    - direction (string): direction to paginate, either &#34;next&#34; (default) or &#34;prev&#34; page
+    - perPage (string): The number of entries per page returned
+    - startingAfter (string): A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    - endingBefore (string): A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmPerformanceHistory&#39;,
+    }
+    resource = f&#39;/networks/{network_id}/sm/{id}/performanceHistory&#39;
+
+    query_params = [&#39;perPage&#39;, &#39;startingAfter&#39;, &#39;endingBefore&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get_pages(metadata, resource, params, total_pages, direction)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmProfileClarity"><code class="name flex">
+<span>def <span class="ident">getNetworkSmProfileClarity</span></span>(<span>self, networkId, profileId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get details for a Cisco Clarity payload</strong>
+<a href="https://api.meraki.com/api_docs#get-details-for-a-cisco-clarity-payload">https://api.meraki.com/api_docs#get-details-for-a-cisco-clarity-payload</a>
+- networkId (string)
+- profileId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmProfileClarity(self, networkId: str, profileId: str):
+    &#34;&#34;&#34;
+    **Get details for a Cisco Clarity payload**
+    https://api.meraki.com/api_docs#get-details-for-a-cisco-clarity-payload
+    - networkId (string)
+    - profileId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmProfileClarity&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmProfileUmbrella"><code class="name flex">
+<span>def <span class="ident">getNetworkSmProfileUmbrella</span></span>(<span>self, networkId, profileId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get details for a Cisco Umbrella payload</strong>
+<a href="https://api.meraki.com/api_docs#get-details-for-a-cisco-umbrella-payload">https://api.meraki.com/api_docs#get-details-for-a-cisco-umbrella-payload</a>
+- networkId (string)
+- profileId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmProfileUmbrella(self, networkId: str, profileId: str):
+    &#34;&#34;&#34;
+    **Get details for a Cisco Umbrella payload**
+    https://api.meraki.com/api_docs#get-details-for-a-cisco-umbrella-payload
+    - networkId (string)
+    - profileId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmProfileUmbrella&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmProfiles"><code class="name flex">
+<span>def <span class="ident">getNetworkSmProfiles</span></span>(<span>self, networkId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List all the profiles in the network</strong>
+<a href="https://api.meraki.com/api_docs#list-all-the-profiles-in-the-network">https://api.meraki.com/api_docs#list-all-the-profiles-in-the-network</a>
+- networkId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmProfiles(self, networkId: str):
+    &#34;&#34;&#34;
+    **List all the profiles in the network**
+    https://api.meraki.com/api_docs#list-all-the-profiles-in-the-network
+    - networkId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmProfiles&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profiles&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmRestrictions"><code class="name flex">
+<span>def <span class="ident">getNetworkSmRestrictions</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the restrictions on a device</strong>
+<a href="https://api.meraki.com/api_docs#list-the-restrictions-on-a-device">https://api.meraki.com/api_docs#list-the-restrictions-on-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmRestrictions(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **List the restrictions on a device**
+    https://api.meraki.com/api_docs#list-the-restrictions-on-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmRestrictions&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/restrictions&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmSecurityCenters"><code class="name flex">
+<span>def <span class="ident">getNetworkSmSecurityCenters</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the security centers on a device</strong>
+<a href="https://api.meraki.com/api_docs#list-the-security-centers-on-a-device">https://api.meraki.com/api_docs#list-the-security-centers-on-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmSecurityCenters(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **List the security centers on a device**
+    https://api.meraki.com/api_docs#list-the-security-centers-on-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmSecurityCenters&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/securityCenters&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmSoftwares"><code class="name flex">
+<span>def <span class="ident">getNetworkSmSoftwares</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get a list of softwares associated with a device</strong>
+<a href="https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-device">https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmSoftwares(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **Get a list of softwares associated with a device**
+    https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmSoftwares&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/softwares&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmUserDeviceProfiles"><code class="name flex">
+<span>def <span class="ident">getNetworkSmUserDeviceProfiles</span></span>(<span>self, networkId, userId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get the profiles associated with a user</strong>
+<a href="https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-user">https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-user</a>
+- networkId (string)
+- userId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmUserDeviceProfiles(self, networkId: str, userId: str):
+    &#34;&#34;&#34;
+    **Get the profiles associated with a user**
+    https://api.meraki.com/api_docs#get-the-profiles-associated-with-a-user
+    - networkId (string)
+    - userId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmUserDeviceProfiles&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/user/{userId}/deviceProfiles&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmUserSoftwares"><code class="name flex">
+<span>def <span class="ident">getNetworkSmUserSoftwares</span></span>(<span>self, networkId, userId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Get a list of softwares associated with a user</strong>
+<a href="https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-user">https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-user</a>
+- networkId (string)
+- userId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmUserSoftwares(self, networkId: str, userId: str):
+    &#34;&#34;&#34;
+    **Get a list of softwares associated with a user**
+    https://api.meraki.com/api_docs#get-a-list-of-softwares-associated-with-a-user
+    - networkId (string)
+    - userId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmUserSoftwares&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/user/{userId}/softwares&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmUsers"><code class="name flex">
+<span>def <span class="ident">getNetworkSmUsers</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the owners in an SM network with various specified fields and filters</strong>
+<a href="https://api.meraki.com/api_docs#list-the-owners-in-an-sm-network-with-various-specified-fields-and-filters">https://api.meraki.com/api_docs#list-the-owners-in-an-sm-network-with-various-specified-fields-and-filters</a>
+- networkId (string)
+- ids (string): Filter users by id(s). Multiple ids can be passed in as comma separated values.
+- usernames (string): Filter users by username(s). Multiple usernames can be passed in as comma separated values.
+- emails (string): Filter users by email(s). Multiple emails can be passed in as comma separated values.
+- scope (string): Specifiy a scope (one of all, none, withAny, withAll, withoutAny, withoutAll) and a set of tags as comma separated values.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmUsers(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **List the owners in an SM network with various specified fields and filters**
+    https://api.meraki.com/api_docs#list-the-owners-in-an-sm-network-with-various-specified-fields-and-filters
+    - networkId (string)
+    - ids (string): Filter users by id(s). Multiple ids can be passed in as comma separated values.
+    - usernames (string): Filter users by username(s). Multiple usernames can be passed in as comma separated values.
+    - emails (string): Filter users by email(s). Multiple emails can be passed in as comma separated values.
+    - scope (string): Specifiy a scope (one of all, none, withAny, withAll, withoutAny, withoutAll) and a set of tags as comma separated values.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmUsers&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/users&#39;
+
+    query_params = [&#39;ids&#39;, &#39;usernames&#39;, &#39;emails&#39;, &#39;scope&#39;]
+    params = {k: v for (k, v) in kwargs.items() if k in query_params}
+
+    return self._session.get(metadata, resource, params)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.getNetworkSmWlanLists"><code class="name flex">
+<span>def <span class="ident">getNetworkSmWlanLists</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>List the saved SSID names on a device</strong>
+<a href="https://api.meraki.com/api_docs#list-the-saved-ssid-names-on-a-device">https://api.meraki.com/api_docs#list-the-saved-ssid-names-on-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getNetworkSmWlanLists(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **List the saved SSID names on a device**
+    https://api.meraki.com/api_docs#list-the-saved-ssid-names-on-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;getNetworkSmWlanLists&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/{deviceId}/wlanLists&#39;
+
+    return self._session.get(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.lockNetworkSmDevices"><code class="name flex">
+<span>def <span class="ident">lockNetworkSmDevices</span></span>(<span>self, network_id, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Lock a set of devices</strong>
+<a href="https://api.meraki.com/api_docs#lock-a-set-of-devices">https://api.meraki.com/api_docs#lock-a-set-of-devices</a>
+- network_id (string)
+- wifiMacs (string): The wifiMacs of the devices to be locked.
+- ids (string): The ids of the devices to be locked.
+- serials (string): The serials of the devices to be locked.
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be wiped.
+- pin (integer): The pin number for locking macOS devices (a six digit number). Required only for macOS devices.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lockNetworkSmDevices(self, network_id: str, **kwargs):
+    &#34;&#34;&#34;
+    **Lock a set of devices**
+    https://api.meraki.com/api_docs#lock-a-set-of-devices
+    - network_id (string)
+    - wifiMacs (string): The wifiMacs of the devices to be locked.
+    - ids (string): The ids of the devices to be locked.
+    - serials (string): The serials of the devices to be locked.
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be wiped.
+    - pin (integer): The pin number for locking macOS devices (a six digit number). Required only for macOS devices.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;lockNetworkSmDevices&#39;,
+    }
+    resource = f&#39;/networks/{network_id}/sm/devices/lock&#39;
+
+    body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;pin&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.moveNetworkSmDevices"><code class="name flex">
+<span>def <span class="ident">moveNetworkSmDevices</span></span>(<span>self, networkId, newNetwork, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Move a set of devices to a new network</strong>
+<a href="https://api.meraki.com/api_docs#move-a-set-of-devices-to-a-new-network">https://api.meraki.com/api_docs#move-a-set-of-devices-to-a-new-network</a>
+- networkId (string)
+- newNetwork (string): The new network to which the devices will be moved.
+- wifiMacs (string): The wifiMacs of the devices to be moved.
+- ids (string): The ids of the devices to be moved.
+- serials (string): The serials of the devices to be moved.
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be moved.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveNetworkSmDevices(self, networkId: str, newNetwork: str, **kwargs):
+    &#34;&#34;&#34;
+    **Move a set of devices to a new network**
+    https://api.meraki.com/api_docs#move-a-set-of-devices-to-a-new-network
+    - networkId (string)
+    - newNetwork (string): The new network to which the devices will be moved.
+    - wifiMacs (string): The wifiMacs of the devices to be moved.
+    - ids (string): The ids of the devices to be moved.
+    - serials (string): The serials of the devices to be moved.
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be moved.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;moveNetworkSmDevices&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/devices/move&#39;
+
+    body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;newNetwork&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.refreshNetworkSmDeviceDetails"><code class="name flex">
+<span>def <span class="ident">refreshNetworkSmDeviceDetails</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Refresh the details of a device</strong>
+<a href="https://api.meraki.com/api_docs#refresh-the-details-of-a-device">https://api.meraki.com/api_docs#refresh-the-details-of-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refreshNetworkSmDeviceDetails(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **Refresh the details of a device**
+    https://api.meraki.com/api_docs#refresh-the-details-of-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;refreshNetworkSmDeviceDetails&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/device/{deviceId}/refreshDetails&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.unenrollNetworkSmDevice"><code class="name flex">
+<span>def <span class="ident">unenrollNetworkSmDevice</span></span>(<span>self, networkId, deviceId)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Unenroll a device</strong>
+<a href="https://api.meraki.com/api_docs#unenroll-a-device">https://api.meraki.com/api_docs#unenroll-a-device</a>
+- networkId (string)
+- deviceId (string)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unenrollNetworkSmDevice(self, networkId: str, deviceId: str):
+    &#34;&#34;&#34;
+    **Unenroll a device**
+    https://api.meraki.com/api_docs#unenroll-a-device
+    - networkId (string)
+    - deviceId (string)
+    &#34;&#34;&#34;
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;unenrollNetworkSmDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/devices/{deviceId}/unenroll&#39;
+
+    return self._session.post(metadata, resource)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.updateNetworkSmAppPolaris"><code class="name flex">
+<span>def <span class="ident">updateNetworkSmAppPolaris</span></span>(<span>self, networkId, appId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update an existing Polaris app</strong>
+<a href="https://api.meraki.com/api_docs#update-an-existing-polaris-app">https://api.meraki.com/api_docs#update-an-existing-polaris-app</a>
+- networkId (string)
+- appId (string)
+- scope (string): optional: The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- preventAutoInstall (boolean): optional: Whether or not SM should auto-install this app (one of true or false)
+- usesVPP (boolean): optional: Whether or not the app should use VPP by device assignment (one of true or false)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSmAppPolaris(self, networkId: str, appId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update an existing Polaris app**
+    https://api.meraki.com/api_docs#update-an-existing-polaris-app
+    - networkId (string)
+    - appId (string)
+    - scope (string): optional: The scope (one of all, none, automatic, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - preventAutoInstall (boolean): optional: Whether or not SM should auto-install this app (one of true or false)
+    - usesVPP (boolean): optional: Whether or not the app should use VPP by device assignment (one of true or false)
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSmAppPolaris&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/app/polaris/{appId}&#39;
+
+    body_params = [&#39;scope&#39;, &#39;preventAutoInstall&#39;, &#39;usesVPP&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.updateNetworkSmDeviceFields"><code class="name flex">
+<span>def <span class="ident">updateNetworkSmDeviceFields</span></span>(<span>self, networkId, deviceFields, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Modify the fields of a device</strong>
+<a href="https://api.meraki.com/api_docs#modify-the-fields-of-a-device">https://api.meraki.com/api_docs#modify-the-fields-of-a-device</a>
+- networkId (string)
+- deviceFields (object): The new fields of the device. Each field of this object is optional.
+- wifiMac (string): The wifiMac of the device to be modified.
+- id (string): The id of the device to be modified.
+- serial (string): The serial of the device to be modified.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSmDeviceFields(self, networkId: str, deviceFields: dict, **kwargs):
+    &#34;&#34;&#34;
+    **Modify the fields of a device**
+    https://api.meraki.com/api_docs#modify-the-fields-of-a-device
+    - networkId (string)
+    - deviceFields (object): The new fields of the device. Each field of this object is optional.
+    - wifiMac (string): The wifiMac of the device to be modified.
+    - id (string): The id of the device to be modified.
+    - serial (string): The serial of the device to be modified.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSmDeviceFields&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/device/fields&#39;
+
+    body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;deviceFields&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.updateNetworkSmDevicesTags"><code class="name flex">
+<span>def <span class="ident">updateNetworkSmDevicesTags</span></span>(<span>self, networkId, tags, updateAction, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Add, delete, or update the tags of a set of devices</strong>
+<a href="https://api.meraki.com/api_docs#add-delete-or-update-the-tags-of-a-set-of-devices">https://api.meraki.com/api_docs#add-delete-or-update-the-tags-of-a-set-of-devices</a>
+- networkId (string)
+- tags (string): The tags to be added, deleted, or updated.
+- updateAction (string): One of add, delete, or update. Only devices that have been modified will be returned.
+- wifiMacs (string): The wifiMacs of the devices to be modified.
+- ids (string): The ids of the devices to be modified.
+- serials (string): The serials of the devices to be modified.
+- scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be modified.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSmDevicesTags(self, networkId: str, tags: str, updateAction: str, **kwargs):
+    &#34;&#34;&#34;
+    **Add, delete, or update the tags of a set of devices**
+    https://api.meraki.com/api_docs#add-delete-or-update-the-tags-of-a-set-of-devices
+    - networkId (string)
+    - tags (string): The tags to be added, deleted, or updated.
+    - updateAction (string): One of add, delete, or update. Only devices that have been modified will be returned.
+    - wifiMacs (string): The wifiMacs of the devices to be modified.
+    - ids (string): The ids of the devices to be modified.
+    - serials (string): The serials of the devices to be modified.
+    - scope (string): The scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be modified.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSmDevicesTags&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/devices/tags&#39;
+
+    body_params = [&#39;wifiMacs&#39;, &#39;ids&#39;, &#39;serials&#39;, &#39;scope&#39;, &#39;tags&#39;, &#39;updateAction&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.updateNetworkSmProfileClarity"><code class="name flex">
+<span>def <span class="ident">updateNetworkSmProfileClarity</span></span>(<span>self, networkId, profileId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update an existing profile containing a Cisco Clarity payload</strong>
+<a href="https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-clarity-payload">https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-clarity-payload</a>
+- networkId (string)
+- profileId (string)
+- name (string): optional: A new name for the profile
+- scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- PluginBundleID (string): optional: The new bundle ID of the application
+- FilterBrowsers (boolean): optional: Whether or not to enable browser traffic filtering (one of true, false).
+- FilterSockets (boolean): optional: Whether or not to enable socket traffic filtering (one of true, false).
+- VendorConfig (array): optional: The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSmProfileClarity(self, networkId: str, profileId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update an existing profile containing a Cisco Clarity payload**
+    https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-clarity-payload
+    - networkId (string)
+    - profileId (string)
+    - name (string): optional: A new name for the profile
+    - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - PluginBundleID (string): optional: The new bundle ID of the application
+    - FilterBrowsers (boolean): optional: Whether or not to enable browser traffic filtering (one of true, false).
+    - FilterSockets (boolean): optional: Whether or not to enable socket traffic filtering (one of true, false).
+    - VendorConfig (array): optional: The specific VendorConfig to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSmProfileClarity&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/clarity/{profileId}&#39;
+
+    body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;PluginBundleID&#39;, &#39;FilterBrowsers&#39;, &#39;FilterSockets&#39;, &#39;VendorConfig&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.updateNetworkSmProfileUmbrella"><code class="name flex">
+<span>def <span class="ident">updateNetworkSmProfileUmbrella</span></span>(<span>self, networkId, profileId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Update an existing profile containing a Cisco Umbrella payload</strong>
+<a href="https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-umbrella-payload">https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-umbrella-payload</a>
+- networkId (string)
+- profileId (string)
+- name (string): optional: A new name for the profile
+- scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+- AppBundleIdentifier (string): optional: The bundle ID of the application
+- ProviderBundleIdentifier (string): optional: The bundle ID of the provider
+- ProviderConfiguration (array): optional: The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+- usesCert (boolean): optional: Whether the certificate should be attached to this profile (one of true, false)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateNetworkSmProfileUmbrella(self, networkId: str, profileId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Update an existing profile containing a Cisco Umbrella payload**
+    https://api.meraki.com/api_docs#update-an-existing-profile-containing-a-cisco-umbrella-payload
+    - networkId (string)
+    - profileId (string)
+    - name (string): optional: A new name for the profile
+    - scope (string): optional: A new scope for the profile (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags of the devices to be assigned
+    - AppBundleIdentifier (string): optional: The bundle ID of the application
+    - ProviderBundleIdentifier (string): optional: The bundle ID of the provider
+    - ProviderConfiguration (array): optional: The specific ProviderConfiguration to be passed to the filtering framework, in the form of an array of objects (as JSON).
+    - usesCert (boolean): optional: Whether the certificate should be attached to this profile (one of true, false)
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;updateNetworkSmProfileUmbrella&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/profile/umbrella/{profileId}&#39;
+
+    body_params = [&#39;name&#39;, &#39;scope&#39;, &#39;AppBundleIdentifier&#39;, &#39;ProviderBundleIdentifier&#39;, &#39;ProviderConfiguration&#39;, &#39;usesCert&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+<dt id="meraki.api.sm.SM.wipeNetworkSmDevice"><code class="name flex">
+<span>def <span class="ident">wipeNetworkSmDevice</span></span>(<span>self, networkId, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><strong>Wipe a device</strong>
+<a href="https://api.meraki.com/api_docs#wipe-a-device">https://api.meraki.com/api_docs#wipe-a-device</a>
+- networkId (string)
+- wifiMac (string): The wifiMac of the device to be wiped.
+- id (string): The id of the device to be wiped.
+- serial (string): The serial of the device to be wiped.
+- pin (integer): The pin number (a six digit value) for wiping a macOS device. Required only for macOS devices.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def wipeNetworkSmDevice(self, networkId: str, **kwargs):
+    &#34;&#34;&#34;
+    **Wipe a device**
+    https://api.meraki.com/api_docs#wipe-a-device
+    - networkId (string)
+    - wifiMac (string): The wifiMac of the device to be wiped.
+    - id (string): The id of the device to be wiped.
+    - serial (string): The serial of the device to be wiped.
+    - pin (integer): The pin number (a six digit value) for wiping a macOS device. Required only for macOS devices.
+    &#34;&#34;&#34;
+
+    kwargs.update(locals())
+
+    metadata = {
+        &#39;tags&#39;: [&#39;SM&#39;],
+        &#39;operation&#39;: &#39;wipeNetworkSmDevice&#39;,
+    }
+    resource = f&#39;/networks/{networkId}/sm/device/wipe&#39;
+
+    body_params = [&#39;wifiMac&#39;, &#39;id&#39;, &#39;serial&#39;, &#39;pin&#39;]
+    payload = {k: v for (k, v) in kwargs.items() if k in body_params}
+
+    return self._session.put(metadata, resource, payload)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki.api" href="index.html">meraki.api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.api.sm.SM" href="#meraki.api.sm.SM">SM</a></code></h4>
+<ul class="">
+<li><code><a title="meraki.api.sm.SM.addNetworkSmProfileClarity" href="#meraki.api.sm.SM.addNetworkSmProfileClarity">addNetworkSmProfileClarity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.addNetworkSmProfileUmbrella" href="#meraki.api.sm.SM.addNetworkSmProfileUmbrella">addNetworkSmProfileUmbrella</a></code></li>
+<li><code><a title="meraki.api.sm.SM.checkinNetworkSmDevices" href="#meraki.api.sm.SM.checkinNetworkSmDevices">checkinNetworkSmDevices</a></code></li>
+<li><code><a title="meraki.api.sm.SM.createNetworkSmAppPolaris" href="#meraki.api.sm.SM.createNetworkSmAppPolaris">createNetworkSmAppPolaris</a></code></li>
+<li><code><a title="meraki.api.sm.SM.createNetworkSmBypassActivationLockAttempt" href="#meraki.api.sm.SM.createNetworkSmBypassActivationLockAttempt">createNetworkSmBypassActivationLockAttempt</a></code></li>
+<li><code><a title="meraki.api.sm.SM.createNetworkSmProfileClarity" href="#meraki.api.sm.SM.createNetworkSmProfileClarity">createNetworkSmProfileClarity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.createNetworkSmProfileUmbrella" href="#meraki.api.sm.SM.createNetworkSmProfileUmbrella">createNetworkSmProfileUmbrella</a></code></li>
+<li><code><a title="meraki.api.sm.SM.deleteNetworkSmAppPolaris" href="#meraki.api.sm.SM.deleteNetworkSmAppPolaris">deleteNetworkSmAppPolaris</a></code></li>
+<li><code><a title="meraki.api.sm.SM.deleteNetworkSmProfileClarity" href="#meraki.api.sm.SM.deleteNetworkSmProfileClarity">deleteNetworkSmProfileClarity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.deleteNetworkSmProfileUmbrella" href="#meraki.api.sm.SM.deleteNetworkSmProfileUmbrella">deleteNetworkSmProfileUmbrella</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmAppPolaris" href="#meraki.api.sm.SM.getNetworkSmAppPolaris">getNetworkSmAppPolaris</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmBypassActivationLockAttempt" href="#meraki.api.sm.SM.getNetworkSmBypassActivationLockAttempt">getNetworkSmBypassActivationLockAttempt</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmCellularUsageHistory" href="#meraki.api.sm.SM.getNetworkSmCellularUsageHistory">getNetworkSmCellularUsageHistory</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmCerts" href="#meraki.api.sm.SM.getNetworkSmCerts">getNetworkSmCerts</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmConnectivity" href="#meraki.api.sm.SM.getNetworkSmConnectivity">getNetworkSmConnectivity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmDesktopLogs" href="#meraki.api.sm.SM.getNetworkSmDesktopLogs">getNetworkSmDesktopLogs</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmDeviceCommandLogs" href="#meraki.api.sm.SM.getNetworkSmDeviceCommandLogs">getNetworkSmDeviceCommandLogs</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmDeviceProfiles" href="#meraki.api.sm.SM.getNetworkSmDeviceProfiles">getNetworkSmDeviceProfiles</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmDevices" href="#meraki.api.sm.SM.getNetworkSmDevices">getNetworkSmDevices</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmNetworkAdapters" href="#meraki.api.sm.SM.getNetworkSmNetworkAdapters">getNetworkSmNetworkAdapters</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmPerformanceHistory" href="#meraki.api.sm.SM.getNetworkSmPerformanceHistory">getNetworkSmPerformanceHistory</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmProfileClarity" href="#meraki.api.sm.SM.getNetworkSmProfileClarity">getNetworkSmProfileClarity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmProfileUmbrella" href="#meraki.api.sm.SM.getNetworkSmProfileUmbrella">getNetworkSmProfileUmbrella</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmProfiles" href="#meraki.api.sm.SM.getNetworkSmProfiles">getNetworkSmProfiles</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmRestrictions" href="#meraki.api.sm.SM.getNetworkSmRestrictions">getNetworkSmRestrictions</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmSecurityCenters" href="#meraki.api.sm.SM.getNetworkSmSecurityCenters">getNetworkSmSecurityCenters</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmSoftwares" href="#meraki.api.sm.SM.getNetworkSmSoftwares">getNetworkSmSoftwares</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmUserDeviceProfiles" href="#meraki.api.sm.SM.getNetworkSmUserDeviceProfiles">getNetworkSmUserDeviceProfiles</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmUserSoftwares" href="#meraki.api.sm.SM.getNetworkSmUserSoftwares">getNetworkSmUserSoftwares</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmUsers" href="#meraki.api.sm.SM.getNetworkSmUsers">getNetworkSmUsers</a></code></li>
+<li><code><a title="meraki.api.sm.SM.getNetworkSmWlanLists" href="#meraki.api.sm.SM.getNetworkSmWlanLists">getNetworkSmWlanLists</a></code></li>
+<li><code><a title="meraki.api.sm.SM.lockNetworkSmDevices" href="#meraki.api.sm.SM.lockNetworkSmDevices">lockNetworkSmDevices</a></code></li>
+<li><code><a title="meraki.api.sm.SM.moveNetworkSmDevices" href="#meraki.api.sm.SM.moveNetworkSmDevices">moveNetworkSmDevices</a></code></li>
+<li><code><a title="meraki.api.sm.SM.refreshNetworkSmDeviceDetails" href="#meraki.api.sm.SM.refreshNetworkSmDeviceDetails">refreshNetworkSmDeviceDetails</a></code></li>
+<li><code><a title="meraki.api.sm.SM.unenrollNetworkSmDevice" href="#meraki.api.sm.SM.unenrollNetworkSmDevice">unenrollNetworkSmDevice</a></code></li>
+<li><code><a title="meraki.api.sm.SM.updateNetworkSmAppPolaris" href="#meraki.api.sm.SM.updateNetworkSmAppPolaris">updateNetworkSmAppPolaris</a></code></li>
+<li><code><a title="meraki.api.sm.SM.updateNetworkSmDeviceFields" href="#meraki.api.sm.SM.updateNetworkSmDeviceFields">updateNetworkSmDeviceFields</a></code></li>
+<li><code><a title="meraki.api.sm.SM.updateNetworkSmDevicesTags" href="#meraki.api.sm.SM.updateNetworkSmDevicesTags">updateNetworkSmDevicesTags</a></code></li>
+<li><code><a title="meraki.api.sm.SM.updateNetworkSmProfileClarity" href="#meraki.api.sm.SM.updateNetworkSmProfileClarity">updateNetworkSmProfileClarity</a></code></li>
+<li><code><a title="meraki.api.sm.SM.updateNetworkSmProfileUmbrella" href="#meraki.api.sm.SM.updateNetworkSmProfileUmbrella">updateNetworkSmProfileUmbrella</a></code></li>
+<li><code><a title="meraki.api.sm.SM.wipeNetworkSmDevice" href="#meraki.api.sm.SM.wipeNetworkSmDevice">wipeNetworkSmDevice</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

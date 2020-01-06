@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>meraki.rest_session API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>meraki.rest_session</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import json
+import time
+
+import requests
+
+from .config import *
+from .exceptions import *
+
+
+# Main module interface
+class RestSession(object):
+    def __init__(self, logger, api_key, base_url=DEFAULT_BASE_URL, single_request_timeout=DEFAULT_SINGLE_REQUEST_TIMEOUT,
+                 wait_on_rate_limit=DEFAULT_WAIT_ON_RATE_LIMIT, maximum_retries=MAXIMUM_RETRIES, simulate=SIMULATE_API_CALLS):
+        super(RestSession, self).__init__()
+
+        # Initialize attributes and properties
+        self._api_key = str(api_key)
+        self._base_url = str(base_url)
+        self._single_request_timeout = single_request_timeout
+        self._wait_on_rate_limit = wait_on_rate_limit
+        self._maximum_retries = maximum_retries
+        self._simulate = simulate
+
+        # Initialize a new `requests` session
+        self._req_session = requests.session()
+
+        # Remove unneeded trailing slash in base URL if present
+        if self._base_url[-1] == &#39;/&#39;:
+            self._base_url = self._base_url[:-1]
+
+        # Update the headers of the `requests` session
+        if &#39;v0&#39; in self._base_url:
+            self._req_session.headers = {&#39;X-Cisco-Meraki-API-Key&#39;: self._api_key, &#39;Content-Type&#39;: &#39;application/json&#39;}
+        elif &#39;v1&#39; in self._base_url:
+            self._req_session.headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + self._api_key, &#39;Content-Type&#39;: &#39;application/json&#39;}
+
+        # Log API calls
+        self._logger = logger
+        self._parameters = locals()
+        self._parameters[&#39;api_key&#39;] = &#39;*&#39; * 36 + self._api_key[-4:]
+        self._logger.info(f&#39;Meraki dashboard API session initialized with these parameters: {self._parameters}&#39;)
+
+    def request(self, metadata, method, url, **kwargs):
+        # Metadata on endpoint
+        tag = metadata[&#39;tags&#39;][0]
+        operation = metadata[&#39;operation&#39;]
+
+        # Update request kwargs with session defaults
+        kwargs.setdefault(&#39;timeout&#39;, self._single_request_timeout)
+        if &#39;meraki.com&#39; in url:
+            abs_url = url
+        else:
+            abs_url = self._base_url + url
+        retries = self._maximum_retries
+
+        # Option to simulate non-safe API calls without actually sending them
+        self._logger.debug(metadata)
+        if self._simulate and method != &#39;GET&#39;:
+            self._logger.info(f&#39;{tag}, {operation} - SIMULATED&#39;)
+            return None
+        else:
+            while retries &gt; 0:
+                # Make the HTTP request to the API endpoint
+                try:
+                    response = self._req_session.request(method, abs_url, allow_redirects=False, **kwargs)
+                    reason = response.reason if response.reason else &#39;&#39;
+                    status = response.status_code
+                except requests.exceptions.RequestException as e:
+                    self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                    time.sleep(1)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+                    else:
+                        continue
+
+                # Handle 3XX redirects automatically
+                if str(status)[0] == &#39;3&#39;:
+                    abs_url = response.headers[&#39;Location&#39;]
+                    substring = &#39;meraki.com/api/v&#39;
+                    self._base_url = abs_url[:abs_url.find(substring) + len(substring) + 1]
+
+                # 2XX success
+                elif response.ok:
+                    if &#39;page&#39; in metadata:
+                        counter = metadata[&#39;page&#39;]
+                        self._logger.info(f&#39;{tag}, {operation}; page {counter} - {status} {reason}&#39;)
+                    else:
+                        self._logger.info(f&#39;{tag}, {operation} - {status} {reason}&#39;)
+                    try:
+                        response.json()
+                        return response
+                    except json.decoder.JSONDecodeError as e:
+                        self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                        time.sleep(1)
+                        retries -= 1
+                        if retries == 0:
+                            raise APIError(metadata, response)
+                        else:
+                            continue
+
+                # Rate limit 429 errors
+                elif status == 429:
+                    wait = int(response.headers[&#39;Retry-After&#39;])
+                    self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in {wait} seconds&#39;)
+                    time.sleep(wait)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+
+                # 5XX errors
+                elif status &gt;= 500:
+                    self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in 1 second&#39;)
+                    time.sleep(1)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+
+                # 4XX errors
+                else:
+                    try:
+                        message = response.json()
+                    except ValueError:
+                        message = response.text[:100]
+                    self._logger.error(f&#39;{tag}, {operation} - {status} {reason}, {message}&#39;)
+                    raise APIError(metadata, response)
+
+    def get(self, metadata, url, params=None):
+        metadata[&#39;method&#39;] = &#39;GET&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;params&#39;] = params
+        response = self.request(metadata, &#39;GET&#39;, url, params=params)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def get_pages(self, metadata, url, params=None, total_pages=-1, direction=&#39;next&#39;):
+        if type(total_pages) == str and total_pages.lower() == &#39;all&#39;:
+            total_pages = -1
+        elif type(total_pages) == str and total_pages.isnumeric():
+            total_pages = int(total_pages)
+        metadata[&#39;page&#39;] = 1
+
+        response = self.request(metadata, &#39;GET&#39;, url, params=params)
+        results = response.json()
+
+        # Get additional pages if more than one requested
+        while total_pages != 1:
+            # Parse Link from headers
+            links = response.headers[&#39;Link&#39;].split(&#39;,&#39;)
+            first = prev = next = last = None
+            for l in links:
+                if &#39;rel=first&#39; in l:
+                    first = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=prev&#39; in l:
+                    prev = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=next&#39; in l:
+                    next = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=last&#39; in l:
+                    last = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+
+            # GET the subsequent page
+            if direction == &#39;next&#39; and next:
+                metadata[&#39;page&#39;] += 1
+                response = self.request(metadata, &#39;GET&#39;, next)
+            elif direction == &#39;prev&#39; and prev:
+                metadata[&#39;page&#39;] += 1
+                response = self.request(metadata, &#39;GET&#39;, prev)
+            else:
+                break
+
+            # Append that page&#39;s results, depending on the endpoint
+            if type(results) == list:
+                results.extend(response.json())
+            # For event log endpoint
+            elif type(results) == dict:
+                start = response.json()[&#39;pageStartAt&#39;]
+                end = response.json()[&#39;pageEndAt&#39;]
+                events = response.json()[&#39;events&#39;]
+                if start &lt; results[&#39;pageStartAt&#39;]:
+                    results[&#39;pageStartAt&#39;] = start
+                if end &gt; results[&#39;pageEndAt&#39;]:
+                    results[&#39;pageEndAt&#39;] = end
+                results[&#39;events&#39;].extend(events)
+
+            total_pages -= 1
+
+        return results
+
+    def post(self, metadata, url, json=None):
+        metadata[&#39;method&#39;] = &#39;POST&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;json&#39;] = json
+        response = self.request(metadata, &#39;POST&#39;, url, json=json)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def put(self, metadata, url, json=None):
+        metadata[&#39;method&#39;] = &#39;PUT&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;json&#39;] = json
+        response = self.request(metadata, &#39;PUT&#39;, url, json=json)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def delete(self, metadata, url):
+        metadata[&#39;method&#39;] = &#39;DELETE&#39;
+        metadata[&#39;url&#39;] = url
+        self.request(metadata, &#39;DELETE&#39;, url)
+        return None</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="meraki.rest_session.RestSession"><code class="flex name class">
+<span>class <span class="ident">RestSession</span></span>
+<span>(</span><span>logger, api_key, base_url='https://api.meraki.com/api/v0', single_request_timeout=60, wait_on_rate_limit=True, maximum_retries=2, simulate=False)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RestSession(object):
+    def __init__(self, logger, api_key, base_url=DEFAULT_BASE_URL, single_request_timeout=DEFAULT_SINGLE_REQUEST_TIMEOUT,
+                 wait_on_rate_limit=DEFAULT_WAIT_ON_RATE_LIMIT, maximum_retries=MAXIMUM_RETRIES, simulate=SIMULATE_API_CALLS):
+        super(RestSession, self).__init__()
+
+        # Initialize attributes and properties
+        self._api_key = str(api_key)
+        self._base_url = str(base_url)
+        self._single_request_timeout = single_request_timeout
+        self._wait_on_rate_limit = wait_on_rate_limit
+        self._maximum_retries = maximum_retries
+        self._simulate = simulate
+
+        # Initialize a new `requests` session
+        self._req_session = requests.session()
+
+        # Remove unneeded trailing slash in base URL if present
+        if self._base_url[-1] == &#39;/&#39;:
+            self._base_url = self._base_url[:-1]
+
+        # Update the headers of the `requests` session
+        if &#39;v0&#39; in self._base_url:
+            self._req_session.headers = {&#39;X-Cisco-Meraki-API-Key&#39;: self._api_key, &#39;Content-Type&#39;: &#39;application/json&#39;}
+        elif &#39;v1&#39; in self._base_url:
+            self._req_session.headers = {&#39;Authorization&#39;: &#39;Bearer &#39; + self._api_key, &#39;Content-Type&#39;: &#39;application/json&#39;}
+
+        # Log API calls
+        self._logger = logger
+        self._parameters = locals()
+        self._parameters[&#39;api_key&#39;] = &#39;*&#39; * 36 + self._api_key[-4:]
+        self._logger.info(f&#39;Meraki dashboard API session initialized with these parameters: {self._parameters}&#39;)
+
+    def request(self, metadata, method, url, **kwargs):
+        # Metadata on endpoint
+        tag = metadata[&#39;tags&#39;][0]
+        operation = metadata[&#39;operation&#39;]
+
+        # Update request kwargs with session defaults
+        kwargs.setdefault(&#39;timeout&#39;, self._single_request_timeout)
+        if &#39;meraki.com&#39; in url:
+            abs_url = url
+        else:
+            abs_url = self._base_url + url
+        retries = self._maximum_retries
+
+        # Option to simulate non-safe API calls without actually sending them
+        self._logger.debug(metadata)
+        if self._simulate and method != &#39;GET&#39;:
+            self._logger.info(f&#39;{tag}, {operation} - SIMULATED&#39;)
+            return None
+        else:
+            while retries &gt; 0:
+                # Make the HTTP request to the API endpoint
+                try:
+                    response = self._req_session.request(method, abs_url, allow_redirects=False, **kwargs)
+                    reason = response.reason if response.reason else &#39;&#39;
+                    status = response.status_code
+                except requests.exceptions.RequestException as e:
+                    self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                    time.sleep(1)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+                    else:
+                        continue
+
+                # Handle 3XX redirects automatically
+                if str(status)[0] == &#39;3&#39;:
+                    abs_url = response.headers[&#39;Location&#39;]
+                    substring = &#39;meraki.com/api/v&#39;
+                    self._base_url = abs_url[:abs_url.find(substring) + len(substring) + 1]
+
+                # 2XX success
+                elif response.ok:
+                    if &#39;page&#39; in metadata:
+                        counter = metadata[&#39;page&#39;]
+                        self._logger.info(f&#39;{tag}, {operation}; page {counter} - {status} {reason}&#39;)
+                    else:
+                        self._logger.info(f&#39;{tag}, {operation} - {status} {reason}&#39;)
+                    try:
+                        response.json()
+                        return response
+                    except json.decoder.JSONDecodeError as e:
+                        self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                        time.sleep(1)
+                        retries -= 1
+                        if retries == 0:
+                            raise APIError(metadata, response)
+                        else:
+                            continue
+
+                # Rate limit 429 errors
+                elif status == 429:
+                    wait = int(response.headers[&#39;Retry-After&#39;])
+                    self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in {wait} seconds&#39;)
+                    time.sleep(wait)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+
+                # 5XX errors
+                elif status &gt;= 500:
+                    self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in 1 second&#39;)
+                    time.sleep(1)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+
+                # 4XX errors
+                else:
+                    try:
+                        message = response.json()
+                    except ValueError:
+                        message = response.text[:100]
+                    self._logger.error(f&#39;{tag}, {operation} - {status} {reason}, {message}&#39;)
+                    raise APIError(metadata, response)
+
+    def get(self, metadata, url, params=None):
+        metadata[&#39;method&#39;] = &#39;GET&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;params&#39;] = params
+        response = self.request(metadata, &#39;GET&#39;, url, params=params)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def get_pages(self, metadata, url, params=None, total_pages=-1, direction=&#39;next&#39;):
+        if type(total_pages) == str and total_pages.lower() == &#39;all&#39;:
+            total_pages = -1
+        elif type(total_pages) == str and total_pages.isnumeric():
+            total_pages = int(total_pages)
+        metadata[&#39;page&#39;] = 1
+
+        response = self.request(metadata, &#39;GET&#39;, url, params=params)
+        results = response.json()
+
+        # Get additional pages if more than one requested
+        while total_pages != 1:
+            # Parse Link from headers
+            links = response.headers[&#39;Link&#39;].split(&#39;,&#39;)
+            first = prev = next = last = None
+            for l in links:
+                if &#39;rel=first&#39; in l:
+                    first = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=prev&#39; in l:
+                    prev = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=next&#39; in l:
+                    next = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+                elif &#39;rel=last&#39; in l:
+                    last = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+
+            # GET the subsequent page
+            if direction == &#39;next&#39; and next:
+                metadata[&#39;page&#39;] += 1
+                response = self.request(metadata, &#39;GET&#39;, next)
+            elif direction == &#39;prev&#39; and prev:
+                metadata[&#39;page&#39;] += 1
+                response = self.request(metadata, &#39;GET&#39;, prev)
+            else:
+                break
+
+            # Append that page&#39;s results, depending on the endpoint
+            if type(results) == list:
+                results.extend(response.json())
+            # For event log endpoint
+            elif type(results) == dict:
+                start = response.json()[&#39;pageStartAt&#39;]
+                end = response.json()[&#39;pageEndAt&#39;]
+                events = response.json()[&#39;events&#39;]
+                if start &lt; results[&#39;pageStartAt&#39;]:
+                    results[&#39;pageStartAt&#39;] = start
+                if end &gt; results[&#39;pageEndAt&#39;]:
+                    results[&#39;pageEndAt&#39;] = end
+                results[&#39;events&#39;].extend(events)
+
+            total_pages -= 1
+
+        return results
+
+    def post(self, metadata, url, json=None):
+        metadata[&#39;method&#39;] = &#39;POST&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;json&#39;] = json
+        response = self.request(metadata, &#39;POST&#39;, url, json=json)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def put(self, metadata, url, json=None):
+        metadata[&#39;method&#39;] = &#39;PUT&#39;
+        metadata[&#39;url&#39;] = url
+        metadata[&#39;json&#39;] = json
+        response = self.request(metadata, &#39;PUT&#39;, url, json=json)
+        text = response.text.strip()
+        return response.json() if response and text else None
+
+    def delete(self, metadata, url):
+        metadata[&#39;method&#39;] = &#39;DELETE&#39;
+        metadata[&#39;url&#39;] = url
+        self.request(metadata, &#39;DELETE&#39;, url)
+        return None</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="meraki.rest_session.RestSession.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self, metadata, url)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self, metadata, url):
+    metadata[&#39;method&#39;] = &#39;DELETE&#39;
+    metadata[&#39;url&#39;] = url
+    self.request(metadata, &#39;DELETE&#39;, url)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="meraki.rest_session.RestSession.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self, metadata, url, params=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get(self, metadata, url, params=None):
+    metadata[&#39;method&#39;] = &#39;GET&#39;
+    metadata[&#39;url&#39;] = url
+    metadata[&#39;params&#39;] = params
+    response = self.request(metadata, &#39;GET&#39;, url, params=params)
+    text = response.text.strip()
+    return response.json() if response and text else None</code></pre>
+</details>
+</dd>
+<dt id="meraki.rest_session.RestSession.get_pages"><code class="name flex">
+<span>def <span class="ident">get_pages</span></span>(<span>self, metadata, url, params=None, total_pages=-1, direction='next')</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_pages(self, metadata, url, params=None, total_pages=-1, direction=&#39;next&#39;):
+    if type(total_pages) == str and total_pages.lower() == &#39;all&#39;:
+        total_pages = -1
+    elif type(total_pages) == str and total_pages.isnumeric():
+        total_pages = int(total_pages)
+    metadata[&#39;page&#39;] = 1
+
+    response = self.request(metadata, &#39;GET&#39;, url, params=params)
+    results = response.json()
+
+    # Get additional pages if more than one requested
+    while total_pages != 1:
+        # Parse Link from headers
+        links = response.headers[&#39;Link&#39;].split(&#39;,&#39;)
+        first = prev = next = last = None
+        for l in links:
+            if &#39;rel=first&#39; in l:
+                first = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+            elif &#39;rel=prev&#39; in l:
+                prev = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+            elif &#39;rel=next&#39; in l:
+                next = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+            elif &#39;rel=last&#39; in l:
+                last = l[l.find(&#39;&lt;&#39;)+1:l.find(&#39;&gt;&#39;)]
+
+        # GET the subsequent page
+        if direction == &#39;next&#39; and next:
+            metadata[&#39;page&#39;] += 1
+            response = self.request(metadata, &#39;GET&#39;, next)
+        elif direction == &#39;prev&#39; and prev:
+            metadata[&#39;page&#39;] += 1
+            response = self.request(metadata, &#39;GET&#39;, prev)
+        else:
+            break
+
+        # Append that page&#39;s results, depending on the endpoint
+        if type(results) == list:
+            results.extend(response.json())
+        # For event log endpoint
+        elif type(results) == dict:
+            start = response.json()[&#39;pageStartAt&#39;]
+            end = response.json()[&#39;pageEndAt&#39;]
+            events = response.json()[&#39;events&#39;]
+            if start &lt; results[&#39;pageStartAt&#39;]:
+                results[&#39;pageStartAt&#39;] = start
+            if end &gt; results[&#39;pageEndAt&#39;]:
+                results[&#39;pageEndAt&#39;] = end
+            results[&#39;events&#39;].extend(events)
+
+        total_pages -= 1
+
+    return results</code></pre>
+</details>
+</dd>
+<dt id="meraki.rest_session.RestSession.post"><code class="name flex">
+<span>def <span class="ident">post</span></span>(<span>self, metadata, url, json=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def post(self, metadata, url, json=None):
+    metadata[&#39;method&#39;] = &#39;POST&#39;
+    metadata[&#39;url&#39;] = url
+    metadata[&#39;json&#39;] = json
+    response = self.request(metadata, &#39;POST&#39;, url, json=json)
+    text = response.text.strip()
+    return response.json() if response and text else None</code></pre>
+</details>
+</dd>
+<dt id="meraki.rest_session.RestSession.put"><code class="name flex">
+<span>def <span class="ident">put</span></span>(<span>self, metadata, url, json=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def put(self, metadata, url, json=None):
+    metadata[&#39;method&#39;] = &#39;PUT&#39;
+    metadata[&#39;url&#39;] = url
+    metadata[&#39;json&#39;] = json
+    response = self.request(metadata, &#39;PUT&#39;, url, json=json)
+    text = response.text.strip()
+    return response.json() if response and text else None</code></pre>
+</details>
+</dd>
+<dt id="meraki.rest_session.RestSession.request"><code class="name flex">
+<span>def <span class="ident">request</span></span>(<span>self, metadata, method, url, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def request(self, metadata, method, url, **kwargs):
+    # Metadata on endpoint
+    tag = metadata[&#39;tags&#39;][0]
+    operation = metadata[&#39;operation&#39;]
+
+    # Update request kwargs with session defaults
+    kwargs.setdefault(&#39;timeout&#39;, self._single_request_timeout)
+    if &#39;meraki.com&#39; in url:
+        abs_url = url
+    else:
+        abs_url = self._base_url + url
+    retries = self._maximum_retries
+
+    # Option to simulate non-safe API calls without actually sending them
+    self._logger.debug(metadata)
+    if self._simulate and method != &#39;GET&#39;:
+        self._logger.info(f&#39;{tag}, {operation} - SIMULATED&#39;)
+        return None
+    else:
+        while retries &gt; 0:
+            # Make the HTTP request to the API endpoint
+            try:
+                response = self._req_session.request(method, abs_url, allow_redirects=False, **kwargs)
+                reason = response.reason if response.reason else &#39;&#39;
+                status = response.status_code
+            except requests.exceptions.RequestException as e:
+                self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                time.sleep(1)
+                retries -= 1
+                if retries == 0:
+                    raise APIError(metadata, response)
+                else:
+                    continue
+
+            # Handle 3XX redirects automatically
+            if str(status)[0] == &#39;3&#39;:
+                abs_url = response.headers[&#39;Location&#39;]
+                substring = &#39;meraki.com/api/v&#39;
+                self._base_url = abs_url[:abs_url.find(substring) + len(substring) + 1]
+
+            # 2XX success
+            elif response.ok:
+                if &#39;page&#39; in metadata:
+                    counter = metadata[&#39;page&#39;]
+                    self._logger.info(f&#39;{tag}, {operation}; page {counter} - {status} {reason}&#39;)
+                else:
+                    self._logger.info(f&#39;{tag}, {operation} - {status} {reason}&#39;)
+                try:
+                    response.json()
+                    return response
+                except json.decoder.JSONDecodeError as e:
+                    self._logger.warning(f&#39;{tag}, {operation} - {e}, retrying in 1 second&#39;)
+                    time.sleep(1)
+                    retries -= 1
+                    if retries == 0:
+                        raise APIError(metadata, response)
+                    else:
+                        continue
+
+            # Rate limit 429 errors
+            elif status == 429:
+                wait = int(response.headers[&#39;Retry-After&#39;])
+                self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in {wait} seconds&#39;)
+                time.sleep(wait)
+                retries -= 1
+                if retries == 0:
+                    raise APIError(metadata, response)
+
+            # 5XX errors
+            elif status &gt;= 500:
+                self._logger.warning(f&#39;{tag}, {operation} - {status} {reason}, retrying in 1 second&#39;)
+                time.sleep(1)
+                retries -= 1
+                if retries == 0:
+                    raise APIError(metadata, response)
+
+            # 4XX errors
+            else:
+                try:
+                    message = response.json()
+                except ValueError:
+                    message = response.text[:100]
+                self._logger.error(f&#39;{tag}, {operation} - {status} {reason}, {message}&#39;)
+                raise APIError(metadata, response)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="meraki" href="index.html">meraki</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="meraki.rest_session.RestSession" href="#meraki.rest_session.RestSession">RestSession</a></code></h4>
+<ul class="two-column">
+<li><code><a title="meraki.rest_session.RestSession.delete" href="#meraki.rest_session.RestSession.delete">delete</a></code></li>
+<li><code><a title="meraki.rest_session.RestSession.get" href="#meraki.rest_session.RestSession.get">get</a></code></li>
+<li><code><a title="meraki.rest_session.RestSession.get_pages" href="#meraki.rest_session.RestSession.get_pages">get_pages</a></code></li>
+<li><code><a title="meraki.rest_session.RestSession.post" href="#meraki.rest_session.RestSession.post">post</a></code></li>
+<li><code><a title="meraki.rest_session.RestSession.put" href="#meraki.rest_session.RestSession.put">put</a></code></li>
+<li><code><a title="meraki.rest_session.RestSession.request" href="#meraki.rest_session.RestSession.request">request</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
